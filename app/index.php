@@ -1,7 +1,7 @@
 <?php 
   include "../part/header.php";
   include "./connection.php";
-  include "./page_news.php";
+  include "./post.php";
   include "./dashboard.php";
 
   headerAll();
@@ -14,7 +14,7 @@
   {
     global $page;
     if($page === 'index') dashboard();
-    if($page === 'news') berita();
+    if($page === 'post') post();
   }
 ?>
 <body>
@@ -41,7 +41,7 @@
               <img src="../public/img/img-1.jpg" class="rounded-circle" width="100" height="100"/><br/>
               <span class="small">Yayak Yogi Ginantaka</span>
             </div>
-            <a class="nav-link collapsed" href="#">
+            <a class="nav-link collapsed" href="?">
               <div class="sb-nav-link-icon">
                 <i class="fas fa-columns"></i>
               </div>
@@ -51,31 +51,21 @@
               </div>
             </a>
               
-            <a class="nav-link collapsed" href="#">
-              <div class="sb-nav-link-icon">
-                <i class="fas fa-newspaper"></i>
-              </div>
-                Berita
-              <div class="sb-sidenav-collapse-arrow">
-                <i class="fas fa-angle-down"></i>
-              </div>
-            </a>
-
-            <a class="nav-link collapsed" href="#">
-              <div class="sb-nav-link-icon">
-                <i class="fas fa-book-open"></i>
-              </div>
-                Artikel
-              <div class="sb-sidenav-collapse-arrow">
-                <i class="fas fa-angle-down"></i>
-              </div>
-            </a>
-
-            <a class="nav-link collapsed" href="#">
+            <a class="nav-link collapsed" href="?pages=post">
               <div class="sb-nav-link-icon">
                 <i class="fas fa-bullhorn"></i>
               </div>
-                Pengumuman
+                Postingan
+              <div class="sb-sidenav-collapse-arrow">
+                <i class="fas fa-angle-down"></i>
+              </div>
+            </a>
+
+            <a class="nav-link collapsed" href="#">
+              <div class="sb-nav-link-icon">
+                <i class="fas fa-building"></i>
+              </div>
+                Informasi
               <div class="sb-sidenav-collapse-arrow">
                 <i class="fas fa-angle-down"></i>
               </div>
@@ -103,4 +93,12 @@
   </div>
   <!-- ./content -->
   <script src="../public/js/script.js"></script>
+  <script src="../public/js/ckeditor5/ckeditor.js"></script>
+  <script>
+    ClassicEditor
+      .create( document.querySelector( '#editor' ) )
+      .catch( error => {
+          console.error( error );
+      });
+  </script>
 </body>
