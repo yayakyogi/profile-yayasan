@@ -93,12 +93,5 @@
   </div>
   <!-- ./content -->
   <script src="../public/js/script.js"></script>
-  <script src="../public/js/ckeditor5/ckeditor.js"></script>
-  <script>
-    ClassicEditor
-      .create( document.querySelector( '#editor' ) )
-      .catch( error => {
-          console.error( error );
-      });
-  </script>
+  <script src="../public/js/ckeditor-basic/ckeditor.js"></script>
 </body>
