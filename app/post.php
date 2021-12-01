@@ -104,7 +104,7 @@ function post()
                 <!-- col-image -->
                 <div class="col-12 col-sm-3 mb-2">
                   <div class="form-group">
-                    <label for="image" class="mb-2">Gambar</label>
+                    <label for="image" class="mb-2">Gambar Cover</label>
                     <input class="form-control" type="file" name="image" id="formFile">
                   </div>
                 </div>
@@ -121,9 +121,13 @@ function post()
 
               </div>
               <!-- ./tipe & category -->
-              <textarea class="ckeditor" id="ckedtor"></textarea>   
-              <button type="submit" class="btn btn-primary">SIMPAN</button>
-            </form>
+              <div class="form-group">
+                <label for="ckeditor" class="mb-2">Keterangan / Isi pengumuman</label> 
+                <div id="editor"></div>   
+              </div>
+              <button type="submit" class="btn btn-primary mt-3">SIMPAN</button>
+              <a class="btn btn-success mt-3" href="#">Pratinjau</a>  
+            </form>  
           </div><!-- ./card-body -->
         </div><!-- ./card -->
       ';
