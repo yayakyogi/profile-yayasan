@@ -166,7 +166,7 @@ body {
 .sb-sidenav .sb-sidenav-menu .nav .nav-link {
   display: flex;
   align-items: center;
-  padding: 1rem 0.75rem;
+  padding: 1.1rem 0.75rem;
   position: relative;
   box-shadow: rgba(0, 0, 0, 0.35) 0px -15px 25px -15px inset;
   border-bottom:0.5px solid #595C5B;
@@ -248,4 +248,14 @@ body {
 }
 .sb-sidenav-light .sb-sidenav-footer {
   background-color: #e9ecef;
+}
+table > tbody > tr > td{
+  font:300 1rem Poppins,sans-serif;
+}
+table > tbody > tr > td .btn{
+  font: 500 0.85rem Poppins,sans-serif;
+}
+table > thead > tr > th{
+  border-top: 1.5px solid #ECECEC;
+  border-bottom:2px solid #ECECEC !important;
 }
