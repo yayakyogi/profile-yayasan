@@ -13,7 +13,6 @@ function post()
   {
     // capture all data from form
     $exec = htmlspecialchars(GET('exec',''));
-    $author = htmlspecialchars(GET('author',''));
     $type = htmlspecialchars(GET('type',''));
     $category = htmlspecialchars(GET('category',''));
     $title = htmlspecialchars(GET('title',''));
@@ -73,34 +72,76 @@ function post()
       //echo 'Title: ',$title;
       //echo 'Content: ',$content;
       // check all form
-      if($exec && $author && $type && $category && $title && $content)
+      if($exec && $type && $category && $title && $content)
       {
-        $img_cover = $_FILES['img_cover']['name'];
-        $file = $_FILES['files']['name'];
         $id = md5(time());
+        $author = 'Admin'; 
+        $img_cover = $_FILES['img_cover']['name'];
+        $file = $_FILES['file']['name'];
+        $time = time();
         if($img_cover)
         {
           $x = explode('.',$img_cover);
           $ekstensi_img = strtolower(end($x));
-          $img_temporary = $_FILES['img_cover']['name'];
-          
-        }
-        //$query = "INSER INTO tb_post VALUES ('$id','$author','$type','$category','$title','$content','$img_cover','$file')";
-        //$sql = mysqli_query($conn,$query);
-        //if($sql)
-        //{
-          //GET('exec','');
-          //$views = 'index';
-          //echo "<script>window.location='?pages=post'</script>";
-        //} 
-      }
+          $temp_img = $_FILES['img_cover']['tmp_name'];
+          $dir_img = "../public/img_cover/";
+          $ekstensi_img_allowed = array('png','jpg','jpeg');
+          if(in_array($ekstensi_img,$ekstensi_img_allowed) === true)
+          {
+            // if file not empty
+            if($file)
+            {
+              $y = explode('.',$file);
+              $ekstensi_file = strtolower(end($y));
+              $temp_file = $_FILES['file']['tmp_name'];
+              $dir_file = "../public/file/";
+              $ekstensi_file_allowed = array('pdf','doc','xlx','ppt','docx','pptx','xlsx','jpg','png','jpeg');
+              if(in_array($ekstensi_file,$ekstensi_file_allowed) === true)
+              {
+                $file_name = $time."_".$file;
+                $img_name = $time."_".$img_cover;
+                move_uploaded_file($temp_img,$dir_img.$img_name);
+                move_uploaded_file($temp_file,$dir_file.$file_name);
+                $query = "INSERT INTO tb_post VALUES 
+                          ('$id','$author','$type','$category','$title','$content','$img_name','$file_name',NOW(),NOW())";
+                $sql = mysqli_query($conn,$query);
+                if($sql)
+                {
+                  GET('exec','');
+                   echo "<script>window.location='index.php?pages=post'</script>";
+                }
+                else echo $mysqli_error($conn);
+              } // ./in_array file
+              else echo 'Ektensi tidak diizinkan';
+            } // ./file
+
+            // if file doesn't upload
+            else
+            {
+              $img_name = $time."_".$img_cover;
+              move_uploaded_file($temp_img,$dir_img.$img_name);
+              $query = "INSERT INTO tb_post VALUES 
+                        ('$id','$author','$type','$category','$title','$content','$img_name',null,NOW(),NOW())";
+              $sql = mysqli_query($conn,$query);
+              if($sql)
+              {
+                GET('exec','');
+                echo "<script>window.location='index.php?pages=post'</script>";
+              }
+              else echo mysqli_error($conn);
+            } 
+          } // ./in array img
+          else echo 'Ektensi gambar tidak diizinkan';
+        }// ./img cover
+        else echo 'Img cover tidak boleh kosong';
+      } // ./cek all form
       echo '
         <div class="card mt-4">
           <div class="card-header bg-white">
             <h4>Tambah Postingan</h4>
           </div> 
           <div class="card-body">
-            <form method="POST" action="?pages='.$pages.'&views='.$views.'" class="form-post">
+            <form method="POST" action="?pages='.$pages.'&views='.$views.'" class="form-post" enctype="multipart/form-data">
               <input type="hidden" name="exec" value="'.time().'"/>
               <!-- title -->
               <div class="form-group mb-2">
@@ -144,7 +185,7 @@ function post()
                 <div class="col-12 col-sm-3 mb-2">
                   <div class="form-group">
                     <label for="image" class="mb-2">Gambar Cover</label>
-                    <input class="form-control" type="file" name="image" id="formFile">
+                    <input class="form-control" type="file" name="img_cover" id="formFile">
                   </div>
                 </div>
                 <!-- ./col-image -->
