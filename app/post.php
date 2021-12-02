@@ -1,15 +1,24 @@
 <?php 
-/* HALAMAN BERITA */
+/* PAGE POST */
 $pages = GET('pages','');
 $views = GET('views','index');
 
 function post()
 {
+  global $conn;
   global $pages;
   global $views;
 
   if($pages === 'post')
   {
+    // capture all data from form
+    $exec = htmlspecialchars(GET('exec',''));
+    $author = htmlspecialchars(GET('author',''));
+    $type = htmlspecialchars(GET('type',''));
+    $category = htmlspecialchars(GET('category',''));
+    $title = htmlspecialchars(GET('title',''));
+    $content = htmlspecialchars(GET('content',''));
+
     if($views === 'index')
     {
       echo '
@@ -56,13 +65,43 @@ function post()
     
     if($views === 'add')
     {
+      //$id = md5(time());
+      //echo 'ID: '.$id;
+      //echo 'Author: ',$author;
+      //echo 'Type: ',$type;
+      //echo 'Category: ',$category;
+      //echo 'Title: ',$title;
+      //echo 'Content: ',$content;
+      // check all form
+      if($exec && $author && $type && $category && $title && $content)
+      {
+        $img_cover = $_FILES['img_cover']['name'];
+        $file = $_FILES['files']['name'];
+        $id = md5(time());
+        if($img_cover)
+        {
+          $x = explode('.',$img_cover);
+          $ekstensi_img = strtolower(end($x));
+          $img_temporary = $_FILES['img_cover']['name'];
+          
+        }
+        //$query = "INSER INTO tb_post VALUES ('$id','$author','$type','$category','$title','$content','$img_cover','$file')";
+        //$sql = mysqli_query($conn,$query);
+        //if($sql)
+        //{
+          //GET('exec','');
+          //$views = 'index';
+          //echo "<script>window.location='?pages=post'</script>";
+        //} 
+      }
       echo '
         <div class="card mt-4">
           <div class="card-header bg-white">
             <h4>Tambah Postingan</h4>
           </div> 
           <div class="card-body">
-            <form method="POST" action="" class="form-post">
+            <form method="POST" action="?pages='.$pages.'&views='.$views.'" class="form-post">
+              <input type="hidden" name="exec" value="'.time().'"/>
               <!-- title -->
               <div class="form-group mb-2">
                 <label for="title" class="mb-2 fs-6">Judul Postingan</label>
@@ -79,9 +118,9 @@ function post()
                     <label for="type" class="mb-2">Tipe</label>
                       <select class="form-select" name="type">
                         <option selected>-Pilih-</option>
-                        <option value="1">Kategori 1</option>
-                        <option value="2">Kategori 2</option>
-                        <option value="3">Kategori 3</option>
+                        <option value="Berita">Berita</option>
+                        <option value="Artikel">Artikel</option>
+                        <option value="Pengumuman">Pengumuman</option>
                       </select>
                   </div>
                 </div>
@@ -93,9 +132,9 @@ function post()
                     <label for="category" class="mb-2">Kategori</label>
                       <select class="form-select" name="category">
                         <option selected>-Pilih-</option>
-                        <option value="1">Kategori 1</option>
-                        <option value="2">Kategori 2</option>
-                        <option value="3">Kategori 3</option>
+                        <option value="kategori_1">Kategori 1</option>
+                        <option value="kategori_2">Kategori 2</option>
+                        <option value="kategori_3">Kategori 3</option>
                       </select>
                   </div>
                 </div>
