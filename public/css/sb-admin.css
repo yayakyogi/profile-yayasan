@@ -250,12 +250,13 @@ body {
   background-color: #e9ecef;
 }
 table > tbody > tr > td{
-  font:300 1rem Poppins,sans-serif;
+  font:300 0.75rem Poppins,sans-serif;
 }
 table > tbody > tr > td .btn{
-  font: 500 0.85rem Poppins,sans-serif;
+  font: 500 0.75rem Poppins,sans-serif;
 }
 table > thead > tr > th{
+  font: 700 0.95rem Poppins,sans-serif;
   border-top: 1.5px solid #ECECEC;
   border-bottom:2px solid #ECECEC !important;
 }
