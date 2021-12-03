@@ -616,9 +616,44 @@ function post()
           </div>
         </div>
       ';
-    }
+    } // end update file
 
-  
+    if($views === 'delete')
+    {
+      $id = GET('id','');
+      if($exec)
+      {
+        $query = "DELETE FROM tb_post WHERE id='$id'";
+        $sql = mysqli_query($conn,$query);
+        if($sql)
+        {
+          GET('exec','');
+          echo '<script>window.location="?pages='.$pages.'&views=index"</script>';
+        }
+      }
+      $query = "SELECT title FROM tb_post WHERE id='$id'";
+      $sql = mysqli_query($conn,$query);
+      $data = mysqli_fetch_assoc($sql);
+      echo '
+        <div class="card mt-4">
+          <div class="card-header bg-white">
+            <h4>Hapus Postingan</h4>
+          </div>
+          <div class="card-body">
+            <div class="w-100 bg-danger rounded mb-3 px-3 py-1">
+              <span class="text-white lead">Anda yakin ingin menghapus postingan <span class="fw-bolder">'.$data['title'].'</span> ini?</span>
+            </div>
+            <form method="POST" action="?pages='.$pages.'&views='.$views.'">
+              <input type="hidden" name="id" value="'.$id.'"/>
+              <input type="hidden" name="exec" value="'.time().'"/>
+              <a class="btn btn-light" href="?pages='.$pages.'&views=detail&id='.$id.'">Batal</a>
+              <button type="submit" class="btn btn-danger">Hapus</button>
+            </form>
+          </div><!-- ./card-body -->
+        </div><!-- ./card -->
+      ';
+    } // end delete post
+ 
   } // end pages post
 } // end function
 ?>
