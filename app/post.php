@@ -498,17 +498,33 @@ function post()
     if($views == 'updateimg')
     {
       $id = GET('id','');
-      
-      if($exec && $img_cover)
+      $img_old = GET('img_cover_old','');
+      if($exec)
       {
-        $query = "UPDATE tb_post SET img_cover='$img_cover',updated_at=NOW(),modifier='$modifier'";
-        $sql = mysqli_query($conn,$query);
-        $rows = mysqli_fetch_assoc($sql);
-        if($rows > 0)
-        {
-          GET('exec','');
-          echo '<script>window.location=?pages'.$pages.'&views=index></script>'; 
-        }
+        $img_cover = $_FILES['img_cover']['name'];
+        if($img_cover)
+        { 
+          $x = explode('.',$img_cover);
+          $ektensi_file = strtolower(end($x));
+          $temp_file = $_FILES['img_cover']['tmp_name'];
+          $dir = "../public/img_cover/";
+          $ektensi_allowed = array('png','jpg','jpeg');
+          if(in_array($ektensi_file,$ektensi_allowed) === true)
+          {
+            $time = time();
+            $file_name = $time.'_'.$img_cover;
+            unlink('../public/img_cover/'.$img_old);
+            move_uploaded_file($temp_file,$dir.$file_name);
+            $query = "UPDATE tb_post SET img_cover='$file_name',updated_at=NOW(),modifier='$modifier' WHERE id='$id'";
+            $sql = mysqli_query($conn,$query);
+            $rows = mysqli_affected_rows($conn);
+            if($rows > 0)
+            {
+              GET('exec','');
+              echo '<script>window.location="?pages='.$pages.'&views=index"</script>';
+            } // ./in_array
+          } else echo 'Ektensi file tidak diperbolehkan';
+        } else 'Belum ada gambar yang diupload';
       }
 
       $query = "SELECT img_cover FROM tb_post WHERE id='$id'";
@@ -528,9 +544,72 @@ function post()
               <input type="hidden" name="id" value="'.$id.'"/>
               <input type="hidden" name="modifier" value="Yayak"/>
               <input type="hidden" name="exec" value="'.time().'"/>
+              <input type="hidden" name="img_cover_old" value="'.$data['img_cover'].'"/>
               <div class="form-group">
                 <label for="img_cover" class="mb-2">Unggah Gambar Baru</label>
-                <input type="file" class="form-control" id="img_cover"/>
+                <input type="file" name="img_cover" class="form-control" id="img_cover"/>
+              </div>
+              <button type="submit" class="btn btn-lg btn-primary mt-3">Simpan</button>
+            </form>
+          </div>
+        </div>
+      ';
+    } // end updateimg
+
+    if($views == 'updatefile')
+    {
+      $id = GET('id','');
+      $file_old = GET('file_old','');
+      if($exec)
+      {
+        $file = $_FILES['file']['name'];
+        if($file)
+        { 
+          $x = explode('.',$file);
+          $ektensi_file = strtolower(end($x));
+          $temp_file = $_FILES['file']['tmp_name'];
+          $dir = "../public/file/";
+          $ektensi_allowed = array('pdf','doc','xlx','ppt','docx','pptx','xlsx','jpg','png','jpeg');;
+          if(in_array($ektensi_file,$ektensi_allowed) === true)
+          {
+            $time = time();
+            $file_name = $time.'_'.$file;
+            if($file_old!='') unlink('../public/file/'.$file_old);
+            move_uploaded_file($temp_file,$dir.$file_name);  
+            $query = "UPDATE tb_post SET file='$file_name',updated_at=NOW(),modifier='$modifier' WHERE id='$id'";
+            $sql = mysqli_query($conn,$query);
+            $rows = mysqli_affected_rows($conn);
+            if($rows > 0)
+            {
+              GET('exec','');
+              echo '<script>window.location="?pages='.$pages.'&views=index"</script>';
+            } // ./in_array
+          } else echo 'Ektensi file tidak diperbolehkan';
+        } else 'Belum ada file yang diupload';
+      }
+
+      $query = "SELECT file FROM tb_post WHERE id='$id'";
+      $sql = mysqli_query($conn,$query);
+      $data = mysqli_fetch_assoc($sql);
+      echo '
+        <div class="card mt-4">
+          <div class="card-header bg-white">
+            <h4>Edit File</h4>
+          </div>
+          <div class="card-body">
+            <div class="w-75 mb-3">
+              <p>Gambar Header Lama</p>';
+                if($data['file'] == null) echo '<p class="lead text-danger">Belum ada file yang diunggah';
+                else echo '<a href="../public/file/'.$data['file'].'" class="btn btn-link">'.$data['file'].'</a>';
+      echo '</div>
+            <form action="" method="POST" enctype="multipart/form-data">
+              <input type="hidden" name="id" value="'.$id.'"/>
+              <input type="hidden" name="modifier" value="Yayak"/>
+              <input type="hidden" name="exec" value="'.time().'"/>
+              <input type="hidden" name="file_old" value="'.$data['file'].'"/>
+              <div class="form-group">
+                <label for="file" class="mb-2">Unggah Berkas Baru</label>
+                <input type="file" name="file" class="form-control" id="file"/>
               </div>
               <button type="submit" class="btn btn-lg btn-primary mt-3">Simpan</button>
             </form>
@@ -538,6 +617,7 @@ function post()
         </div>
       ';
     }
+
   
   } // end pages post
 } // end function
