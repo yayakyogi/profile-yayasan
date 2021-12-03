@@ -94,4 +94,23 @@
   <!-- ./content -->
   <script src="../public/js/script.js"></script>
   <script src="../public/js/ckeditor-basic/ckeditor.js"></script>
+  <script>
+  /*CKEDITOR.on('dialogDefinition', function(ev) {
+    var dialogName = ev.data.name;
+    var dialogDefinition = ev.data.definition;
+
+    if (dialogName == 'image') {
+        var infoTab = dialogDefinition.getContents( 'info' );
+        infoTab.remove( 'txtBorder' ); //Remove Element Border From Tab Info
+        infoTab.remove( 'txtHSpace' ); //Remove Element Horizontal Space From Tab Info
+        infoTab.remove( 'txtVSpace' ); //Remove Element Vertical Space From Tab Info
+        infoTab.remove( 'txtWidth' ); //Remove Element Width From Tab Info
+        infoTab.remove( 'txtHeight' ); //Remove Element Height From Tab Info
+
+        //Remove tab Link
+        dialogDefinition.removeContents( 'Link' );
+      }
+  });*/
+CKEDITOR.config.removePlugins = 'image,forms';
+  </script>
 </body>

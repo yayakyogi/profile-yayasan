@@ -33,28 +33,48 @@ function post()
                     <tr>
                       <th class="text-center">&#8470;</th>
                       <th class="text-center">Tipe</th>
-                      <th class="text-center">Judul</th>
                       <th class="text-center">Kategori</th>
-                      <th class="text-center">Image</th>
-                      <th class="text-center">File</th>
+                      <th class="text-center">Judul</th>
+                      <th class="text-center">Penulis</th>
+                      <th class="text-center">Dibuat</th>
                       <th class="text-center">Aksi</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>Berita</td>
-                      <td>Lorem ipsum dolor sum ipsum amet</td>
-                      <td>Tak Berkategori</td>
-                      <td><img src="../public/img/img-1.jpg" class="rounded" width="100" height="50"/></td>
-                      <td>contoh-file.pdf</d>
-                      <td class="text-center">
-                        <a class="d-inline-block btn btn-sm btn-primary mb-1" href="#"><i class="fas fa-eye"></i> Lihat</a>
-                        <a class="d-inline-block btn btn-sm btn-warning mb-1" href="#"><i class="fas fa-edit"></i> Edit</a>
-                        <a class="d-inline-block btn btn-sm btn-danger mb-1" href="#"><i class="fas fa-trash"></i> Hapus</a>
-                      </td>
-                    </tr>
-                  </tbody>
+                  <tbody>';
+                    $query = "SELECT * FROM tb_post";
+                    $sql = mysqli_query($conn,$query);
+                    $count = mysqli_num_rows($sql);
+                    $i = 1;
+                    while($row = mysqli_fetch_assoc($sql))
+                    { 
+                      echo '<tr>';
+                        echo '<td class="text-center">'.$i++.'</td>';
+                        echo '<td class="text-center">'.$row['type'].'</td>';
+                        echo '<td class="text-center">'.$row['category'].'</td>';
+                        echo '<td>'.$row['title'].'</td>';
+                        echo '<td class="text-center">'.$row['author'].'</td>';
+                        echo '<td class="text-center">'.$row['created_at'].'</td>';
+                        echo '<td class="text-center">
+                          <a 
+                            class="d-inline-block btn btn-sm btn-primary mb-1" 
+                            href="?pages='.$pages.'&views=detail&id='.$row['id'].'">
+                              <i class="fas fa-eye"></i> Lihat
+                          </a>
+                          <a
+                            class="d-inline-block btn btn-sm btn-warning mb-1"
+                            href="?pages=postaction&view=edit&id='.$row['id'].'">
+                              <i class="fas fa-eye"></i> Lihat
+                          </a>
+                          <a
+                            class="d-inline-block btn btn-sm btn-danger mb-1"
+                            href="?pages=postaction&view=delete&id='.$row['id'].'">
+                              <i class="fas fa-eye"></i> Lihat
+                          </a>
+
+                        </td>';
+                echo '</tr>';
+                    }
+            echo '</tbody>
                 </table><!-- ./table -->
               </div><!-- ./table-responsive -->
             </div><!-- ./card-body -->     
@@ -88,9 +108,9 @@ function post()
           $ekstensi_img_allowed = array('png','jpg','jpeg');
           if(in_array($ekstensi_img,$ekstensi_img_allowed) === true)
           {
-            // if file not empty
+            // file not empty?
             if($file)
-            {
+              {
               $y = explode('.',$file);
               $ekstensi_file = strtolower(end($y));
               $temp_file = $_FILES['file']['tmp_name'];
@@ -213,16 +233,113 @@ function post()
       ';
     } // end view tambah berita
 
-    if($views === 'update')
+    if($views === 'detail')
     {
-      echo 'ini halaman update berita';
-    } // end update berita
+      $id = GET('id','');
+      $query =  "SELECT * FROM tb_post WHERE id='$id'";
+      $sql = mysqli_query($conn,$query);
+      $data = mysqli_fetch_assoc($sql);
+      echo '
+        <div class="card mt-4">
+          <div class="card-header bg-white">
+            <h4>Detail Postingan</h4>
+          </div>
+          <div class="card-body">
 
-    if($views === 'delete')
-    {
-      echo 'Ini halaman delete berita';
-    } // end view upate
+            <!-- author -->
+            <div class="row align-items-center py-2 shadow-sm">
+              <div class="col-12 col-md-2">
+                <span class="fw-bold">Penulis</span>
+              </div>
+              <div class="col-12 col-md-10">
+                <span class="fw-normal">'.$data['author'].'</span>
+              </div>
+            </div>
+            <!-- ./author -->
 
-  } // end pages news
+            <!-- title -->
+            <div class="row align-items-center py-2 shadow-sm">
+              <div class="col-12 col-md-2">
+                <span class="fw-bold">Judul</span>
+              </div>
+              <div class="col-12 col-md-10">
+                <span class="fw-normal">'.$data['title'].'</span>
+              </div>
+            </div>
+            <!-- ./title -->
+
+            <!-- datetime -->
+            <div class="row align-items-center py-2 shadow-sm">
+              <div class="col-12 col-md-2">
+                <span class="fw-bold">Tanggal Posting</span>
+              </div>
+              <div class="col-12 col-md-10">
+                <span class="fw-normal">'.date("d M Y, G:i",strtotime($data['created_at'])).' WIB</span>
+              </div>
+            </div>
+            <!-- ./datetime -->
+            
+            <!-- type -->
+            <div class="row align-items-center py-2 shadow-sm">
+              <div class="col-12 col-md-2">
+                <span class="fw-bold">Tipe</span>
+              </div>
+              <div class="col-12 col-md-10">
+                <span class="fw-normal">'.$data['type'].'</span>
+              </div>
+            </div>
+            <!-- ./type -->
+
+            <!-- category -->
+            <div class="row align-items-center py-2 shadow-sm">
+              <div class="col-12 col-md-2">
+                <span class="fw-bold">Kategory</span>
+              </div>
+              <div class="col-12 col-md-10">
+                <span class="fw-normal">'.$data['category'].'</span>
+              </div>
+            </div>
+            <!-- ./category -->
+            
+            <!-- file -->
+            <div class="row align-items-center py-2 shadow-sm">
+              <div class="col-10 col-md-2">
+                <span class="fw-bold">File / Lampiran</span>
+              </div>
+              <div class="col-12 col-md-10">';
+                if($data['file'] == null) echo 'Tidak ada file';
+                else echo'<a href="../public/file/'.$data['file'].'" class="btn btn-link">'.$data['file'].'</a>';
+        echo '</div>
+            </div>
+            <!-- ./file -->
+
+            <!-- img_cover -->
+            <div class="row align-items-center py-2 shadow-sm">
+              <div class="col-12">
+                <span class="fw-bold">Gambar Header</span>
+              </div>
+              <div class="col-12">
+                <img src="../public/img_cover/'.$data['img_cover'].'" alt="'.$data['img_cover'].'" class="rounded img-fluid ms-2"/>
+              </div>
+            </div>
+            <!-- ./img_cover -->    
+
+            <!-- content -->
+            <div class="row align-items-center py-2 shadow-sm">
+              <div class="col-12">
+                <span class="fw-bold">Konten</span>
+              </div>
+              <div class="col-12 mt-2">
+                '.html_entity_decode($data['content']).'
+              </div>
+            </div>
+            <!-- ./content -->
+
+         </div><!-- ./card-body -->
+        </div><!-- ./card -->
+      ';
+    } // end view post detail
+  
+  } // end pages post
 } // end function
 ?>
