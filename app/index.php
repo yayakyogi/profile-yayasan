@@ -3,6 +3,7 @@
   include "./connection.php";
   include "./post.php";
   include "./dashboard.php";
+  include "./information.php";
 
   headerAll();
   
@@ -15,6 +16,7 @@
     global $page;
     if($page === 'index') dashboard();
     if($page === 'post') post();
+    if($page === 'information') information();
   }
 ?>
 <body>
