@@ -78,7 +78,8 @@
                   : <a href="" class="text-decoration-none">Yaysanku_22</a>
                 </div>
               </div>
-
+  
+              <a href="#" class="btn btn-primary px-3 mt-3"><i class="fas fa-edit"></i> Edit</a>
             </div><!-- ./card-body -->
           </div><!-- ./card -->
         ';
