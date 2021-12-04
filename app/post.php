@@ -25,7 +25,7 @@ function post()
       echo '
           <div class="card mt-4">
             <div class="card-header bg-white d-flex justify-content-between align-items-center">
-              <h4>Daftar Postingan</h4>
+              <h1 class="fs-3 fw-normal">Daftar Postingan</h3>
               <a class="btn btn-sm btn-success" href="?pages=post&views=add"><i class="fas fa-plus-square"></i> Buat Postingan</a>
             </div>
             <div class="card-body">
@@ -76,7 +76,25 @@ function post()
     } // end view index
     
     if($views === 'add')
-    { 
+    {
+      // add new type
+      $posttype = GET('posttype','');
+      if($posttype)
+      {
+        $query = "INSERT INTO tb_type VALUES (null,'$type')";
+        $sql = mysqli_query($conn,$query);
+        if($sql) echo '<script>window.location="?pages=post&views=add"</script>';
+      }
+
+      // add new category
+      $postcategory = GET('postcategory','');
+      if($postcategory)
+      {
+        $query = "INSERT INTO tb_category VALUES (null,'$category')";
+        $sql = mysqli_query($conn,$query);
+        if($sql) echo '<script>window.location="?pages=post&views=add"</script>';
+      } 
+      
       // check all form
       if($exec && $type && $category && $title && $content)
       {
@@ -144,7 +162,7 @@ function post()
       echo '
         <div class="card mt-4">
           <div class="card-header bg-white">
-            <h4>Tambah Postingan</h4>
+            <h1 class="fs-3 fw-normal">Tambah Postingan</h3>
           </div> 
           <div class="card-body">
             <form method="POST" action="?pages='.$pages.'&views='.$views.'" class="form-post" enctype="multipart/form-data">
@@ -162,8 +180,19 @@ function post()
                 <!-- col-type -->
                 <div class="col-12 col-sm-3 mb-2">
                   <div class="form-group">
-                    <label for="type" class="mb-2">Tipe</label>
-                      <select class="form-select" name="type">';
+                    <div class="d-flex justify-content-between align-items-center">
+                      <label for="type" class="mb-2">Tipe</label>
+                       <button 
+                        type="button" 
+                        class="btn btn-outline-secondary px-2 py-1" 
+                        style="font-size:0.65rem" 
+                        data-bs-toggle="modal" 
+                        data-bs-target="#modaltipe"
+                      >
+                        Tambah Tipe
+                      </button> 
+                    </div>
+                    <select class="form-select" name="type">';
                   echo '<option selected>-Pilih-</option>';
                         $query = "SELECT * FROM tb_type";
                         $sql = mysqli_query($conn,$query);
@@ -179,8 +208,19 @@ function post()
                 <!-- col-category -->
                 <div class="col-12 col-sm-3 mb-2">
                   <div class="form-group">
-                    <label for="category" class="mb-2">Kategori</label>
-                       <select class="form-select" name="category">';
+                     <div class="d-flex justify-content-between align-items-center">
+                      <label for="type" class="mb-2">Kategori</label>
+                      <button 
+                        type="button" 
+                        class="btn btn-outline-secondary px-2 py-1" 
+                        style="font-size:0.65rem" 
+                        data-bs-toggle="modal" 
+                        data-bs-target="#modalkategori"
+                      >
+                        Tambah Kategori
+                      </button> 
+                    </div>
+                    <select class="form-select" name="category">';
                   echo '<option selected>-Pilih-</option>';
                         $query = "SELECT * FROM tb_category";
                         $sql = mysqli_query($conn,$query);
@@ -222,6 +262,52 @@ function post()
             </form>  
           </div><!-- ./card-body -->
         </div><!-- ./card -->
+
+       <!-- Modal Add Type -->
+        <div class="modal fade" id="modaltipe" tabindex="-1" aria-labelledby="modaltipelabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <form method="POST" action="?pages='.$pages.'&views='.$views.'">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="modaltipelabel">Tipe Postingan</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <input type="hidden" name="posttype" value="posttype"/>
+                  <label for="type" class="mb-2">Masukkan tipe postingan</label>
+                  <input id="type" type="text" name="type" class="form-control" placeholder="Masukkan tipe postingan"/>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Batal</button>
+                  <button type="submit" class="btn btn-sm btn-primary">Simpan</button>
+                </div>
+              </form>
+            </div><!-- ./modal-content -->
+          </div><!-- ./modal-dialog -->
+        </div><!-- ./modal -->
+
+        <!-- Modal Tambah Kategori -->
+        <div class="modal fade" id="modalkategori" tabindex="-1" aria-labelledby="modalkategorilabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <form method="POST" action="?pages='.$pages.'&views='.$views.'">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="modaltipelabel">Tambah Kategori</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <input type="hidden" name="postcategory" value="postcategory"/>
+                  <label for="type" class="mb-2">Masukkan kategori baru</label>
+                  <input id="type" type="text" name="category" class="form-control" placeholder="Masukkan kategori baru"/>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Batal</button>
+                  <button type="submit" class="btn btn-sm btn-primary">Simpan</button>
+                </div>
+              </form>
+            </div><!-- ./modal-content -->
+          </div><!-- ./modal-dialog -->
+        </div><!-- ./modal -->
       ';
     } // end view add post
 
@@ -234,7 +320,7 @@ function post()
       echo '
         <div class="card mt-4">
           <div class="card-header bg-white">
-            <h4>Detail Postingan</h4>
+            <h1 class="fs-3 fw-normal">Detail Postingan</h3>
           </div>
           <div class="card-body">
             <a 
@@ -398,7 +484,7 @@ function post()
       echo '
         <div class="card mt-4">
           <div class="card-header bg-white">
-            <h4>Edit Postingan</h4>
+            <h1 class="fs-3 fw-normal">Edit Postingan</h3>
           </div>
           <div class="card-body">
             <form method="POST" action="?pages='.$pages.'&views='.$views.'">
@@ -423,7 +509,7 @@ function post()
                 <!-- type -->
                 <div class="form-group mb-2 col-12 col-md-3">
                   <label for="type" class="mb-2 fs-6">Tipe</label>
-                  <select name="type" class="form-control">';
+                  <select name="type" class="form-select">';
                     $query = "SELECT type FROM tb_type";
                     $sql = mysqli_query($conn,$query);
                     while($row = mysqli_fetch_assoc($sql))
@@ -439,7 +525,7 @@ function post()
                 <!-- category -->
                 <div class="form-group mb-2 col-12 col-md-3">
                   <label for="category" class="mb-2">Kategori</label>
-                  <select name="category" class="form-control">';
+                  <select name="category" class="form-select">';
                     $query = "SELECT category FROM tb_category";
                     $sql = mysqli_query($conn,$query);
                     while($row = mysqli_fetch_assoc($sql))
@@ -533,7 +619,7 @@ function post()
       echo '
         <div class="card mt-4">
           <div class="card-header bg-white">
-            <h4>Edit Gambar</h4>
+            <h1 class="fs-3 fw-normal">Edit Gambar</h3>
           </div>
           <div class="card-body">
             <div class="w-75 mb-3">
@@ -594,7 +680,7 @@ function post()
       echo '
         <div class="card mt-4">
           <div class="card-header bg-white">
-            <h4>Edit File</h4>
+            <h1 class="fs-3 fw-normal">Edit File</h3>
           </div>
           <div class="card-body">
             <div class="w-75 mb-3">
@@ -637,7 +723,7 @@ function post()
       echo '
         <div class="card mt-4">
           <div class="card-header bg-white">
-            <h4>Hapus Postingan</h4>
+            <h1 class="fs-3 fw-normal">Hapus Postingan</h3>
           </div>
           <div class="card-body">
             <div class="w-100 bg-danger rounded mb-3 px-3 py-1">
