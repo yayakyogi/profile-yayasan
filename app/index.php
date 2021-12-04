@@ -53,7 +53,7 @@
               
             <a class="nav-link collapsed" href="?pages=post">
               <div class="sb-nav-link-icon">
-                <i class="fas fa-bullhorn"></i>
+                <i class="fas fa-paper-plane"></i>
               </div>
                 Postingan
               <div class="sb-sidenav-collapse-arrow">
@@ -61,7 +61,7 @@
               </div>
             </a>
 
-            <a class="nav-link collapsed" href="#">
+            <a class="nav-link collapsed" href="?pages=information">
               <div class="sb-nav-link-icon">
                 <i class="fas fa-building"></i>
               </div>
