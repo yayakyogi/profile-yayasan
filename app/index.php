@@ -86,7 +86,7 @@
     
     <div id="layoutSidenav_content" class="bg-light">
       <main>
-        <div class="container-fluid px-md-4 px-2">
+        <div class="container-fluid px-md-4 px-2" style="font-family: Poppins, sans-serif">
           <?php pages(); ?>
         </div>
       </main>
