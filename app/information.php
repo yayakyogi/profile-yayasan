@@ -29,95 +29,111 @@
         $query = "SELECT * FROM tb_information";
         $sql = mysqli_query($conn,$query);
         $data = mysqli_fetch_assoc($sql);
-        echo '
-          <div class="card mt-4">
-            <div class="card-header bg-white">
-              <h1 class="fs-3 fw-normal">Informasi Yayasan</h3>
+        
+        if($data){
+          echo '
+            <div class="card mt-4">
+              <div class="card-header bg-white">
+                <h1 class="fs-3 fw-normal">Informasi Yayasan</h3>
+              </div>
+              <div class="card-body">
+                <h5 class="fw-normal">Profil</h5>
+                <!-- name -->
+                <div class="row mb-2">
+                  <div class="col-12 col-md-2">
+                    <span class="fw-bold">Nama</span>
+                  </div>
+                  <div class="col-12 col-md-10">
+                    <span>: '.$data['name'].'</span>
+                  </div>
+                </div>
+                
+                <!-- address -->
+                <div class="row mb-2">
+                  <div class="col-12 col-md-2">
+                    <span class="fw-bold">Alamat</span>
+                  </div>
+                  <div class="col-12 col-md-10">
+                    <span>: '.$data['address'].'</span>
+                  </div>
+                </div>
+  
+                 <!-- telephone -->
+                  <div class="row mb-2">
+                    <div class="col-12 col-md-2">
+                      <span class="fw-bold">Telepon</span>
+                    </div>
+                    <div class="col-12 col-md-10">
+                      <span>: '.$data['phone'].'</span>
+                    </div>
+                  </div>
+  
+                  <!-- email -->
+                  <div class="row mb-2">
+                    <div class="col-12 col-md-2">
+                      <span class="fw-bold">Email</span>
+                    </div>
+                    <div class="col-12 col-md-10">
+                      <span>: '.$data['email'].'</span>
+                    </div>
+                  </div>
+  
+                  <!-- social media -->
+                  <h5 class="fw-normal mt-3">Sosial Media</h5>
+                  <div class="row mb-2">
+                    <div class="col-12 col-md-2">
+                      <span class="fw-bold">Facebook</span>
+                    </div>
+                    <div class="col-12 col-md-10">
+                      : ';
+                      if($data['facebook_name'] && $data['facebook_link']) echo '<a href="'.$data['facebook_link'].'" target="_blank"  class="text-decoration-none">'.$data['facebook_name'].'</a>';
+                      else echo "Kosong";
+              echo '</div>
+                  </div><!-- ./facebook -->
+  
+                  <div class="row mb-2">
+                    <div class="col-12 col-md-2">
+                      <span class="fw-bold">Instagram</span>
+                    </div>
+                    <div class="col-12 col-md-10">
+                      : ';
+                      if($data['instagram_name'] && $data['instagram_link']) echo '<a href="'.$data['instagram_link'].'" target="_blank" class="text-decoration-none">'.$data['instagram_name'].'</a>';
+                      else echo "Kosong";
+              echo '</div>
+                  </div><!-- ./instagram -->
+  
+                  <div class="row mb-2">
+                    <div class="col-12 col-md-2">
+                      <span class="fw-bold">YouTube</span>
+                    </div>
+                    <div class="col-12 col-md-10">
+                      : ';
+                      if($data['youtube_name'] && $data['youtube_link']) echo '<a href="'.$data['youtube_link'].'" target="_blank"  class="text-decoration-none">'.$data['youtube_name'].'</a>';
+                      else echo "Kosong";
+              echo '</div>
+                  </div><!-- ./youtube -->
+                </div><!-- ./card-body -->
+  
+                <div class="card-footer bg-white pt-0 pb-3">';
+                  echo '<a href="?pages='.$pages.'&views=edit&id='.$data['id'].'" class="btn btn-sm btn-primary px-3 mt-3"><i class="fas fa-edit"></i> Edit</a>
+                </div>
+            </div><!-- ./card -->
+          ';
+        } // data
+        else
+        {
+          echo '
+            <div class="card mt-4">
+              <div class="card-header bg-white">
+                <h1 class="fs-3 fw-normal">Informasi Yayasan</h3>
+              </div>
+              <div class="card-body">
+                <p class="lead">Data Kosong</p>
+                <a href="?pages='.$pages.'&views=add" class="btn btn-sm btn-secondary px-3 mt-3"><i class="fas fa-plus"></i> Tambah</a>
+              </div>
             </div>
-            <div class="card-body">
-              <h5 class="fw-normal">Profil</h5>
-              <!-- name -->
-              <div class="row mb-2">
-                <div class="col-12 col-md-2">
-                  <span class="fw-bold">Nama</span>
-                </div>
-                <div class="col-12 col-md-10">
-                  <span>: '.$data['name'].'</span>
-                </div>
-              </div>
-              
-              <!-- address -->
-              <div class="row mb-2">
-                <div class="col-12 col-md-2">
-                  <span class="fw-bold">Alamat</span>
-                </div>
-                <div class="col-12 col-md-10">
-                  <span>: '.$data['address'].'</span>
-                </div>
-              </div>
-
-               <!-- telephone -->
-                <div class="row mb-2">
-                  <div class="col-12 col-md-2">
-                    <span class="fw-bold">Telepon</span>
-                  </div>
-                  <div class="col-12 col-md-10">
-                    <span>: '.$data['phone'].'</span>
-                  </div>
-                </div>
-
-                <!-- email -->
-                <div class="row mb-2">
-                  <div class="col-12 col-md-2">
-                    <span class="fw-bold">Email</span>
-                  </div>
-                  <div class="col-12 col-md-10">
-                    <span>: '.$data['email'].'</span>
-                  </div>
-                </div>
-
-                <!-- social media -->
-                <h5 class="fw-normal mt-3">Sosial Media</h5>
-                <div class="row mb-2">
-                  <div class="col-12 col-md-2">
-                    <span class="fw-bold">Facebook</span>
-                  </div>
-                  <div class="col-12 col-md-10">
-                    : ';
-                    if($data['facebook_name'] && $data['facebook_link']) echo '<a href="'.$data['facebook_link'].'" target="_blank"  class="text-decoration-none">'.$data['facebook_name'].'</a>';
-                    else echo "Kosong";
-            echo '</div>
-                </div><!-- ./facebook -->
-
-                <div class="row mb-2">
-                  <div class="col-12 col-md-2">
-                    <span class="fw-bold">Instagram</span>
-                  </div>
-                  <div class="col-12 col-md-10">
-                    : ';
-                    if($data['instagram_name'] && $data['instagram_link']) echo '<a href="'.$data['instagram_link'].'" target="_blank" class="text-decoration-none">'.$data['instagram_name'].'</a>';
-                    else echo "Kosong";
-            echo '</div>
-                </div><!-- ./instagram -->
-
-                <div class="row mb-2">
-                  <div class="col-12 col-md-2">
-                    <span class="fw-bold">YouTube</span>
-                  </div>
-                  <div class="col-12 col-md-10">
-                    : ';
-                    if($data['youtube_name'] && $data['youtube_link']) echo '<a href="'.$data['youtube_link'].'" target="_blank"  class="text-decoration-none">'.$data['youtube_name'].'</a>';
-                    else echo "Kosong";
-            echo '</div>
-                </div><!-- ./youtube -->
-              </div><!-- ./card-body -->
-
-              <div class="card-footer bg-white pt-0 pb-3">
-                <a href="?pages='.$pages.'&views=add" class="btn btn-sm btn-light px-3 mt-3"><i class="fas fa-plus"></i> Tambah</a>
-                <a href="?pages='.$pages.'&views=edit&id='.$data['id'].'" class="btn btn-sm btn-primary px-3 mt-3"><i class="fas fa-edit"></i> Edit</a>
-              </div>
-          </div><!-- ./card -->
-        ';
+          ';
+        } 
       } // end of index
 
       if($views === 'add')
