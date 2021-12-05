@@ -84,7 +84,7 @@
                   </div>
                   <div class="col-12 col-md-10">
                     : ';
-                    if($data['facebook_name']) echo '<a href="#" class="text-decoration-none">'.$data['facebook_name'].'</a>';
+                    if($data['facebook_name'] && $data['facebook_link']) echo '<a href="'.$data['facebook_link'].'" target="_blank"  class="text-decoration-none">'.$data['facebook_name'].'</a>';
                     else echo "Kosong";
             echo '</div>
                 </div><!-- ./facebook -->
@@ -95,7 +95,7 @@
                   </div>
                   <div class="col-12 col-md-10">
                     : ';
-                    if($data['instagram_name']) echo '<a href="#" class="text-decoration-none">'.$data['instagram_name'].'</a>';
+                    if($data['instagram_name'] && $data['instagram_link']) echo '<a href="'.$data['instagram_link'].'" target="_blank" class="text-decoration-none">'.$data['instagram_name'].'</a>';
                     else echo "Kosong";
             echo '</div>
                 </div><!-- ./instagram -->
@@ -106,7 +106,7 @@
                   </div>
                   <div class="col-12 col-md-10">
                     : ';
-                    if($data['youtube_name']) echo '<a href="#" class="text-decoration-none">'.$data['youtube_name'].'</a>';
+                    if($data['youtube_name'] && $data['youtube_link']) echo '<a href="'.$data['youtube_link'].'" target="_blank"  class="text-decoration-none">'.$data['youtube_name'].'</a>';
                     else echo "Kosong";
             echo '</div>
                 </div><!-- ./youtube -->
