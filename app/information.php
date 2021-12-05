@@ -11,6 +11,19 @@
 
     if($pages === 'information')
     {
+      // variable
+      $exec = htmlspecialchars(GET('exec',''));
+      $name = htmlspecialchars(GET('name',''));
+      $email = htmlspecialchars(GET('email',''));
+      $phone = htmlspecialchars(GET('phone',''));
+      $address = htmlspecialchars(GET('address',''));
+      $facebook_name = htmlspecialchars(GET('facebook_name',''));
+      $facebook_link = htmlspecialchars(GET('facebook_link',''));
+      $instagram_name = htmlspecialchars(GET('instagram_name',''));
+      $instagrem_link = htmlspecialchars(GET('instagram_link',''));
+      $youtube_name = htmlspecialchars(GET('youtube_name',''));
+      $youtube_link = htmlspecialchars(GET('youtube_link',''));
+
       if($views === 'index')
       {
         echo '
@@ -100,6 +113,25 @@
 
       if($views === 'add')
       {
+        if($exec && $name && $phone && $address)
+        {
+          $id = md5(time());
+          $query = "INSERT INTO tb_information 
+                    VALUES(
+                      '$id','$name','$email','$phone','$address',
+                      '$facebook_name','$facebook_link',
+                      '$instagram_name','$instagrem_link',
+                      '$youtube_name','$youtube_link',
+                      NOW(),NOW()
+                    )";
+          $sql = mysqli_query($conn,$query);
+          if($sql)
+          {
+            GET('exec','');
+            echo '<script>window.location="?pages='.$pages.'&views=index"</script>';
+          }
+          else mysqli_error($conn);
+        }
         echo '
             <div class="card mt-4">
               <div class="card-header bg-white">
@@ -107,6 +139,7 @@
               </div>
               <div class="card-body pe-5">
                 <form method="POST" action="?pages='.$pages.'&views='.$views.'">
+                  <input type="hidden" name="exec" value="'.time().'"/>
                   <h5 class="fw-normal">Profil</h5>
                   <div class="row mb-2">
                       <label for="name" class="col-sm-2 col-form-label">Nama Yayasan</label>
@@ -129,7 +162,7 @@
                       <div class="row mb-2">
                         <label for="email" class="col-sm-3 col-form-label">Email</label>
                         <div class="col-sm-9">
-                          <input type="email" class="form-control" id="email" placeholder="Masukkan email yayasan">
+                          <input type="email" class="form-control" name="email" id="email" placeholder="Masukkan email yayasan">
                         </div>
                       </div>
                     </div><!-- ./email -->
@@ -138,7 +171,7 @@
                   <div class="row mb-2">
                     <label for="address" class="col-sm-2 col-form-label">Alamat</label>
                     <div class="col-sm-10">
-                      <textarea class="form-control" name="address id="address" placeholder="Masukkan alamat lengkap yayasan"></textarea>
+                      <textarea class="form-control" name="address" id="address" placeholder="Masukkan alamat lengkap yayasan"></textarea>
                     </div>
                   </div><!-- ./alamat -->
 
@@ -156,9 +189,9 @@
 
                     <div class="col-12 col-sm-6">    
                       <div class="row mb-2">
-                        <label for="facebook_name" class="col-sm-2 col-form-label">Link</label>
+                        <label for="facebook_link" class="col-sm-2 col-form-label">Link</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="facebook_name" placeholder="Link facebook yayasan">
+                          <input type="text" class="form-control" name="facebook_link" id="facebook_link" placeholder="Link facebook yayasan">
                         </div>
                       </div>
                     </div><!-- ./link -->
@@ -177,9 +210,9 @@
 
                     <div class="col-12 col-sm-6">    
                       <div class="row mb-2">
-                        <label for="instagram_name" class="col-sm-2 col-form-label">Link</label>
+                        <label for="instagram_link" class="col-sm-2 col-form-label">Link</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="instagram_name" placeholder="Link instagram yayasan">
+                          <input type="text" class="form-control" name="instagram_link" id="instagram_link" placeholder="Link instagram yayasan">
                         </div>
                       </div>
                     </div><!-- ./link -->
@@ -198,9 +231,9 @@
 
                     <div class="col-12 col-sm-6">    
                       <div class="row mb-2">
-                        <label for="youtube_name" class="col-sm-2 col-form-label">Link</label>
+                        <label for="youtube_link" class="col-sm-2 col-form-label">Link</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="youtube_name" placeholder="Link youtube yayasan">
+                          <input type="text" class="form-control" name="youtube_link" id="youtube_link" placeholder="Link youtube yayasan">
                         </div>
                       </div>
                     </div><!-- ./link -->
