@@ -41,49 +41,292 @@
               </div>
 
                <!-- telephone -->
-              <div class="row mb-2">
-                <div class="col-12 col-md-2">
-                  <span class="fw-bold">Telepon</span>
+                <div class="row mb-2">
+                  <div class="col-12 col-md-2">
+                    <span class="fw-bold">Telepon</span>
+                  </div>
+                  <div class="col-12 col-md-10">
+                    <span>: 0822 1111 2222</span>
+                  </div>
                 </div>
-                <div class="col-12 col-md-10">
-                  <span>: 0822 1111 2222</span>
-                </div>
-              </div>
 
-              <!-- address -->
-              <div class="row mb-2">
-                <div class="col-12 col-md-2">
-                  <span class="fw-bold">Email</span>
+                <!-- address -->
+                <div class="row mb-2">
+                  <div class="col-12 col-md-2">
+                    <span class="fw-bold">Email</span>
+                  </div>
+                  <div class="col-12 col-md-10">
+                    <span>: yayasanku@gmail.com</span>
+                  </div>
                 </div>
-                <div class="col-12 col-md-10">
-                  <span>: yayasanku@gmail.com</span>
-                </div>
-              </div>
 
-              <!-- social media -->
-              <h5 class="fw-normal mt-3">Sosial Media</h5>
-              <div class="row mb-2">
-                <div class="col-12 col-md-2">
-                  <span class="fw-bold">Facebook</span>
-                </div>
-                <div class="col-12 col-md-10">
-                  : <a href="" class="text-decoration-none">Yayasanku</a>
-                </div>
+                <!-- social media -->
+                <h5 class="fw-normal mt-3">Sosial Media</h5>
+                <div class="row mb-2">
+                  <div class="col-12 col-md-2">
+                    <span class="fw-bold">Facebook</span>
+                  </div>
+                  <div class="col-12 col-md-10">
+                    : <a href="" class="text-decoration-none">Yayasanku</a>
+                  </div>
+                </div><!-- ./facebook -->
+
+                <div class="row mb-2">
+                  <div class="col-12 col-md-2">
+                    <span class="fw-bold">Instagram</span>
+                  </div>
+                  <div class="col-12 col-md-10">
+                    : <a href="" class="text-decoration-none">Yaysanku_22</a>
+                  </div>
+                </div><!-- ./instagram -->
+
+                <div class="row mb-2">
+                  <div class="col-12 col-md-2">
+                    <span class="fw-bold">YouTube</span>
+                  </div>
+                  <div class="col-12 col-md-10">
+                    : <a href="" class="text-decoration-none">Yayasanku</a>
+                  </div>
+                </div><!-- ./youtube -->
+              </div><!-- ./card-body -->
+
+              <div class="card-footer bg-white pt-0 pb-3">
+                <a href="?pages='.$pages.'&views=add" class="btn btn-light px-3 mt-3"><i class="fas fa-plus"></i> Tambah</a>
+                <a href="?pages='.$pages.'&views=edit" class="btn btn-primary px-3 mt-3"><i class="fas fa-edit"></i> Edit</a>
               </div>
-              <div class="row mb-2">
-                <div class="col-12 col-md-2">
-                  <span class="fw-bold">Instagram</span>
-                </div>
-                <div class="col-12 col-md-10">
-                  : <a href="" class="text-decoration-none">Yaysanku_22</a>
-                </div>
-              </div>
-  
-              <a href="#" class="btn btn-primary px-3 mt-3"><i class="fas fa-edit"></i> Edit</a>
-            </div><!-- ./card-body -->
           </div><!-- ./card -->
         ';
       } // end of index
+
+      if($views === 'add')
+      {
+        echo '
+            <div class="card mt-4">
+              <div class="card-header bg-white">
+                <h1 class="fs-3 fw-normal">Input Informasi Yayasan</h3>
+              </div>
+              <div class="card-body pe-5">
+                <form method="POST" action="?pages='.$pages.'&views='.$views.'">
+                  <h5 class="fw-normal">Profil</h5>
+                  <div class="row mb-2">
+                      <label for="name" class="col-sm-2 col-form-label">Nama Yayasan</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Masukkan nama yayasan">
+                      </div>
+                  </div><!-- ./name -->
+
+                  <div class="row">
+                    <div class="col-12 col-sm-6"> 
+                      <div class="row mb-2">
+                        <label for="phone" class="col-sm-4 col-form-label">Telepon</label>
+                        <div class="col-sm-8">
+                          <input type="text" class="form-control" name="phone" id="phone" placeholder="Masukkan nomor telepon yayasan">
+                        </div>
+                      </div>
+                    </div><!-- ./phone -->
+
+                    <div class="col-12 col-sm-6">    
+                      <div class="row mb-2">
+                        <label for="email" class="col-sm-3 col-form-label">Email</label>
+                        <div class="col-sm-9">
+                          <input type="email" class="form-control" id="email" placeholder="Masukkan email yayasan">
+                        </div>
+                      </div>
+                    </div><!-- ./email -->
+                  </div>
+
+                  <div class="row mb-2">
+                    <label for="address" class="col-sm-2 col-form-label">Alamat</label>
+                    <div class="col-sm-10">
+                      <textarea class="form-control" name="address id="address" placeholder="Masukkan alamat lengkap yayasan"></textarea>
+                    </div>
+                  </div><!-- ./alamat -->
+
+                  <h5 class="fw-normal mt-4">Sosial Media</h5>
+                  <!-- facebook --> 
+                  <div class="row">
+                    <div class="col-12 col-sm-6"> 
+                      <div class="row mb-2">
+                        <label for="facebook_name" class="col-sm-4 col-form-label">Nama Facebook</label>
+                        <div class="col-sm-8">
+                          <input type="text" class="form-control" name="facebook_name" id="facebook_name" placeholder="Masukkan nama facebook">
+                        </div>
+                      </div>
+                    </div><!-- ./name profile facebook -->
+
+                    <div class="col-12 col-sm-6">    
+                      <div class="row mb-2">
+                        <label for="facebook_name" class="col-sm-2 col-form-label">Link</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="facebook_name" placeholder="Link facebook yayasan">
+                        </div>
+                      </div>
+                    </div><!-- ./link -->
+                  </div><!-- ./facebook -->
+
+                   <!-- instagram --> 
+                  <div class="row">
+                    <div class="col-12 col-sm-6"> 
+                      <div class="row mb-2">
+                        <label for="instagram_name" class="col-sm-4 col-form-label">Nama Instagram</label>
+                        <div class="col-sm-8">
+                          <input type="text" class="form-control" name="instagram_name" id="instagram_name" placeholder="Masukkan nama instagram">
+                        </div>
+                      </div>
+                    </div><!-- ./name profile instagram -->
+
+                    <div class="col-12 col-sm-6">    
+                      <div class="row mb-2">
+                        <label for="instagram_name" class="col-sm-2 col-form-label">Link</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="instagram_name" placeholder="Link instagram yayasan">
+                        </div>
+                      </div>
+                    </div><!-- ./link -->
+                  </div><!-- ./instagram -->
+
+                  <!-- youtube -->
+                  <div class="row">
+                    <div class="col-12 col-sm-6"> 
+                      <div class="row mb-2">
+                        <label for="youtube_name" class="col-sm-4 col-form-label">Nama YoutTube</label>
+                        <div class="col-sm-8">
+                          <input type="text" class="form-control" name="youtube_name" id="youtube_name" placeholder="Masukkan nama youtube">
+                        </div>
+                      </div>
+                    </div><!-- ./name profile youtube -->
+
+                    <div class="col-12 col-sm-6">    
+                      <div class="row mb-2">
+                        <label for="youtube_name" class="col-sm-2 col-form-label">Link</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="youtube_name" placeholder="Link youtube yayasan">
+                        </div>
+                      </div>
+                    </div><!-- ./link -->
+                  </div><!-- ./youtube -->
+
+                  <button type="submit" class="btn btn-success mt-3">Simpan</button>
+                </form>
+              </div><!-- ./card-body -->
+            </div><!-- ./card -->
+        ';
+      } // emd of add
+
+      if($views === 'edit')
+      {
+        echo '
+            <div class="card mt-4">
+              <div class="card-header bg-white">
+                <h1 class="fs-3 fw-normal">Edit Informasi Yayasan</h3>
+              </div>
+              <div class="card-body pe-5">
+                <form method="POST" action="?pages='.$pages.'&views='.$views.'">
+                  <h5 class="fw-normal">Profil</h5>
+                  <div class="row mb-2">
+                      <label for="name" class="col-sm-2 col-form-label">Nama Yayasan</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Masukkan nama yayasan">
+                      </div>
+                  </div><!-- ./name -->
+
+                  <div class="row">
+                    <div class="col-12 col-sm-6"> 
+                      <div class="row mb-2">
+                        <label for="telephone" class="col-sm-4 col-form-label">Telepon</label>
+                        <div class="col-sm-8">
+                          <input type="text" class="form-control" name="phone" id="telephone" placeholder="Masukkan nomor telepon">
+                        </div>
+                      </div>
+                    </div><!-- ./phone -->
+
+                    <div class="col-12 col-sm-6">    
+                      <div class="row mb-2">
+                        <label for="email" class="col-sm-3 col-form-label">Email</label>
+                        <div class="col-sm-9">
+                          <input type="email" class="form-control" id="email" placeholder="Masukkan email">
+                        </div>
+                      </div>
+                    </div><!-- ./email -->
+                  </div>
+
+                  <div class="row mb-2">
+                    <label for="address" class="col-sm-2 col-form-label">Alamat</label>
+                    <div class="col-sm-10">
+                      <textarea class="form-control" name="address id="address" placeholder="Masukkan alamat lengkap"></textarea>
+                    </div>
+                  </div><!-- ./alamat -->
+
+                  <h5 class="fw-normal mt-4">Sosial Media</h5>
+                  <!-- facebook --> 
+                  <div class="row">
+                    <div class="col-12 col-sm-6"> 
+                      <div class="row mb-2">
+                        <label for="facebook_name" class="col-sm-4 col-form-label">Nama Facebook</label>
+                        <div class="col-sm-8">
+                          <input type="text" class="form-control" name="facebook_name" id="facebook_name" placeholder="Masukkan nama facebook">
+                        </div>
+                      </div>
+                    </div><!-- ./name profile facebook -->
+
+                    <div class="col-12 col-sm-6">    
+                      <div class="row mb-2">
+                        <label for="facebook_name" class="col-sm-2 col-form-label">Link</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="facebook_name" placeholder="Link facebook yayasan">
+                        </div>
+                      </div>
+                    </div><!-- ./link -->
+                  </div><!-- ./facebook -->
+
+                   <!-- instagram --> 
+                  <div class="row">
+                    <div class="col-12 col-sm-6"> 
+                      <div class="row mb-2">
+                        <label for="instagram_name" class="col-sm-4 col-form-label">Nama Instagram</label>
+                        <div class="col-sm-8">
+                          <input type="text" class="form-control" name="instagram_name" id="instagram_name" placeholder="Masukkan nama instagram">
+                        </div>
+                      </div>
+                    </div><!-- ./name profile instagram -->
+
+                    <div class="col-12 col-sm-6">    
+                      <div class="row mb-2">
+                        <label for="instagram_name" class="col-sm-2 col-form-label">Link</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="instagram_name" placeholder="Link instagram yayasan">
+                        </div>
+                      </div>
+                    </div><!-- ./link -->
+                  </div><!-- ./instagram -->
+
+                  <!-- youtube -->
+                  <div class="row">
+                    <div class="col-12 col-sm-6"> 
+                      <div class="row mb-2">
+                        <label for="youtube_name" class="col-sm-4 col-form-label">Nama YoutTube</label>
+                        <div class="col-sm-8">
+                          <input type="text" class="form-control" name="youtube_name" id="youtube_name" placeholder="Masukkan nama youtube">
+                        </div>
+                      </div>
+                    </div><!-- ./name profile youtube -->
+
+                    <div class="col-12 col-sm-6">    
+                      <div class="row mb-2">
+                        <label for="youtube_name" class="col-sm-2 col-form-label">Link</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="youtube_name" placeholder="Link youtube yayasan">
+                        </div>
+                      </div>
+                    </div><!-- ./link -->
+                  </div><!-- ./youtube -->
+
+                  <button type="submit" class="btn btn-success mt-3">Simpan</button>
+                </form>
+              </div><!-- ./card-body -->
+            </div><!-- ./card -->
+        ';
+      } // emd of edit
     }// end of pages
   } // end function
 ?>
