@@ -134,7 +134,7 @@ function post()
                   GET('exec','');
                    echo "<script>window.location='index.php?pages=post'</script>";
                 }
-                else echo $mysqli_error($conn);
+                else echo mysqli_error($conn);
               } // ./in_array file
               else echo 'Ektensi tidak diizinkan';
             } // ./file
