@@ -26,6 +26,9 @@
 
       if($views === 'index')
       {
+        $query = "SELECT * FROM tb_information";
+        $sql = mysqli_query($conn,$query);
+        $data = mysqli_fetch_assoc($sql);
         echo '
           <div class="card mt-4">
             <div class="card-header bg-white">
@@ -39,7 +42,7 @@
                   <span class="fw-bold">Nama</span>
                 </div>
                 <div class="col-12 col-md-10">
-                  <span>: Yayasanku</span>
+                  <span>: '.$data['name'].'</span>
                 </div>
               </div>
               
@@ -49,7 +52,7 @@
                   <span class="fw-bold">Alamat</span>
                 </div>
                 <div class="col-12 col-md-10">
-                  <span>: Ds Bolorejo Kecamanatan Kauman</span>
+                  <span>: '.$data['address'].'</span>
                 </div>
               </div>
 
@@ -59,17 +62,17 @@
                     <span class="fw-bold">Telepon</span>
                   </div>
                   <div class="col-12 col-md-10">
-                    <span>: 0822 1111 2222</span>
+                    <span>: '.$data['phone'].'</span>
                   </div>
                 </div>
 
-                <!-- address -->
+                <!-- email -->
                 <div class="row mb-2">
                   <div class="col-12 col-md-2">
                     <span class="fw-bold">Email</span>
                   </div>
                   <div class="col-12 col-md-10">
-                    <span>: yayasanku@gmail.com</span>
+                    <span>: '.$data['email'].'</span>
                   </div>
                 </div>
 
@@ -80,8 +83,10 @@
                     <span class="fw-bold">Facebook</span>
                   </div>
                   <div class="col-12 col-md-10">
-                    : <a href="" class="text-decoration-none">Yayasanku</a>
-                  </div>
+                    : ';
+                    if($data['facebook_name']) echo '<a href="#" class="text-decoration-none">'.$data['facebook_name'].'</a>';
+                    else echo "Kosong";
+            echo '</div>
                 </div><!-- ./facebook -->
 
                 <div class="row mb-2">
@@ -89,8 +94,10 @@
                     <span class="fw-bold">Instagram</span>
                   </div>
                   <div class="col-12 col-md-10">
-                    : <a href="" class="text-decoration-none">Yaysanku_22</a>
-                  </div>
+                    : ';
+                    if($data['instagram_name']) echo '<a href="#" class="text-decoration-none">'.$data['instagram_name'].'</a>';
+                    else echo "Kosong";
+            echo '</div>
                 </div><!-- ./instagram -->
 
                 <div class="row mb-2">
@@ -98,14 +105,16 @@
                     <span class="fw-bold">YouTube</span>
                   </div>
                   <div class="col-12 col-md-10">
-                    : <a href="" class="text-decoration-none">Yayasanku</a>
-                  </div>
+                    : ';
+                    if($data['youtube_name']) echo '<a href="#" class="text-decoration-none">'.$data['youtube_name'].'</a>';
+                    else echo "Kosong";
+            echo '</div>
                 </div><!-- ./youtube -->
               </div><!-- ./card-body -->
 
               <div class="card-footer bg-white pt-0 pb-3">
-                <a href="?pages='.$pages.'&views=add" class="btn btn-light px-3 mt-3"><i class="fas fa-plus"></i> Tambah</a>
-                <a href="?pages='.$pages.'&views=edit" class="btn btn-primary px-3 mt-3"><i class="fas fa-edit"></i> Edit</a>
+                <a href="?pages='.$pages.'&views=add" class="btn btn-sm btn-light px-3 mt-3"><i class="fas fa-plus"></i> Tambah</a>
+                <a href="?pages='.$pages.'&views=edit" class="btn btn-sm btn-primary px-3 mt-3"><i class="fas fa-edit"></i> Edit</a>
               </div>
           </div><!-- ./card -->
         ';
