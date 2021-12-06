@@ -19,10 +19,10 @@ body {
   display: flex;
 }
 #layoutSidenav #layoutSidenav_nav {
-  position:fixed;
-  width:0;
-  padding-top:45px;
-  height:100%;
+  position: fixed;
+  width: 0;
+  padding-top: 45px;
+  height: 100%;
   flex-basis: 225px;
   flex-shrink: 0;
   transition: transform 0.15s ease-in-out;
@@ -42,7 +42,7 @@ body {
 
 .sb-sidenav-toggled #layoutSidenav #layoutSidenav_nav {
   transform: translateX(0);
-  width:250px;
+  width: 250px;
 }
 .sb-sidenav-toggled #layoutSidenav #layoutSidenav_content:before {
   content: "";
@@ -58,13 +58,13 @@ body {
   transition: opacity 0.3s ease-in-out;
 }
 
-@media (min-width: 992px){ 
-  #layoutSidenav{
-    background-color:none;
+@media (min-width: 992px) {
+  #layoutSidenav {
+    background-color: none;
   }
   #layoutSidenav #layoutSidenav_nav {
     transform: translateX(0);
-    width:250px;
+    width: 250px;
   }
   #layoutSidenav #layoutSidenav_content {
     margin: 50px 0 0 250px;
@@ -99,12 +99,12 @@ body {
   padding-left: 225px;
   top: 56px;
 }
-.sb-profile{
-  margin:30px 0 3px;
+.sb-profile {
+  margin: 30px 0 3px;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
 }
-.sb-profile span{
-  font:500 0.75rem Poppins,sans-serif;
+.sb-profile span {
+  font: 500 0.75rem Poppins, sans-serif;
 }
 #layoutError {
   display: flex;
@@ -169,8 +169,8 @@ body {
   padding: 1.1rem 0.75rem;
   position: relative;
   box-shadow: rgba(0, 0, 0, 0.35) 0px -15px 25px -15px inset;
-  border-bottom:0.5px solid #595C5B;
-  font:500 0.80rem Poppins,sans-serif;
+  border-bottom: 0.5px solid #595c5b;
+  font: 500 0.8rem Poppins, sans-serif;
 }
 .sb-sidenav .sb-sidenav-menu .nav .nav-link .sb-nav-link-icon {
   font-size: 0.9rem;
@@ -180,7 +180,11 @@ body {
   margin-left: auto;
   transition: transform 0.15s ease;
 }
-.sb-sidenav .sb-sidenav-menu .nav .nav-link.collapsed .sb-sidenav-collapse-arrow {
+.sb-sidenav
+  .sb-sidenav-menu
+  .nav
+  .nav-link.collapsed
+  .sb-sidenav-collapse-arrow {
   transform: rotate(-90deg);
 }
 .sb-sidenav .sb-sidenav-menu .nav .sb-sidenav-menu-nested {
@@ -249,14 +253,14 @@ body {
 .sb-sidenav-light .sb-sidenav-footer {
   background-color: #e9ecef;
 }
-table > tbody > tr > td{
-  font:300 0.75rem Poppins,sans-serif;
+table > tbody > tr > td {
+  font: 500 0.75rem Poppins, sans-serif;
 }
-table > tbody > tr > td .btn{
-  font: 500 0.75rem Poppins,sans-serif;
+table > tbody > tr > td .btn {
+  font: 500 0.75rem Poppins, sans-serif;
 }
-table > thead > tr > th{
-  font: 700 0.95rem Poppins,sans-serif;
-  border-top: 1.5px solid #ECECEC;
-  border-bottom:2px solid #ECECEC !important;
+table > thead > tr > th {
+  font: 700 0.95rem Poppins, sans-serif;
+  border-top: 1.5px solid #ececec;
+  border-bottom: 2px solid #ececec !important;
 }
