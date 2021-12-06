@@ -257,8 +257,8 @@ function post()
                 <label for="ckeditor" class="mb-2">Keterangan / Isi pengumuman</label> 
                 <textarea class="ckeditor" id="ckeditor" name="content"></textarea>   
               </div>
-              <button type="submit" class="btn btn-primary mt-3">Simpan</button>
-              <a class="btn btn-success mt-3" href="#">Pratinjau</a>  
+              <button type="submit" class="btn btn-success mt-3">Simpan</button>
+              <a class="btn btn-primary mt-3" href="#">Pratinjau</a>  
             </form>  
           </div><!-- ./card-body -->
         </div><!-- ./card -->
