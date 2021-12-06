@@ -1,5 +1,6 @@
 <?php 
   include "../part/header.php";
+  include "../components/form.php";
   include "./connection.php";
   include "./post.php";
   include "./dashboard.php";
