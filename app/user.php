@@ -196,18 +196,18 @@
             <div class="card-header bg-white">
               <h1 class="fs-3">Tambah User</h1>
             </div>
-            <div class="card-body">
+            <div class="card-body" style="font-size:0.9rem;">
               <form method="POST" action="?pages='.$pages.'&views='.$views.'" enctype="multipart/form-data">
                 <input type="hidden" name="exec" value="'.time().'"/>
                 <div class="row">
                   <div class="col-md-8">';
-                    formInput('','Nama','name','Masukkan nama admin','');
-                    formInput('email','Email','email','Masukkan email','');
-                    formInput('','No Handphone','phone','Masukkan nomor handphone');
-                    formInput('password','Password','password','Password minimal 8 karakter','');
-                    formInput('password','Ulangi Password','password2','Ulangi password lagi','');
-                    formInput('file','Foto Profil','img','','');
-              echo '<button type="submmit" class="btn btn-success mt-3">Simpan</button>
+                    formInput('add-admin','','Nama','name','Masukkan nama admin','');
+                    formInput('add-admin','email','Email','email','Masukkan email','');
+                    formInput('add-admin','','No Handphone','phone','Masukkan nomor handphone');
+                    formInput('add-admin','password','Password','password','Password minimal 8 karakter','');
+                    formInput('add-admin','password','Ulangi Password','password2','Ulangi password lagi','');
+                    formInput('add-admin','file','Foto Profil','img','','');
+              echo '<button type="submmit" class="btn btn-success mt-3"><i class="fas fa-save"></i> Simpan</button>
                   </div><!-- ./col-md-6 -->
                 </div><!-- ./row -->
               </form><!-- ./form -->
@@ -244,7 +244,7 @@
             <div class="card-header bg-white">
               <h1 class="fs-3">Edit Data</h1>
             </div>
-            <div class="card-body" style="font-size:0.95rem;">
+            <div class="card-body"  style="font-size:0.9rem;">
               <form method="POST" action="?pages='.$pages.'&views='.$views.'">
                 <input type="hidden" name="exec" value="'.time().'"/>
                 <input type="hidden" name="id" value="'.$data['id'].'"/>
@@ -265,9 +265,9 @@
                   </div>
                 </div>  
               ';
-                formInput('edit','Nama','name','Masukkan nama admin',$data['name']);
-                formInput('edit','Email','email','Masukkan email admin',$data['email']);
-                formInput('edit','No Hadphone','phone','Masukkan nomor HP admin',$data['phone']);
+                formInput('edit-admin','edit','Nama','name','Masukkan nama admin',$data['name']);
+                formInput('edit-admin','edit','Email','email','Masukkan email admin',$data['email']);
+                formInput('edit-admin','edit','No Hadphone','phone','Masukkan nomor HP admin',$data['phone']);
           echo '
                 <!-- change password --> 
                 <div class="row mt-2 align-items-row mb-4">

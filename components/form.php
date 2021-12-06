@@ -14,17 +14,32 @@
     ';
   } // formDetail
 
-  function formInput($type='',$label='',$name='',$placeholder='',$value='')
+  function formInput($form='',$type='',$label='',$name='',$placeholder='',$value='')
   {
-    echo '
-      <div class="row mb-2">
-        <label for="name" class="col-sm-2 col-form-label fw-bold">'.$label.'</label>
+    if($form == 'add-admin')
+    {
+      echo '
+      <div class="row mb-3">
+        <label for="name" class="col-sm-3 col-form-label fw-bold">'.$label.'</label>
         <div class="col-sm-6">';
           if($type === 'file') echo '<input type="file" class="form-control" name="'.$name.'" id="'.$name.'" placeholder="'.$placeholder.'"  autocomplete="off">';
           else if($type === 'edit') echo '<input type="text" class="form-control" name="'.$name.'" id="'.$name.'" placeholder="'.$placeholder.'" value="'.$value.'"  autocomplete="off">';
           else echo '<input type="'.$type.'" class="form-control" name="'.$name.'" id="'.$name.'" placeholder="'.$placeholder.'"  autocomplete="off">';
   echo '</div>
       </div>
-    ';  
+    '; 
+    }
+    else if($form == 'edit-admin')
+    {
+      echo '
+      <div class="row mb-3">
+        <label for="name" class="col-sm-2 col-form-label fw-bold">'.$label.'</label>
+        <div class="col-sm-6">';
+          if($type === 'file') echo '<input type="file" class="form-control" name="'.$name.'" id="'.$name.'" placeholder="'.$placeholder.'"  autocomplete="off">';
+          else if($type === 'edit') echo '<input type="text" class="form-control" name="'.$name.'" id="'.$name.'" placeholder="'.$placeholder.'" value="'.$value.'"  autocomplete="off">';
+          else echo '<input type="'.$type.'" class="form-control" name="'.$name.'" id="'.$name.'" placeholder="'.$placeholder.'"  autocomplete="off">';
+  echo '</div>
+      </div>';
+    }
   } // form input
 ?>
