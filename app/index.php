@@ -6,6 +6,7 @@
   include "./dashboard.php";
   include "./information.php";
   include "./user.php";
+  include "./setting.php";
 
   headerAll();
   
@@ -20,6 +21,7 @@
     if($page === 'post') post();
     if($page === 'information') information();
     if($page === 'user') user();
+    if($page === 'setting') setting();
   }
 ?>
 <body>
@@ -45,11 +47,6 @@
             <div class="text-center pt-1 pb-3 sb-profile">
               <img src="../public/img/img-1.jpg" class="rounded-circle" width="100" height="100"/><br/>
               <span class="small">Yayak Yogi Ginantaka</span>
-              <sup>
-                <a href="?pages=user&views=userdetail" class="bg-light text-decoration-none rounded" style="padding:1px 2px;font-size:0.7rem;">
-                  <i class="fas fa-info-circle text-dark"></i>
-                </a>
-              </sup>
             </div>
             <a class="nav-link collapsed" href="?">
               <div class="sb-nav-link-icon">
@@ -70,16 +67,6 @@
                 <i class="fas fa-angle-down"></i>
               </div>
             </a>
-
-            <a class="nav-link collapsed" href="?pages=information">
-              <div class="sb-nav-link-icon">
-                <i class="fas fa-building"></i>
-              </div>
-                Informasi
-              <div class="sb-sidenav-collapse-arrow">
-                <i class="fas fa-angle-down"></i>
-              </div>
-            </a>
             
             <a class="nav-link collapsed" href="?pages=user">
               <div class="sb-nav-link-icon">
@@ -91,11 +78,11 @@
               </div>
             </a>
             
-            <a class="nav-link collapsed" href="#">
+            <a class="nav-link collapsed" href="?pages=setting">
               <div class="sb-nav-link-icon">
                 <i class="fas fa-sign-out-alt"></i>
               </div>
-                Logout
+                Pengaturan
               <div class="sb-sidenav-collapse-arrow">
                 <i class="fas fa-angle-down"></i>
               </div>
