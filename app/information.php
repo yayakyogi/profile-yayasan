@@ -115,7 +115,7 @@
                 </div><!-- ./card-body -->
   
                 <div class="card-footer bg-white pt-0 pb-3">';
-                  echo '<a href="?pages='.$pages.'&views=edit&id='.$data['id'].'" class="btn btn-sm btn-primary px-3 mt-3"><i class="fas fa-edit"></i> Edit</a>
+                  echo '<a href="?pages='.$pages.'&views=edit&id='.$data['id'].'" class="btn btn-sm btn-warning px-3 mt-3"><i class="fas fa-edit"></i> Edit</a>
                 </div>
             </div><!-- ./card -->
           ';
