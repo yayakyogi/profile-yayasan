@@ -14,11 +14,13 @@
     <nav class="navbar navbar-expand-lg navbar-light">
       <a href="#" class="text-decoration-none fs-5 text-dark">
         <img
-          style="margin-right: 0.75rem"
-          src="http://api.elements.buildwithangga.com/storage/files/2/assets/Header/Header2/Header-2-5.png"
-          alt=""
+          style="margin-right: 0.75rem;"
+          src="./public/img/logo.png"
+          alt="logo"
+          width=50
+          height=50
         />
-        My Profile
+        AL-GHOIBI
       </a>
       <button
         class="navbar-toggler border-0"
