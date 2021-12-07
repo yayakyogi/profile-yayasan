@@ -80,7 +80,7 @@
             
             <a class="nav-link collapsed" href="?pages=setting">
               <div class="sb-nav-link-icon">
-                <i class="fas fa-sign-out-alt"></i>
+                <i class="fas fa-cog"></i>
               </div>
                 Pengaturan
               <div class="sb-sidenav-collapse-arrow">
@@ -91,8 +91,8 @@
           </div>
         </div>
         <div class="sb-sidenav-footer">
-          <div class="small">Login sebagai</div>
-          <span class="lead fw-bold">Admin</span>
+          <div class="small mb-2">Login sebagai <span class="fw-bold">Admin</span></div>
+          <a href="#" class="btn btn-sm btn-outline-light" style="font-size:0.7rem;"><i class="fas fa-sign-out-alt"></i> Logout</a> 
         </div>
       </nav>
     </div>
