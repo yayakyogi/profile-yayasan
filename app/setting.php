@@ -61,8 +61,8 @@ function setting()
                         echo '<td class="text-center">'.$i++.'</td>';
                         echo  '<td class="text-center">'.$category['category'].'</td>';
                         echo '<td class="text-center">
-                          <a class="d-inline-block btn btn-sm btn-warning mb-1" href="?pages='.$pages.'&views=edit&id='.$category['id'].'"><i class="fas fa-edit"></i> Edit</a> 
-                          <a class="d-inline-block btn btn-sm btn-danger mb-1" href="?pages='.$pages.'&views=delete&id='.$category['id'].'"><i class="fas fa-trash"></i> Hapus</a> 
+                          <a class="d-inline-block btn btn-sm btn-warning mb-1" href="?pages='.$pages.'&views=edit&type=category&id='.$category['id'].'"><i class="fas fa-edit"></i> Edit</a> 
+                          <a class="d-inline-block btn btn-sm btn-danger mb-1" href="?pages='.$pages.'&views=delete&type=category&id='.$category['id'].'"><i class="fas fa-trash"></i> Hapus</a> 
                         </td>';
                       echo '</tr>';
                     }
@@ -92,8 +92,8 @@ function setting()
                         echo '<td class="text-center">'.$i++.'</td>';
                         echo '<td class="text-center">'.$type['type'].'</td>';
                         echo '<td class="text-center">
-                          <a class="d-inline-block btn btn-sm btn-warning mb-1" href="?pages='.$pages.'&views=edit&id='.$type['id'].'"><i class="fas fa-edit"></i> Edit</a> 
-                          <a class="d-inline-block btn btn-sm btn-danger mb-1" href="?pages='.$pages.'&views=delete&id='.$type['id'].'"> <i class="fas fa-trash"></i> Hapus</a> 
+                          <a class="d-inline-block btn btn-sm btn-warning mb-1" href="?pages='.$pages.'&views=edit&type=type&id='.$type['id'].'"><i class="fas fa-edit"></i> Edit</a> 
+                          <a class="d-inline-block btn btn-sm btn-danger mb-1" href="?pages='.$pages.'&views=delete&type=type&id='.$type['id'].'"> <i class="fas fa-trash"></i> Hapus</a> 
                         </td>';
                       echo '</tr>';
                     }
@@ -204,6 +204,145 @@ function setting()
         </div><!-- ./card -->
       ';
     } // views index
+
+    if($views === 'edit')
+    {
+      $id = GET('id','');
+      $exec = GET('exec','');
+      $type = GET('type','');
+      $category = GET('category','');
+      $row = '';
+      $data = '';
+      
+      if($type === 'category') 
+      {
+        $data = 'kategori';
+        $query = "SELECT * FROM tb_category WHERE id='$id'";
+        $sql = mysqli_query($conn,$query);
+        $value = mysqli_fetch_assoc($sql);
+        $row = $value['category'];
+      }
+      else if($type === 'type') 
+      {
+        $data = 'tipe';
+        $query = "SELECT * FROM tb_type WHERE id='$id'";
+        $sql = mysqli_query($conn,$query);
+        $value = mysqli_fetch_assoc($sql);
+        $row = $value['type'];
+      }
+
+      if($exec && $type)
+      {
+        if($type === 'category') 
+        {
+          $query = "UPDATE tb_category SET category='$category' WHERE id='$id'";
+          $sql = mysqli_query($conn,$query);
+          if(mysqli_affected_rows($conn) > 0)
+          {
+            GET('exec','');
+            echo '<script>window.location="?pages='.$pages.'&views=index"</script>';
+          }
+        }
+        else 
+        {
+          $query = "UPDATE tb_type SET type='$type' WHERE id='$id'";
+          $sql = mysqli_query($conn,$query);
+          if(mysqli_affected_rows($conn) > 0)
+          {
+            GET('exec','');
+            echo '<script>window.location="?pages='.$pages.'&views=index"</script>';
+          }
+        }
+      }
+      
+      echo '
+        <div class="card mt-4">
+          <div class="card-header bg-white">
+            <h1 class="fs-3">Edit '.ucfirst($data).'</h1>
+          </div>
+          <div class="card-body">
+            <form method="POST" action="?pages='.$pages.'&views='.$views.'">
+              <input type="hidden" name="exec" value="'.time().'"/>
+              <input type="hidden" name="id" value="'.$id.'"/>
+              <input type="hidden" name="type" value="'.$type.'"/>
+              ';
+              formInput('','edit',ucfirst($data).' Baru',$type,'Masukkan data yang baru',$row);
+            echo '
+              <button type="submit" class="btn btn-success mt-3"><i class="fas fa-save"></i> Simpan</button>
+            </form>
+          </div><!-- ./card-body -->
+        </div><!-- ./card -->
+      ';
+    } // end views edit
+
+    if($views === 'delete')
+    {
+      $id = GET('id','');
+      $exec = GET('exec','');
+      $type = GET('type','');
+      $category = GET('category','');
+      $row = '';
+      $data = '';
+      
+      if($type === 'category') 
+      {
+        $data = 'kategori';
+        $query = "SELECT * FROM tb_category WHERE id='$id'";
+        $sql = mysqli_query($conn,$query);
+        $value = mysqli_fetch_assoc($sql);
+        $row = $value['category'];
+      }
+      else if($type === 'type') 
+      {
+        $data = 'tipe';
+        $query = "SELECT * FROM tb_type WHERE id='$id'";
+        $sql = mysqli_query($conn,$query);
+        $value = mysqli_fetch_assoc($sql);
+        $row = $value['type'];
+      }
+
+      if($exec && $type)
+      {
+        if($type === 'category') 
+        {
+          $query = "DELETE FROM tb_category WHERE id='$id'";
+          $sql = mysqli_query($conn,$query);
+          if(mysqli_affected_rows($conn) > 0)
+          {
+            GET('exec','');
+            echo '<script>window.location="?pages='.$pages.'&views=index"</script>';
+          }
+        }
+        else 
+        {
+          $query = "DELETE FROM tb_type WHERE id='$id'";
+          $sql = mysqli_query($conn,$query);
+          if(mysqli_affected_rows($conn) > 0)
+          {
+            GET('exec','');
+            echo '<script>window.location="?pages='.$pages.'&views=index"</script>';
+          }
+        }
+      }
+      
+      echo '
+        <div class="card mt-4">
+          <div class="card-header bg-white">
+            <h1 class="fs-3">Edit '.ucfirst($data).'</h1>
+          </div>
+          <div class="card-body">
+            <div class="bg-danger p-2 text-white rounded">Anda yakin ingin menghapus data <span class="fw-bold">'.$row.'</span> ?</div>
+            <form method="POST" action="?pages='.$pages.'&views='.$views.'">
+              <input type="hidden" name="exec" value="'.time().'"/>
+              <input type="hidden" name="id" value="'.$id.'"/>
+              <input type="hidden" name="type" value="'.$type.'"/>
+              <a href="?pages='.$pages.'&views=index" class="btn btn-light mt-3"><i class="fas fa-ban"></i> Batal</a>
+              <button type="submit" class="btn btn-danger mt-3"><i class="fas fa-trash"></i> Hapus</button>
+            </form>
+          </div><!-- ./card-body -->
+        </div><!-- ./card -->
+      ';
+    } // end views delete
   } // page setting
 } // end setting
 ?>
