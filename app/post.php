@@ -22,13 +22,23 @@ function post()
 
     if($views === 'index')
     {
+      $limit = 5;
+      $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+      $page_start = ($page > 1) ? ($page * $limit) - $limit : 0;
+      $prev = $page - 1;
+      $next = $page + 1;
+      $data = mysqli_query($conn,"SELECT * FROM tb_post");
+      $count = mysqli_num_rows($data);
+      $total_page = ceil($count / $limit);
+     
       echo '
-          <div class="card mt-4">
+          <div class="card mt-4 mb-5 shadow">
             <div class="card-header bg-white d-flex justify-content-between align-items-center">
               <h1 class="fs-3 fw-normal">Daftar Postingan</h3>
               <a class="btn btn-sm btn-success" href="?pages=post&views=add"><i class="fas fa-plus-square"></i> Buat Postingan</a>
             </div>
             <div class="card-body">
+              <div class="small mb-2">Total seluruh postingan : '.$count.'</div>
               <div class="table-responsive-sm">
                 <table class="table table-hover">
                   <thead>
@@ -44,11 +54,10 @@ function post()
                     </tr>
                   </thead>
                   <tbody>';
-                    $query = "SELECT * FROM tb_post ORDER BY created_at DESC";
+                    $query = "SELECT * FROM tb_post ORDER BY created_at DESC LIMIT $page_start,$limit";
                     $sql = mysqli_query($conn,$query);
-                    $count = mysqli_num_rows($sql);
-                    $i = 1;
-                    while($row = mysqli_fetch_assoc($sql))
+                    $i = $page_start+1;
+                    while($row = mysqli_fetch_array($sql))
                     { 
                       echo '<tr>';
                         echo '<td class="text-center">'.$i++.'</td>';
@@ -70,6 +79,33 @@ function post()
             echo '</tbody>
                 </table><!-- ./table -->
               </div><!-- ./table-responsive -->
+              <!-- Pagination -->
+              <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                  <li class="page-item">';
+                  // page previous
+                  if($page > 1)  
+                    echo '<a class="page-link" href="?pages='.$pages.'&views='.$views.'&page='.$prev.'"><span aria-hidden="true">&laquo;</span></a>';
+                  else 
+                    echo '<li class="page-item disabled"><span class="page-link">&laquo;</span></li>';
+                  echo '</li>';
+                  // show list page
+                  for ($i=1; $i <= $total_page; $i++) { 
+                    if($page == $i)
+                      echo '<li class="page-item active" aria-current="page"><a class="page-link" href="?pages='.$pages.'&views='.$views.'&page='.$i.'">'.$i.'</a></li>';
+                    else 
+                      echo '<li class="page-item"><a class="page-link" href="?pages='.$pages.'&views='.$views.'&page='.$i.'">'.$i.'</a></li>';
+                  }
+                  // page next
+                  echo '
+                  <li class="page-item">';
+                    if($page < $count) 
+                      echo '<a class="page-link" href="?pages='.$pages.'&views='.$views.'&page='.$next.'"><span aria-hidden="true">&raquo;</span></a>';
+                    else echo '<li class="page-item disabled"><span class="page-link">&raquo;</span></li>';
+                  echo '
+                  </li>
+                </ul><!-- ./pagination -->
+              </nav><!-- ./aria label pagination -->
             </div><!-- ./card-body -->     
           </div><!-- ./card -->
       ';  
