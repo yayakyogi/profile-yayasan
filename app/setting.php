@@ -61,7 +61,6 @@ function setting()
                         echo '<td class="text-center">'.$i++.'</td>';
                         echo  '<td class="text-center">'.$category['category'].'</td>';
                         echo '<td class="text-center">
-                          <a class="d-inline-block btn btn-sm btn-primary mb-1" href="?pages='.$pages.'&views=userdetail&id='.$category['id'].'"><i class="fas fa-eye"></i> Detail</a> 
                           <a class="d-inline-block btn btn-sm btn-warning mb-1" href="?pages='.$pages.'&views=edit&id='.$category['id'].'"><i class="fas fa-edit"></i> Edit</a> 
                           <a class="d-inline-block btn btn-sm btn-danger mb-1" href="?pages='.$pages.'&views=delete&id='.$category['id'].'"><i class="fas fa-trash"></i> Hapus</a> 
                         </td>';
@@ -93,7 +92,6 @@ function setting()
                         echo '<td class="text-center">'.$i++.'</td>';
                         echo '<td class="text-center">'.$type['type'].'</td>';
                         echo '<td class="text-center">
-                          <a class="d-inline-block btn btn-sm btn-primary mb-1" href="?pages='.$pages.'&views=userdetail&id='.$type['id'].'"><i class="fas fa-eye"></i> Detail</a> 
                           <a class="d-inline-block btn btn-sm btn-warning mb-1" href="?pages='.$pages.'&views=edit&id='.$type['id'].'"><i class="fas fa-edit"></i> Edit</a> 
                           <a class="d-inline-block btn btn-sm btn-danger mb-1" href="?pages='.$pages.'&views=delete&id='.$type['id'].'"> <i class="fas fa-trash"></i> Hapus</a> 
                         </td>';
@@ -167,7 +165,7 @@ function setting()
                 </div><!-- ./table-responsive" -->
               </div><!-- ./col-profile yayasan -->
 
-              <!-- col profile yayasan -->
+              <!-- col profile user -->
               <div class="col-sm-6">
                 <h6 style="font-size:1.1rem;">Profil User</h6>
                 <div class="table-responsive-sm">
@@ -199,7 +197,7 @@ function setting()
                   </table><!-- ./table -->
                   <a href="#" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i> Edit</a>
                 </div><!-- ./table-responsive" -->
-              </div><!-- ./col-profile yayasan -->
+              </div><!-- ./col-profile user -->
             </div><!-- ./row profile -->
 
           </div><!-- ./card-body -->
