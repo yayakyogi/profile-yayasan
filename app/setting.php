@@ -8,6 +8,9 @@ function setting()
   global $pages;
   global $views;
 
+  // get id from session
+  $id = $_SESSION['user_id'];
+
   if($pages === 'setting')
   {
     $category_name = htmlspecialchars(GET('',''));
@@ -31,6 +34,11 @@ function setting()
       $query_yayasan = "SELECT * FROM tb_information";
       $sql_yayasan = mysqli_query($conn,$query_yayasan);
       $yayasan = mysqli_fetch_assoc($sql_yayasan);
+
+      // data profil user 
+      $query = "SELECT * FROM tb_user WHERE id='$id'";
+      $sql = mysqli_query($conn,$query);
+      $data = mysqli_fetch_assoc($sql);
 
       echo '
         <div class="card mt-4 mb-5 shadow">
@@ -175,27 +183,27 @@ function setting()
                         <td width="20">Foto Profil</td>
                         <td width="10">:</td>
                         <td width="70">
-                          <img src="../public/img_profile/1638775600_1638775600" width="100" height="100"/>
+                          <img src="../public/img_profile/'.$data['img'].'" class="rounded-circle" width="100" height="100"/>
                         </td>
                       </tr>
                       <tr>
                         <td>Nama</td>
                         <td>:</td>
-                        <td>Yayak</td>
+                        <td>'.$data['name'].'</td>
                       </tr>
                       <tr>
                         <td>No Handphone</td>
                         <td>:</td>
-                        <td>+6282233863080</td>
+                        <td>'.$data['phone'].'</td>
                       </tr>
                       <tr>
                         <td>Email</td>
                         <td>:</td>
-                        <td>yayaktaka@gmail.com</td>
+                        <td>'.$data['email'].'</td>
                       </tr>
                     </tbody>
                   </table><!-- ./table -->
-                  <a href="#" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                  <a href="?pages=user&views=edit&id='.$id.'" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i> Edit</a>
                 </div><!-- ./table-responsive" -->
               </div><!-- ./col-profile user -->
             </div><!-- ./row profile -->
