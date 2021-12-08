@@ -61,7 +61,7 @@
         <div class="sb-sidenav-menu">
           <div class="nav">
             <div class="text-center pt-1 pb-3 sb-profile">
-              <img src="../public/img_profile/default.png" class="rounded-circle" width="100" height="100"/><br/>
+              <img src="../public/img_profile/<?php echo $user_img ?>" class="rounded-circle" width="100" height="100"/><br/>
               <span class="small"><?php echo $user_name ?></span>
             </div>
             <a class="nav-link collapsed" href="?">
