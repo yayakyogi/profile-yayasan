@@ -70,9 +70,9 @@
           exit;
         }
       } // end password_verify
-      echo 'Password salah';
+      else alert('warning','401','Terjadi kesalahan saat memasukkan password');
     } // end mysqli_num_rows
-    else echo 'Data tidak ditemukan';
+    else alert('warning','404','Data tidak ditemukan');
   } // end post submit
 ?>
 <body>
