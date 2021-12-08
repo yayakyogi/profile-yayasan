@@ -41,89 +41,24 @@ function setting()
       $data = mysqli_fetch_assoc($sql);
 
       echo '
-        <div class="card mt-4 mb-5 shadow">
-          <div class="card-header bg-white">
-            <h1 class="fs-3">Menu Setting</h1>
-          </div>
-          <div class="card-body">
-          
-            <!-- row list category and type -->
-            <div class="row">
-              <!-- col category -->
-              <div class="col-sm-6">
-                <h6>Kategori</h6>
-                <div class="table-responsive-sm">
-                  <table class="table table-bordered table-hover">
-                    <thead>
-                      <tr>
-                        <th class="text-center">&#8470;</th>
-                        <th class="text-center">Kategori</th>
-                        <th class="text-center">Aksi</th>
-                      </tr>
-                    </thead>
-                    <tbody>';
-                    $i = 1;
-                    while( $category = mysqli_fetch_assoc($sql_category))
-                    {
-                      echo '<tr>';
-                        echo '<td class="text-center">'.$i++.'</td>';
-                        echo  '<td class="text-center">'.$category['category'].'</td>';
-                        echo '<td class="text-center">
-                          <a class="d-inline-block btn btn-sm btn-warning mb-1" href="?pages='.$pages.'&views=edit&type=category&id='.$category['id'].'"><i class="fas fa-edit"></i> Edit</a> 
-                          <a class="d-inline-block btn btn-sm btn-danger mb-1" href="?pages='.$pages.'&views=delete&type=category&id='.$category['id'].'"><i class="fas fa-trash"></i> Hapus</a> 
-                        </td>';
-                      echo '</tr>';
-                    }
-                    echo'
-                    </tbody>
-                  </table><!-- ./table -->
-                </div><!-- ./table-responsive" -->
-              </div><!-- ./col category -->
-              
-              <!-- col type -->
-              <div class="col-sm-6">
-                <h6>Tipe Postingan</h6>
-                <div class="table-responsive-sm">
-                  <table class="table table-bordered table-hover">
-                    <thead>
-                      <tr>
-                        <th class="text-center">&#8470;</th>
-                        <th class="text-center">Tipe</th>
-                        <th class="text-center">Aksi</th>
-                      </tr>
-                    </thead>
-                    <tbody>';
-                    $i = 1;
-                    while($type = mysqli_fetch_assoc($sql_type))
-                    {
-                      echo '<tr>';
-                        echo '<td class="text-center">'.$i++.'</td>';
-                        echo '<td class="text-center">'.$type['type'].'</td>';
-                        echo '<td class="text-center">
-                          <a class="d-inline-block btn btn-sm btn-warning mb-1" href="?pages='.$pages.'&views=edit&type=type&id='.$type['id'].'"><i class="fas fa-edit"></i> Edit</a> 
-                          <a class="d-inline-block btn btn-sm btn-danger mb-1" href="?pages='.$pages.'&views=delete&type=type&id='.$type['id'].'"> <i class="fas fa-trash"></i> Hapus</a> 
-                        </td>';
-                      echo '</tr>';
-                    }
-                    echo '
-                    </tbody>
-                  </table><!-- ./table -->
-                </div><!-- ./table-responsive" -->
-              </div><!-- end col type -->
-            </div><!-- ./list category and type -->
+        <div class="mt-4"></div>
+        <div class="row">
+          <!-- col profil -->
+          <div class="col-sm-6">
 
-            <!-- row profile -->
-            <div class="row mt-2">
-              <!-- col profile yayasan -->
-              <div class="col-sm-6">
-                <h6 style="font-size:1.1rem;">Profil Yayasan</h6>
+            <!-- col profile yayasan -->
+            <div class="card shadow">
+              <div class="card-header bg-white">
+                <h5>Profil Yayasan</h5>
+              </div>
+              <div class="card-body">
                 <div class="table-responsive-sm">
                   <table class="table" style="border-color:#FFFFFF">
                     <tbody>
                       <tr>
-                        <td>Nama</td>
-                        <td>:</td>
-                        <td>'.$yayasan['name'].'</td>
+                        <td width="20">Nama</td>
+                        <td width="10">:</td>
+                        <td width="70">'.$yayasan['name'].'</td>
                       </tr>
                       <tr>
                         <td>No Handphone</td>
@@ -171,11 +106,16 @@ function setting()
                   </table><!-- ./table -->
                   <a href="?pages=information&views=edit&id='.$yayasan['id'].'" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i> Edit</a>
                 </div><!-- ./table-responsive" -->
-              </div><!-- ./col-profile yayasan -->
+              </div><!-- ./card-body -->
+            </div><!-- ./card -->
+            <!-- end col profile yayasan -->
 
-              <!-- col profile user -->
-              <div class="col-sm-6">
-                <h6 style="font-size:1.1rem;">Profil User</h6>
+            <!-- col profile user -->
+            <div class="card my-3 shadow">
+              <div class="card-header bg-white">
+                <h5>Profil User</h5>
+              </div>
+              <div class="card-body">
                 <div class="table-responsive-sm">
                   <table class="table" style="border-color:#FFFFFF">
                     <tbody>
@@ -205,11 +145,91 @@ function setting()
                   </table><!-- ./table -->
                   <a href="?pages=user&views=edit&id='.$id.'" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i> Edit</a>
                 </div><!-- ./table-responsive" -->
-              </div><!-- ./col-profile user -->
-            </div><!-- ./row profile -->
+              </div><!-- ./card-body -->
+            </div><!-- ./card -->
+            <!-- end col profile user -->
 
-          </div><!-- ./card-body -->
-        </div><!-- ./card -->
+          </div><!-- ./col-sm-6 -->
+          <!-- end col profil -->
+
+          <!-- col table category & type -->
+          <div class="col-sm-6">
+            <!-- table category -->
+            <div class="card shadow">
+              <div class="card-header bg-white">
+                <h5>Tabel Kategori</h5>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive-sm">
+                  <table class="table table-bordered table-hover">
+                    <thead>
+                      <tr>
+                        <th class="text-center">&#8470;</th>
+                        <th class="text-center">Kategori</th>
+                        <th class="text-center">Aksi</th>
+                      </tr>
+                    </thead>
+                    <tbody>';
+                    $i = 1;
+                    while( $category = mysqli_fetch_assoc($sql_category))
+                    {
+                      echo '<tr>';
+                        echo '<td class="text-center">'.$i++.'</td>';
+                        echo  '<td class="text-center">'.$category['category'].'</td>';
+                        echo '<td class="text-center">
+                          <a class="d-inline-block btn btn-sm btn-warning mb-1" href="?pages='.$pages.'&views=edit&type=category&id='.$category['id'].'"><i class="fas fa-edit"></i> Edit</a> 
+                          <a class="d-inline-block btn btn-sm btn-danger mb-1" href="?pages='.$pages.'&views=delete&type=category&id='.$category['id'].'"><i class="fas fa-trash"></i> Hapus</a> 
+                        </td>';
+                      echo '</tr>';
+                    }
+                    echo'
+                    </tbody>
+                  </table><!-- ./table -->
+                </div><!-- ./table-responsive" -->
+              </div><!-- ./card-body -->
+            </div><!-- ./card -->
+            <!-- end table category -->
+
+            <!-- table type -->
+            <div class="card my-3 shadow">
+              <div class="card-header bg-white">
+                <h5>Tabel Tipe Postingan</h5>
+              </div>
+              <div class="card-body">
+                <!-- table type -->
+                <div class="table-responsive-sm">
+                  <table class="table table-bordered table-hover">
+                    <thead>
+                      <tr>
+                        <th class="text-center">&#8470;</th>
+                        <th class="text-center">Tipe</th>
+                        <th class="text-center">Aksi</th>
+                      </tr>
+                    </thead>
+                    <tbody>';
+                    $i = 1;
+                    while($type = mysqli_fetch_assoc($sql_type))
+                    {
+                      echo '<tr>';
+                        echo '<td class="text-center">'.$i++.'</td>';
+                        echo '<td class="text-center">'.$type['type'].'</td>';
+                        echo '<td class="text-center">
+                          <a class="d-inline-block btn btn-sm btn-warning mb-1" href="?pages='.$pages.'&views=edit&type=type&id='.$type['id'].'"><i class="fas fa-edit"></i> Edit</a> 
+                          <a class="d-inline-block btn btn-sm btn-danger mb-1" href="?pages='.$pages.'&views=delete&type=type&id='.$type['id'].'"> <i class="fas fa-trash"></i> Hapus</a> 
+                        </td>';
+                      echo '</tr>';
+                    }
+                    echo '
+                    </tbody>
+                  </table><!-- ./table -->
+                </div><!-- ./table-responsive" -->
+                <!-- end table type -->
+              </div><!-- ./card-body -->
+            </div><!-- ./card -->
+            <!-- end table type -->
+          </div><!-- ./col-sm-6 -->
+          <!-- end col table category & type -->
+        </div><!-- ./row -->
       ';
     } // views index
 
