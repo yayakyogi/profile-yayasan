@@ -1,4 +1,5 @@
-<?php 
+<?php
+  session_start();
   include "../part/header.php";
   include "../components/form.php";
   include "./connection.php";
@@ -7,6 +8,12 @@
   include "./information.php";
   include "./user.php";
   include "./setting.php";
+
+  // get data from session
+  $user_id = $_SESSION['user_id'];
+  $user_name = $_SESSION['user_name'];
+  $user_role = $_SESSION['user_role'];
+  $user_img = $_SESSION['user_img'];
 
   headerAll();
   
@@ -28,7 +35,7 @@
   <nav class="sb-topnav position-fixed w-100 navbar navbar-expand navbar-dark bg-dark shadow">
     <a class="navbar-brand ps-3" href="index.html">
       <img style="margin-right: 0.75rem;" src="../public/img/logo.png" alt="logo" width=40 height=40/>
-        AL-GHOIBI
+        DASHBOARD
     </a>
     <button 
       class="btn btn-link btn-sm order-1 order-lg-0 me-3 me-lg-0 ms-lg-3" 
@@ -48,8 +55,8 @@
         <div class="sb-sidenav-menu">
           <div class="nav">
             <div class="text-center pt-1 pb-3 sb-profile">
-              <img src="../public/img/img-1.jpg" class="rounded-circle" width="100" height="100"/><br/>
-              <span class="small">Yayak Yogi Ginantaka</span>
+              <img src="../public/img_profile/default.png" class="rounded-circle" width="100" height="100"/><br/>
+              <span class="small"><?php echo $user_name ?></span>
             </div>
             <a class="nav-link collapsed" href="?">
               <div class="sb-nav-link-icon">
@@ -94,8 +101,8 @@
           </div>
         </div>
         <div class="sb-sidenav-footer">
-          <div class="small mb-2">Login sebagai <span class="fw-bold">Admin</span></div>
-          <a href="#" class="btn btn-sm btn-outline-light" style="font-size:0.7rem;"><i class="fas fa-sign-out-alt"></i> Logout</a> 
+          <div class="small mb-2">Login sebagai <span class="fw-bold"><?php echo $user_role ?></span></div>
+          <a href="?pages=user&views=logout" class="btn btn-sm btn-outline-light" style="font-size:0.7rem;"><i class="fas fa-sign-out-alt"></i> Logout</a> 
         </div>
       </nav>
     </div>
@@ -112,6 +119,7 @@
   </div>
   <!-- ./content -->
   <script src="../public/bootstrap-5.0.2/dist/js/bootstrap.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="../public/js/script.js"></script>
   <script src="../public/js/ckeditor-basic/ckeditor.js"></script>
   <script>
