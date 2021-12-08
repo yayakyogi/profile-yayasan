@@ -2,6 +2,22 @@
   session_start();
   include "./connection.php";
   include "../part/header.php";
+  include "../components/alert.php";
+
+  if(isset($_GET['message']))
+  {
+    if($_GET['message'] === '403') 
+    {
+      alert('error','403','Akses ditolak silahkan login terlebih dahulu');
+    }  
+  }
+ 
+  if(isset($_SESSION['isLoginAdmin']) || isset($_SESSION['isLoginSuperAdmin']))
+  {
+    header("Location:index.php");
+    exit;
+  }
+ 
   headerAll();
 
   // cek apakah tombol login di klik
@@ -34,8 +50,9 @@
           $_SESSION['user_role'] = $data['role'];
           $_SESSION['user_img'] = $data['img'];
           header('Location:index.php');
+          exit;
         } // end check role
-        else
+        else if($data['role'] == 'SuperAdmin')
         {
           // if the checklist is ticked
           // if($remember_me)
@@ -50,6 +67,7 @@
           $_SESSION['user_role'] = $data['role'];
           $_SESSION['user_img'] = $data['img'];
           header('Location:index.php');
+          exit;
         }
       } // end password_verify
       echo 'Password salah';
