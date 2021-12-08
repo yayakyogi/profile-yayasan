@@ -84,16 +84,23 @@
               </div>
             </a>
             
-            <a class="nav-link collapsed" href="?pages=user">
-              <div class="sb-nav-link-icon">
-                <i class="fas fa-user"></i>
-              </div>
-                Admin
-              <div class="sb-sidenav-collapse-arrow">
-                <i class="fas fa-angle-down"></i>
-              </div>
-            </a>
-            
+            <?php 
+              if($user_role === 'SuperAdmin')
+              {
+                echo '
+                 <a class="nav-link collapsed" href="?pages=user">
+                  <div class="sb-nav-link-icon">
+                    <i class="fas fa-user"></i>
+                  </div>
+                    Admin
+                  <div class="sb-sidenav-collapse-arrow">
+                    <i class="fas fa-angle-down"></i>
+                  </div>
+                </a>
+                ';
+              }
+            ?>
+   
             <a class="nav-link collapsed" href="?pages=setting">
               <div class="sb-nav-link-icon">
                 <i class="fas fa-cog"></i>
