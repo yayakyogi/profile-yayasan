@@ -35,6 +35,22 @@
           $_SESSION['user_img'] = $data['img'];
           header('Location:index.php');
         } // end check role
+        else
+        {
+          // if the checklist is ticked
+          if($remember_me)
+          {
+            setcookie('id',$data['id'],time()+60);
+            setcookie('key',hash('sha256',$data['email']),time()+60);
+          }
+          // and then create session
+          $_SESSION['isLoginSuperAdmin'] = true;
+          $_SESSION['user_id'] = $data['id'];
+          $_SESSION['user_name'] = $data['name'];
+          $_SESSION['user_role'] = $data['role'];
+          $_SESSION['user_img'] = $data['img'];
+          header('Location:index.php');
+        }
       } // end password_verify
       echo 'Password salah';
     } // end mysqli_num_rows
