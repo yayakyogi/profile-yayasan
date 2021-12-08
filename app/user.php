@@ -402,9 +402,9 @@
                 <input type="hidden" name="exec" value="'.time().'"/>
                 <input type="hidden" name="id" value="'.$id.'"/>
                 ';
-                formInput('password','Password Lama','password_old','Masukkan password lama');
-                formInput('password','Password Baru','password','Masukkan password baru');
-                formInput('password','Ulangi Password','password2','Ulangi password baru');
+                formInput('','password','Password Lama','password_old','Masukkan password lama');
+                formInput('','password','Password Baru','password','Masukkan password baru');
+                formInput('','password','Ulangi Password','password2','Ulangi password baru');
           echo '
                 <button type="submit" class="btn btn-success mt-3"><i class="fas fa-save"></i> Simpan</button>
               </form>
@@ -447,6 +447,15 @@
             </div><!-- ./card-body -->
           </div><!-- ./card -->
         ';
+      } // end delete data
+
+      if($views === 'logout')
+      {
+        session_start();
+        $_SESSION=[];
+        session_unset();
+        session_destroy();
+        header("Location:./login.php");
       }
     } // end pages user
   } // end function user
