@@ -9,6 +9,12 @@
     global $pages;
     global $views;
 
+    $user_id = $_SESSION['user_id'];
+    $query = "SELECT * FROM tb_user WHERE id='$user_id'";
+    $sql = mysqli_query($conn,$query);
+    $data = mysqli_fetch_assoc($sql);
+    $author = $data['name'];
+
     if($pages === 'user')
     {
       // get variable
@@ -19,6 +25,7 @@
       $password = htmlspecialchars(GET('password',''));
       $password2 = htmlspecialchars(GET('password2',''));
       $password_old = htmlspecialchars(GET('password_old',''));
+      $role = htmlspecialchars(GET('role',''));
 
       if($views === 'index')
       {
@@ -57,7 +64,7 @@
                       echo '<td>'.$data['email'].'</td>';
                       echo '<td class="text-center">'.$data['phone'].'</td>';
                       echo '<td class="text-center">
-                        <img src="../public/img_profile/'.$data['img'].'" class="rounded" width="50" height="50"/>
+                        <img src="../public/img_profile/'.$data['img'].'" class="rounded-circle" width="50" height="50"/>
                       </td>';
                       echo '<td class="text-center">'.date("d M Y, G:i",strtotime($data['updated_at'])).'</td>';
                       echo '<td class="text-center">
@@ -159,7 +166,7 @@
                       $time = time();
                       $file_name = $time.'_'.$img;
                       move_uploaded_file($tmp_img,$dir_img.$file_name);
-                      $query = "INSERT INTO tb_user VALUES ('$id','$name','$email','$phone','$hash_password','Admin','$file_name',NOW(),NOW(),'SuperAdmin')";
+                      $query = "INSERT INTO tb_user VALUES ('$id','$name','$email','$phone','$hash_password','$role','$file_name',NOW(),NOW(),'$author')";
                       $sql = mysqli_query($conn,$query);
                       if($sql)
                       {
@@ -174,7 +181,7 @@
                 }
                 else
                 {
-                  $query = "INSERT INTO tb_user VALUES('$id','$name','$email','$phone','$hash_password','Admin','default.png',NOW(),NOW(),'SuperAdmin')";
+                  $query = "INSERT INTO tb_user VALUES('$id','$name','$email','$phone','$hash_password','$role','default.png',NOW(),NOW(),'$author')";
                   $sql = mysqli_query($conn,$query);
                   if($sql)
                   {
@@ -207,6 +214,17 @@
                     formInput('add-admin','password','Password','password','Password minimal 8 karakter','');
                     formInput('add-admin','password','Ulangi Password','password2','Ulangi password lagi','');
                     formInput('add-admin','file','Foto Profil','img','','');
+                    echo '
+                      <div class="row">
+                      <label for="role" class="col-sm-3 fw-bold">Role</label>
+                        <div class="col-sm-6">
+                          <select class="form-select" name="role">
+                            <option value="Admin">Admin</option>
+                            <option value="SuperAdmin">SuperAdmin</option>
+                          </select>
+                        </div>
+                      </div>
+                    ';
               echo '<button type="submmit" class="btn btn-success mt-3"><i class="fas fa-save"></i> Simpan</button>
                   </div><!-- ./col-md-6 -->
                 </div><!-- ./row -->
@@ -224,18 +242,18 @@
         $data = mysqli_fetch_assoc($sql);
         if(mysqli_num_rows($sql)<=0)
         {
-          echo '<script>window.location="?pages='.$pages.'&view=index"</script>';
+          echo '<script>window.location="?pages=setting"</script>';
           exit;
         }
 
         if($exec & $id)
         {
-          $query = "UPDATE tb_user SET name='$name',email='$email',phone='$phone',updated_at=NOW(),author='SuperAdmin' WHERE id='$id'";
+          $query = "UPDATE tb_user SET name='$name',email='$email',phone='$phone',updated_at=NOW() WHERE id='$id'";
           $sql = mysqli_query($conn,$query);
           if($sql)
           {
             GET('exec','');
-            echo '<script>window.location="?pages='.$pages.'&view=index"</script>';
+            echo '<script>window.location="?pages=setting"</script>';
           }
         }
 
@@ -322,7 +340,7 @@
                 if($sql)
                 {
                   GET('exec','');
-                  echo '<script>window.location="?pages='.$pages.'&views=index"</script>';
+                  echo '<script>window.location="?pages=setting"</script>';
                 } // cek query
                 else echo mysqli_error($conn);
               } // validation size
@@ -378,7 +396,7 @@
                     if($rows > 0)
                     {
                       GET('exec','');
-                      echo '<script>window.location="?pages='.$pages.'&views=index"</script>';
+                      echo '<script>window.location="?pages=setting"</script>';
                     }
                     else echo 'Gagal mengubah password';
                   } // validation password and password validation
