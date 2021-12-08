@@ -12,8 +12,14 @@
   // get data from session
   $user_id = $_SESSION['user_id'];
   $user_name = $_SESSION['user_name'];
-  $user_role = $_SESSION['user_role'];
-  $user_img = $_SESSION['user_img'];
+
+  // get data user
+  $query = "SELECT * FROM tb_user WHERE id='$user_id'";
+  $sql = mysqli_query($conn,$query);
+  $data = mysqli_fetch_assoc($sql);
+  $user_name = $data['name'];
+  $user_role = $data['role'];
+  $user_img = $data['img'];
 
   headerAll();
   
