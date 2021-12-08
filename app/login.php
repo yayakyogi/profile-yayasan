@@ -9,7 +9,37 @@
   {
     $mail = GET('email','');
     $pass = GET('password','');
-  }
+    $remember_me = GET('remember-me','');
+
+    $query = "SELECT * FROM tb_user WHERE email='$mail'";
+    $sql = mysqli_query($conn,$query);
+
+    if(mysqli_num_rows($sql))
+    {
+      $data = mysqli_fetch_assoc($sql);
+      if(password_verify($pass,$data['password']))
+      {
+        if($data['role'] == 'Admin')
+        {
+          // if the checklist is ticked
+          if($remember_me)
+          {
+            setcookie('id',$data['id'],time()+60);
+            setcookie('key',hash('sha256',$data['email']),time()+60);
+          }
+          // and then create session
+          $_SESSION['isLoginAdmin'] = true;
+          $_SESSION['user_id'] = $data['id'];
+          $_SESSION['user_name'] = $data['name'];
+          $_SESSION['user_role'] = $data['role'];
+          $_SESSION['user_img'] = $data['img'];
+          header('Location:index.php');
+        } // end check role
+      } // end password_verify
+      echo 'Password salah';
+    } // end mysqli_num_rows
+    else echo 'Data tidak ditemukan';
+  } // end post submit
 ?>
 <body>
   <section class="h-100 w-100" style="box-sizing: border-box; background-color: #f5f5f5">
@@ -21,7 +51,7 @@
         </p>
         <form style="margin-top: 1.5rem" action="" method="POST">
           <div style="margin-bottom: 1.75rem">
-            <label for="" class="d-block input-label">Email Address</label>
+            <label for="" class="d-block input-label">Email</label>
             <div class="d-flex w-100 div-input">
               <svg class="icon" style="margin-right: 1rem" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 xmlns="http://www.w3.org/2000/svg">
@@ -55,7 +85,7 @@
             </div>
           </div>
           <div class="form-check mt-2">
-            <input class="form-check-input" type="checkbox" id="gridCheck1">
+            <input class="form-check-input" name="remember-me" type="checkbox" id="gridCheck1">
             <label class="form-check-label" for="gridCheck1">
               Ingat saya
             </label>
@@ -67,6 +97,7 @@
       </div>
     </div>
 
+     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Password toggle -->
     <script>
       function togglePassword() {
@@ -82,6 +113,14 @@
             .getElementById("icon-toggle")
             .setAttribute("fill", "#CACBCE");
         }
+      }
+      function messageError(title,message) {
+        console.log("OK");
+          Swal.fire({
+            icon: "error",
+            title: title,
+            text: message,
+          });
       }
     </script>
   </section> 
