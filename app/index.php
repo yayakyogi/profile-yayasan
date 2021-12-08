@@ -9,6 +9,12 @@
   include "./user.php";
   include "./setting.php";
 
+  if(!isset($_SESSION['isLoginSuperAdmin']) && !isset($_SESSION['isLoginAdmin']))
+  {
+    header("Location:login.php?message=403");
+    exit;
+  }
+
   // get data from session
   $user_id = $_SESSION['user_id'];
   $user_name = $_SESSION['user_name'];
