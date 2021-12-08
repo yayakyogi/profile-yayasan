@@ -298,8 +298,7 @@ function post()
                 <label for="ckeditor" class="mb-2">Keterangan / Isi pengumuman</label> 
                 <textarea class="ckeditor" id="ckeditor" name="content"></textarea>   
               </div>
-              <button type="submit" class="btn btn-success mt-3">Simpan</button>
-              <a class="btn btn-primary mt-3" href="#">Pratinjau</a>  
+              <button type="submit" class="btn btn-success mt-3"><i class="fas fa-save"></i> Simpan</button>
             </form>  
           </div><!-- ./card-body -->
         </div><!-- ./card -->
@@ -614,7 +613,7 @@ function post()
                 <textarea class="ckeditor" id="ckeditor" name="content">'.$data['content'].'</textarea>   
               </div>
 
-              <button type="submit" class="btn btn-primary mt-3">Simpan</button>  
+              <button type="submit" class="btn btn-success mt-3"><i class="fas fa-save"></i> Simpan</button>  
 
             </form>
           </div><!-- ./card-body -->
@@ -773,8 +772,8 @@ function post()
             <form method="POST" action="?pages='.$pages.'&views='.$views.'">
               <input type="hidden" name="id" value="'.$id.'"/>
               <input type="hidden" name="exec" value="'.time().'"/>
-              <a class="btn btn-light" href="?pages='.$pages.'&views=detail&id='.$id.'">Batal</a>
-              <button type="submit" class="btn btn-danger">Hapus</button>
+              <a class="btn btn-light" href="?pages='.$pages.'&views=detail&id='.$id.'"><i class="fas fa-ban"></i> Batal</a>
+              <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
             </form>
           </div><!-- ./card-body -->
         </div><!-- ./card -->
