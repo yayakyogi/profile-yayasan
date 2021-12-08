@@ -473,6 +473,8 @@
         $_SESSION=[];
         session_unset();
         session_destroy();
+        $_SESSION['isLoginAdmin'] = false;
+        $_SESSION['isLoginSuperAdmin'] = false;
         header("Location:./login.php");
       }
     } // end pages user
