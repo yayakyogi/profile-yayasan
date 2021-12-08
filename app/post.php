@@ -9,6 +9,11 @@ function post()
   global $pages;
   global $views;
 
+  $user_id = $_SESSION['user_id'];
+  $query = "SELECT * FROM tb_user WHERE id='$user_id'";
+  $sql = mysqli_query($conn,$query);
+  $user_name = mysqli_fetch_assoc($sql);
+
   if($pages === 'post')
   {
     // capture all data from form
@@ -135,7 +140,7 @@ function post()
       if($exec && $type && $category && $title && $content)
       {
         $id = md5(time());
-        $author = 'Admin'; 
+        $author = $user_name['name']; 
         $img_cover = $_FILES['img_cover']['name'];
         $file = $_FILES['file']['name'];
         $time = time();
