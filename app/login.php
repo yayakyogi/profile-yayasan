@@ -22,11 +22,11 @@
         if($data['role'] == 'Admin')
         {
           // if the checklist is ticked
-          if($remember_me)
-          {
-            setcookie('id',$data['id'],time()+60);
-            setcookie('key',hash('sha256',$data['email']),time()+60);
-          }
+          // if($remember_me)
+          // {
+          //   setcookie('id',$data['id'],time()+60);
+          //   setcookie('key',hash('sha256',$data['email']),time()+60);
+          // }
           // and then create session
           $_SESSION['isLoginAdmin'] = true;
           $_SESSION['user_id'] = $data['id'];
@@ -38,11 +38,11 @@
         else
         {
           // if the checklist is ticked
-          if($remember_me)
-          {
-            setcookie('id',$data['id'],time()+60);
-            setcookie('key',hash('sha256',$data['email']),time()+60);
-          }
+          // if($remember_me)
+          // {
+          //   setcookie('id',$data['id'],time()+60);
+          //   setcookie('key',hash('sha256',$data['email']),time()+60);
+          // }
           // and then create session
           $_SESSION['isLoginSuperAdmin'] = true;
           $_SESSION['user_id'] = $data['id'];
@@ -66,7 +66,7 @@
           Silakan masuk menggunakan akun yang memiliki terdaftar di situs web.
         </p>
         <form style="margin-top: 1.5rem" action="" method="POST">
-          <div style="margin-bottom: 1.75rem">
+          <div style="margin-bottom: 0.5rem">
             <label for="" class="d-block input-label">Email</label>
             <div class="d-flex w-100 div-input">
               <svg class="icon" style="margin-right: 1rem" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -100,13 +100,13 @@
               </div>
             </div>
           </div>
-          <div class="form-check mt-2">
+          <!-- <div class="form-check mt-2">
             <input class="form-check-input" name="remember-me" type="checkbox" id="gridCheck1">
             <label class="form-check-label" for="gridCheck1">
               Ingat saya
             </label>
-          </div>
-          <button class="btn btn-fill text-white d-block w-100" type="submit" name="submit">
+          </div> -->
+          <button class="btn btn-fill text-white d-block w-100 mt-4" type="submit" name="submit">
             LOGIN
           </button>
         </form>
