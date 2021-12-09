@@ -268,7 +268,7 @@ function setting()
           if(mysqli_affected_rows($conn) > 0)
           {
             GET('exec','');
-            echo '<script>window.location="?pages='.$pages.'&views=index"</script>';
+            echo '<script>window.location="?pages='.$pages.'&status=200&message=editcategory"</script>';
           }
         }
         else 
@@ -278,7 +278,7 @@ function setting()
           if(mysqli_affected_rows($conn) > 0)
           {
             GET('exec','');
-            echo '<script>window.location="?pages='.$pages.'&views=index"</script>';
+            echo '<script>window.location="?pages='.$pages.'&status=200&message=edittype"</script>';
           }
         }
       }
@@ -338,7 +338,7 @@ function setting()
           if(mysqli_affected_rows($conn) > 0)
           {
             GET('exec','');
-            echo '<script>window.location="?pages='.$pages.'&views=index"</script>';
+            echo '<script>window.location="?pages='.$pages.'&status=200&message=deletecategory"</script>';
           }
         }
         else 
@@ -348,7 +348,7 @@ function setting()
           if(mysqli_affected_rows($conn) > 0)
           {
             GET('exec','');
-            echo '<script>window.location="?pages='.$pages.'&views=index"</script>';
+            echo '<script>window.location="?pages='.$pages.'&status=200&message=edittype"</script>';
           }
         }
       }

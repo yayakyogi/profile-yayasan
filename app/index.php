@@ -2,6 +2,7 @@
   session_start();
   include "../part/header.php";
   include "../components/form.php";
+  include "../components/alert.php";
   include "./connection.php";
   include "./post.php";
   include "./dashboard.php";
@@ -11,8 +12,43 @@
 
   if(!isset($_SESSION['isLoginSuperAdmin']) && !isset($_SESSION['isLoginAdmin']))
   {
-    header("Location:login.php?message=403");
+    header("Location:login.php?status=403");
     exit;
+  }
+
+  if(isset($_GET['status']) == '200' && isset($_GET['message']))
+  {
+    $status = $_GET['status'];
+    $message = $_GET['message'];
+    // post alert
+    if($status === '200' && $message === 'addpost') echo alert('success','200','Berhasil menambah postingan');
+    else if($status === '200' && $message === 'editpost') echo alert('success','200','Berhasil mengubah data');
+    else if($status === '200' && $message === 'editimg') echo alert('success','200','Berhasil mengubah gambar header');
+    else if($status === '200' && $message === 'editfile') echo alert('success','200','Berhasil mengubah file');
+    else if($status === '200' && $message === 'deletepost') echo alert('success','200','Berhasil menghapus data');
+    else if($status === '400' && $message === 'formcantempty') echo alert('error','400','Form tidak boleh kosong');
+    else if($status === '400' && $message === 'extensionnotallowed') echo alert('error','400','Ektensi tidak diizinkan');
+    else if($status === '400' && $message === 'formimgcantempty') echo alert('error','400','Form gambar cover tidak boleh kosong');
+
+    // user alert
+    else if($status === '200' && $message === 'adduser') echo alert('success','200','Sukses menambah admin');
+    else if($status === '200' && $message === 'edituser') echo alert('success','200','Sukses mengubah data');
+    else if($status === '200' && $message === 'editphoto') echo alert('success','200','Sukses mengubah photo profil');
+    else if($status === '200' && $message === 'editpass') echo alert('success','200','Sukses mengubah password admin');
+    else if($status === '200' && $message === 'deleteuser') echo alert('success','200','Sukses menghapus data admin');
+    else if($status === '400' && $message === 'limitedsize') echo alert('error','400','File maksimal harus 2 MB');
+    else if($status === '404' && $message === 'datanotfound') echo alert('error','404','Data tidak ditemukan');
+    else if($status === '400' && $message === 'passnotmatch') echo alert('error','404','Password tidak sama');
+    else if($status === '400' && $message === 'passlength') echo alert('error','404','Password kurang dari 8 karakter');
+    else if($status === '400' && $message === 'passconfirm') echo alert('error','404','Password dan password konfirmasi tidak sama');
+    else if($status === '400' && $message === 'passchange') echo alert('error','404','Gagal mengubah password');
+    else if($status === '400' && $message === 'emailavailable') echo alert('error','404','Email sudah pernah terdaftar sebelumnya');
+    
+    // category & type alert
+    else if($status === '200' && $message === 'editcategory') echo alert('success','200','Sukses mengubah kategori');
+    else if($status === '200' && $message === 'edittype') echo alert('success','200','Sukses mengubah tipe');
+    else if($status === '200' && $message === 'deletecategory') echo alert('success','200','Sukses menghapus kategori');
+    else if($status === '200' && $message === 'deletetype') echo alert('success','200','Sukses menghapus tipe postingan');
   }
 
   // get data from session
@@ -67,7 +103,7 @@
         <div class="sb-sidenav-menu">
           <div class="nav">
             <div class="text-center pt-1 pb-3 sb-profile">
-              <img src="../public/img_profile/<?php echo $user_img ?>" class="rounded-circle" width="100" height="100"/><br/>
+              <img src="../public/img_profile/<?php echo $user_img ?>" class="rounded-circle mb-2" width="100" height="100"/><br/>
               <span class="small"><?php echo $user_name ?></span>
             </div>
             <a class="nav-link collapsed" href="?">

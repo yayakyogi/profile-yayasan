@@ -4,9 +4,9 @@
   include "../part/header.php";
   include "../components/alert.php";
 
-  if(isset($_GET['message']))
+  if(isset($_GET['status']))
   {
-    if($_GET['message'] === '403') 
+    if($_GET['status'] === '403') 
     {
       alert('error','403','Akses ditolak silahkan login terlebih dahulu');
     }  

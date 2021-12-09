@@ -173,11 +173,11 @@ function post()
                 if($sql)
                 {
                   GET('exec','');
-                   echo "<script>window.location='index.php?pages=post'</script>";
+                  echo "<script>window.location='?pages=post&status=200&message=addpost'</script>";
                 }
                 else echo mysqli_error($conn);
               } // ./in_array file
-              else echo 'Ektensi tidak diizinkan';
+              else echo '<script>window.location="?pages='.$pages.'&views='.$views.'&status=400&message=extensionnotallowed"</script>';
             } // ./file
 
             // if file empty
@@ -191,17 +191,17 @@ function post()
               if($sql)
               {
                 GET('exec','');
-                echo "<script>window.location='index.php?pages=post'</script>";
+                echo "<script>window.location='?pages=post&status=200&message=addpost'</script>";
               }
               else echo mysqli_error($conn);
             } 
           } // ./in array img
-          else echo 'Ektensi gambar tidak diizinkan';
+          else echo '<script>window.location="?pages='.$pages.'&views='.$views.'&status=400&message=extensionnotallowed"</script>';
         }// ./img cover
-        else echo 'Img cover tidak boleh kosong';
+        else echo '<script>window.location="?pages='.$pages.'&views='.$views.'&status=400&message=formimgcantempty"</script>';
       } // ./cek all form
       echo '
-        <div class="card mt-4">
+        <div class="card mt-4 mb-3">
           <div class="card-header bg-white">
             <h1 class="fs-3 fw-normal">Tambah Postingan</h3>
           </div> 
@@ -513,7 +513,7 @@ function post()
         if($rows > 0)
         {
           GET('exec','');
-          echo '<script>window.location="?pages='.$pages.'&views=index"</script>';
+          echo '<script>window.location="?pages='.$pages.'&status=200&message=editpost"</script>';
         }
       } // cek all form
       $query = "SELECT * FROM tb_post where id='$id'";
@@ -647,17 +647,17 @@ function post()
             if($rows > 0)
             {
               GET('exec','');
-              echo '<script>window.location="?pages='.$pages.'&views=index"</script>';
+              echo '<script>window.location="?pages='.$pages.'&status=200&message=editimg"</script>';
             } // ./in_array
-          } else echo 'Ektensi file tidak diperbolehkan';
-        } else 'Belum ada gambar yang diupload';
+          } else echo '<script>window.location="?pages='.$pages.'&views='.$views.'&id='.$id.'&status=400&message=extensionnotallowed"</script>';
+        } else echo '<script>window.location="?pages='.$pages.'&views='.$views.'&id='.$id.'&status=400&message=formcantempty"</script>';
       }
 
       $query = "SELECT img_cover FROM tb_post WHERE id='$id'";
       $sql = mysqli_query($conn,$query);
       $data = mysqli_fetch_assoc($sql);
       echo '
-        <div class="card mt-4">
+        <div class="card mt-4 mb-3">
           <div class="card-header bg-white">
             <h1 class="fs-3 fw-normal">Edit Gambar</h3>
           </div>
@@ -675,7 +675,7 @@ function post()
                 <label for="img_cover" class="mb-2">Unggah Gambar Baru</label>
                 <input type="file" name="img_cover" class="form-control" id="img_cover"/>
               </div>
-              <button type="submit" class="btn btn-lg btn-primary mt-3">Simpan</button>
+              <button type="submit" class="btn btn-success mt-3"><i class="fas fa-save"></i> Simpan</button>
             </form>
           </div>
         </div>
@@ -708,17 +708,17 @@ function post()
             if($rows > 0)
             {
               GET('exec','');
-              echo '<script>window.location="?pages='.$pages.'&views=index"</script>';
+              echo '<script>window.location="?pages='.$pages.'&status=200&message=editfile"</script>';
             } // ./in_array
-          } else echo 'Ektensi file tidak diperbolehkan';
-        } else 'Belum ada file yang diupload';
+          } else echo '<script>window.location="?pages='.$pages.'&views='.$views.'&id='.$id.'&status=400&message=extensionnotallowed"</script>';
+        }  else echo '<script>window.location="?pages='.$pages.'&views='.$views.'&id='.$id.'&status=400&message=formcantempty"</script>';
       }
 
       $query = "SELECT file FROM tb_post WHERE id='$id'";
       $sql = mysqli_query($conn,$query);
       $data = mysqli_fetch_assoc($sql);
       echo '
-        <div class="card mt-4">
+        <div class="card mt-4 mb-3">
           <div class="card-header bg-white">
             <h1 class="fs-3 fw-normal">Edit File</h3>
           </div>
@@ -737,7 +737,7 @@ function post()
                 <label for="file" class="mb-2">Unggah Berkas Baru</label>
                 <input type="file" name="file" class="form-control" id="file"/>
               </div>
-              <button type="submit" class="btn btn-lg btn-primary mt-3">Simpan</button>
+              <button type="submit" class="btn btn-success mt-3"><i class="fas fa-save"></i> Simpan</button>
             </form>
           </div>
         </div>
@@ -751,10 +751,11 @@ function post()
       {
         $query = "DELETE FROM tb_post WHERE id='$id'";
         $sql = mysqli_query($conn,$query);
-        if($sql)
+        $rows = mysqli_affected_rows($conn);
+        if($rows > 0)
         {
           GET('exec','');
-          echo '<script>window.location="?pages='.$pages.'&views=index"</script>';
+          echo '<script>window.location="?pages='.$pages.'&views=index&status=200&message=deletepost"</script>';
         }
       }
       $query = "SELECT title FROM tb_post WHERE id='$id'";

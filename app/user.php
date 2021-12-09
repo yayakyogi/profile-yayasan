@@ -171,13 +171,13 @@
                       if($sql)
                       {
                         GET('exec','');
-                        echo '<script>window.location="?pages='.$pages.'&views=index"</script>';
+                        echo '<script>window.location="?pages='.$pages.'&status=200&message=adduser"</script>';
                       } // cek query
                       else echo mysqli_error($conn);
                     } // validation size
-                    else echo 'Ukuran file maksimal 2 MB';
+                    else echo '<script>window.location="?pages='.$pages.'&views='.$views.'&status=400&message=limitedsize"</script>';
                   } // validation ektensi
-                  else echo 'Ektensi tidak diijinkan';
+                  else echo '<script>window.location="?pages='.$pages.'&views='.$views.'&status=400&message=extensionnotallowed"</script>';
                 }
                 else
                 {
@@ -186,16 +186,16 @@
                   if($sql)
                   {
                     GET('exec','');
-                    echo '<script>window.location="?pages='.$pages.'&views=index"</script>';
+                    echo '<script>window.location="?pages='.$pages.'&status=200&message=adduser"</script>';
                   }
                   else echo mysqli_error($conn);
                 }
               } // password validation
-              else echo 'Password tidak sama';
+              else echo '<script>window.location="?pages='.$pages.'&views='.$views.'&status=400&message=passnotmatch"</script>';
             } // password legnth
-            else echo 'Password kurang dari 8 karakter';
+            else echo '<script>window.location="?pages='.$pages.'&views='.$views.'&status=400&message=passlength"</script>';
           } // validation email
-          else echo 'Email sudah pernah terdaftar';
+          else echo '<script>window.location="?pages='.$pages.'&views='.$views.'&status=400&message=emailavailable"</script>';
         }
 
         echo '
@@ -253,7 +253,7 @@
           if($sql)
           {
             GET('exec','');
-            echo '<script>window.location="?pages=setting"</script>';
+           echo '<script>window.location="?pages=setting&status=200&message=edituser"</script>';
           }
         }
 
@@ -340,15 +340,15 @@
                 if($sql)
                 {
                   GET('exec','');
-                  echo '<script>window.location="?pages=setting"</script>';
+                  echo '<script>window.location="?pages=setting&status=200&message=editphoto"</script>';
                 } // cek query
                 else echo mysqli_error($conn);
               } // validation size
-              else echo 'Ukuran file maksimal 2 MB';
+              else echo '<script>window.location="?pages='.$pages.'&views='.$views.'&id='.$id.'&status=400&message=limitedsize"</script>';
             } // validation ektensi
-            else echo 'Ektensi tidak diijinkan';
+            else echo '<script>window.location="?pages='.$pages.'&views='.$views.'&id='.$id.'&status=400&message=extensionnotallowed"</script>';
           } // validation img not found
-          else echo 'Belum ada gambar yang dipilih';
+          else echo '<script>window.location="?pages='.$pages.'&views='.$views.'&id='.$id.'&status=400&message=formcantempty"</script>';
         } // validation  form
         
         echo '
@@ -396,19 +396,19 @@
                     if($rows > 0)
                     {
                       GET('exec','');
-                      echo '<script>window.location="?pages=setting"</script>';
+                      echo '<script>window.location="?pages=setting&status=200&message=editpass"</script>';
                     }
-                    else echo 'Gagal mengubah password';
+                    else echo '<script>window.location="?pages='.$pages.'&views='.$views.'&id='.$id.'&status=400&message=passchange"</script>';
                   } // validation password and password validation
-                  else echo "Password baru dan password konfirmasi tidak sama";
+                  else echo '<script>window.location="?pages='.$pages.'&views='.$views.'&id='.$id.'&status=400&message=passconfirm"</script>';
                 } // verify length password
-                else echo 'Password baru minimal harus 8 karakter';
+                else echo '<script>window.location="?pages='.$pages.'&views='.$views.'&id='.$id.'&status=400&message=passlength"</script>';
               } // verify old password
-              else echo 'Password lama tidak sama';
+               else echo '<script>window.location="?pages='.$pages.'&views='.$views.'&id='.$id.'&status=400&message=passnotmatch"</script>';
             } // count data
-            else echo 'Data tidak ditemukan';
+            else echo '<script>window.location="?pages='.$pages.'&views='.$views.'&id='.$id.'&status=404&message=datanotfound"</script>';
           } // validation form
-          else echo 'Form tidak boleh kosong';
+          else echo '<script>window.location="?pages='.$pages.'&views='.$views.'&id='.$id.'&status=400&message=formcantempty"</script>';
         }
         echo '
           <div class="card mt-4">
@@ -445,7 +445,7 @@
           if(mysqli_affected_rows($conn) > 0)
           {
             GET('exec','');
-            echo '<script>window.location="?pages='.$pages.'&views=index"</script>';
+            echo '<script>window.location="?pages='.$pages.'&status=200&message=deleteuser"</script>';
           }
           else echo 'Gagal';
         }
