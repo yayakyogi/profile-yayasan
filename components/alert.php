@@ -19,8 +19,8 @@
       echo '
         <div 
           class="position-absolute mx-auto alert alert-danger alert-dismissible fade show text-center" 
-          role="alert" 
-          style="width:100%;"
+          role="alert"
+          style="width:100%;z-index:1010"
         >
           <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
           <strong>'.$status.'</strong> - '.$message.'
@@ -34,7 +34,7 @@
         <div 
           class="position-absolute mx-auto alert alert-warning alert-dismissible fade show text-center" 
           role="alert" 
-          style="width:100%;"
+          style="width:100%;z-index:1010"
         >
           <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
           <strong>'.$status.'</strong> - '.$message.'
@@ -48,7 +48,7 @@
         <div 
           class="position-absolute mx-auto alert alert-success alert-dismissible fade show text-center" 
           role="alert" 
-          style="width:100%;"
+          style="width:100%;z-index:1010"
         >
           <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#check-circle-fill"/></svg>
           <strong>'.$status.'</strong> - '.$message.'
