@@ -2,6 +2,7 @@
   include "./app/connection.php";
   include "./part/header.php";
   include "./part/navbar.php";
+  include "./part/listmenu.php";
   include "./part/footer.php";
 
   headerIndex();
@@ -168,7 +169,7 @@
                     <span> <i class="fas fa-user-edit"></i> <?php echo $data['author']?></span>
                   </p>
                   <?php echo substr(html_entity_decode($data['content']),0,200);?>
-                  <a href="detail.php?id='.$data['id'].'" class="btn btn-link px-0"><i>Baca Selengkapnya...</i></a>
+                  <a href="detail.php?id=<?php echo $data['id'] ?>" class="btn btn-link px-0"><i>Baca Selengkapnya...</i></a>
                 </div>
               </div><!-- ./headlines -->
             </div><!-- ./col-sm-6 col-1 -->
@@ -262,35 +263,7 @@
         </div><!-- ./col-sm-8 -->
 
         <div class="col-sm-3">
-          <!-- list type post -->  
-          <div class="card my-3" data-aos="fade-up" data-aos-duration="1500">
-            <div class="card-header">
-               <h6 class="me-1 category">Postingan Lainnya</h6>
-            </div>
-            <div class="card-body p-1">
-              <div class="list-group list-group-flush" style="font-family:Poppins,sans-serif;">
-                <?php while($data = mysqli_fetch_assoc($sql_type)){ ?>
-                  <a href="search.php?type=<?php echo $data['type'] ?>" class="list-group-item list-group-item-action py-2"><?php echo $data['type'] ?></a>
-                <?php } ?>
-              </div>
-            </div><!-- ./card-body -->
-          </div><!-- ./card -->
-          <!-- ./list type post -->
-          
-          <!-- list category post -->
-          <div class="card my-3" data-aos="fade-up" data-aos-duration="1800">
-            <div class="card-header">
-               <h6 class="me-1 category">Kategori</h6>
-            </div>
-            <div class="card-body p-1">
-              <div class="list-group list-group-flush" style="font-family:Poppins,sans-serif;">
-                <?php while($data = mysqli_fetch_assoc($sql_category)){ ?>
-                  <a href="search.php?type=<?php echo $data['category'] ?>" class="list-group-item list-group-item-action py-2"><?php echo $data['category'] ?></a>
-                <?php } ?>
-              </div>
-            </div><!-- ./card-body -->
-          </div><!-- ./card -->  
-          <!-- ./list category post -->
+          <?php listMenu() ?>
         </div><!-- ./col-sm-3 -->
 
       </div><!-- ./row -->
