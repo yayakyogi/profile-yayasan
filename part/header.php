@@ -18,6 +18,7 @@
         <link rel="stylesheet" href="./public/bootstrap-5.0.2/dist/css/bootstrap.min.css"/>
         <link rel="stylesheet" href="./public/css/style.css"/>
         <link rel="icon" href="./public/img/logo.png" type="image/icon type">
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
         <title>Profil Yayasan</title>
       </head>
