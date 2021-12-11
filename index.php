@@ -229,7 +229,7 @@
             <?php 
               echo '
               <!-- Pagination -->
-              <nav aria-label="Page navigation example">
+              <nav aria-label="Page navigation example" data-aos="fade-up" data-aos-duration="1600">
                 <ul class="pagination">
                   <li class="page-item">';
                   // page previous
