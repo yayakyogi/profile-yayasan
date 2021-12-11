@@ -9,7 +9,7 @@ function listMenu(){
   $sql_category = mysqli_query($conn,$query_category);
 ?>
   <!-- list type post -->  
-  <div class="card my-3" data-aos="fade-up" data-aos-duration="1500">
+  <div class="card mb-3" data-aos="fade-up" data-aos-duration="1500">
     <div class="card-header">
       <h6 class="me-1 category">Postingan Lainnya</h6>
     </div>
