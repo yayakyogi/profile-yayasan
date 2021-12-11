@@ -2,9 +2,11 @@
   function dashboard()
   {
     global $conn;
+    // news
     $news_query = "SELECT * FROM tb_post WHERE type='Berita'";
     $news_sql   = mysqli_query($conn,$news_query);
     $news_count = mysqli_num_rows($news_sql);
+    // articel
     $article_query = "SELECT * FROM tb_post WHERE type='Artikel'";
     $article_sql = mysqli_query($conn,$article_query);
     $article_count = mysqli_num_rows($article_sql);
@@ -13,7 +15,9 @@
     $announcement_sql = mysqli_query($conn,$announcement_query);
     $announcement_count = mysqli_num_rows($announcement_sql);
     // Account
-    $account_count = 10; 
+    $account_query = "SELECT * FROM tb_user WHERE role='Admin'";
+    $account_sql = mysqli_query($conn,$account_query);
+    $account_count = mysqli_num_rows($account_sql);
     echo'
       <h1 class="mt-4 mb-4 fs-3 fw-normal">Dashboard</h1>
       <div class="row">
