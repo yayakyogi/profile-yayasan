@@ -1,164 +1,119 @@
 <?php 
+  include './app/connection.php';
   include "./part/header.php";
   headerIndex();
-  ?>
-<body>
-<section
-    class="h-100 w-100"
-    style="box-sizing: border-box;position: relative; background-color: #fafcff;"
->
-  <div 
-    class="header-3-3 container-xxl mx-auto p-0 position-relative" 
-    style="font-family: 'Poppins', sans-serif"
-  >
-    <nav class="navbar navbar-expand-lg navbar-light">
-      <a href="#" class="text-decoration-none fs-5 text-dark">
-        <img
-          style="margin-right: 0.75rem;"
-          src="./public/img/logo.png"
-          alt="logo"
-          width=50
-          height=50
-        />
-        AL-GHOIBI
-      </a>
-      <button
-        class="navbar-toggler border-0"
-        type="button"
-        data-bs-toggle="modal"
-        data-bs-target="#targetModal-item"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      
-      <!-- Menu ketika di layar HP -->
-      <div
-        class="modal-item modal fade"
-        id="targetModal-item"
-        tabindex="-1"
-        role="dialog"
-        aria-labelledby="targetModalLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog" role="document">
-          <div class="modal-content bg-white border-0">
-            <div
-              class="modal-header border-0"
-              style="padding: 2rem; padding-bottom: 0"
-            >
-              <a class="modal-title" id="targetModalLabel">
-                <img
-                  style="margin-top: 0.5rem"
-                  src="http://api.elements.buildwithangga.com/storage/files/2/assets/Header/Header2/Header-2-5.png"
-                  alt=""
-                />
-              </a>
-              <button
-                type="button"
-                class="close btn-close text-white"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div> <!-- ./modal-header -->
-            <div
-              class="modal-body"
-              style="padding: 2rem; padding-top: 0; padding-bottom: 0"
-            >
-              <ul class="navbar-nav responsive me-auto mt-2 mt-lg-0">
-                <li class="nav-item active position-relative">
-                  <a class="nav-link" href="#">Home</a>
-                    </li>
-                    <li class="nav-item position-relative">
-                      <a class="nav-link" href="#">Feature</a>
-                    </li>
-                    <li class="nav-item position-relative">
-                      <a class="nav-link" href="#">Pricing</a>
-                    </li>
-                    <li class="nav-item position-relative">
-                      <a class="nav-link" href="#">Blog</a>
-                    </li>
-                    <li class="nav-item position-relative">
-                      <a
-                        class="nav-link"
-                        data-bs-toggle="collapse"
-                        href="#collapse"
-                        role="button"
-                        aria-expanded="false"
-                        aria-controls="collapse"
-                      >
-                        <svg
-                          width="15"
-                          height="15"
-                          viewBox="0 0 15 15"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            fill-rule="evenodd"
-                            clip-rule="evenodd"
-                            d="M5.85 1.69346C3.5304 1.69346 1.65 3.57386 1.65 5.89346C1.65 8.21305 3.5304 10.0935 5.85 10.0935C8.1696 10.0935 10.05 8.21305 10.05 5.89346C10.05 3.57386 8.1696 1.69346 5.85 1.69346ZM0.25 5.89346C0.25 2.80066 2.75721 0.293457 5.85 0.293457C8.94279 0.293457 11.45 2.80066 11.45 5.89346C11.45 8.98625 8.94279 11.4935 5.85 11.4935C2.75721 11.4935 0.25 8.98625 0.25 5.89346Z"
-                            fill="#8B9CAF"
-                          />
-                          <path
-                            fill-rule="evenodd"
-                            clip-rule="evenodd"
-                            d="M8.85503 8.89848C9.12839 8.62512 9.57161 8.62512 9.84497 8.89848L14.045 13.0985C14.3183 13.3718 14.3183 13.8151 14.045 14.0884C13.7716 14.3618 13.3284 14.3618 13.055 14.0884L8.85503 9.88843C8.58166 9.61506 8.58166 9.17185 8.85503 8.89848Z"
-                            fill="#8B9CAF"
-                          />
-                        </svg>
-                      </a>
-                      <form
-                        method="POST"
-                        class="collapse position-absolute form center-search border-0"
-                        id="collapse"
-                      >
-                        <div class="d-flex">
-                          <input
-                            type="text"
-                            class="rounded-full border-0 focus:outline-none"
-                            placeholder="Search"
-                          />
-                          <button class="btn" type="button">
-                            <svg
-                              style="width: 20px; height: 20px"
-                              data-bs-toggle="collapse"
-                              href="#collapse"
-                              role="button"
-                              aria-expanded="false"
-                              aria-controls="collapse"
-                              fill="none"
-                              stroke="#273B56"
-                              viewBox="0 0 24 24"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M6 18L18 6M6 6l12 12"
-                              ></path>
-                            </svg>
-                          </button>
-                        </div>
-                      </form>
-                    </li>
-                  </ul>
-                </div>
-              <div
-                class="modal-footer border-0"
-                style="padding: 2rem; padding-top: 0.75rem"
-              >
-              <button class="btn btn-fill text-white">Sign In</button>
-            </div> <!-- ./modal-body -->
-          </div> <!-- ./modal-content -->
-        </div> <!-- ./modal-dialog -->
-      </div> <!-- ./modal-item -->
+  // get data post for caraousel
+  $query_carousel = "SELECT * FROM tb_post ORDER BY created_at DESC LIMIT 0,5";
+  $sql_carousel = mysqli_query($conn,$query_carousel);
 
-      <!-- List menu ketika di PC -->
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo">
+  // get data for news header
+  $query_news = "SELECT * FROM tb_post LIMIT 0, 4";
+  $sql_news = mysqli_query($conn,$query_news);
+
+  // get data headline
+  $query_headline = "SELECT * FROM tb_post ORDER BY created_at DESC LIMIT 0, 1";
+  $sql_headline = mysqli_query($conn,$query_headline);
+
+  // get data post news
+  $query_type_news = "SELECT * FROM tb_post WHERE type='Berita' ORDER BY created_at DESC LIMIT 1, 4";
+  $sql_type_news = mysqli_query($conn,$query_type_news);
+
+  // get data post article
+  $query_type_article = "SELECT * FROM tb_post WHERE type='Artikel'";
+  $sql_type_articel = mysqli_query($conn,$query_type_news);
+
+  // get data post announcement
+  $query_type_announcement = "SELECT * FROM tb_post WHERE type='Pengumuman'";
+  $sql_type_announcement = mysqli_query($conn,$query_type_announcement);
+
+  // get data from tb_type
+  $query_type = "SELECT * FROM tb_type";
+  $sql_type = mysqli_query($conn,$query_type);
+
+  // get data from tb_category
+  $query_category = "SELECT * FROM tb_category";
+  $sql_category = mysqli_query($conn,$query_category);
+
+  // pagination
+  $limit = 7;
+  $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+  $page_start = ($page > 1) ? ($page * $limit) - $limit : 0;
+  $prev = $page - 1;
+  $next = $page + 1;
+  $data = mysqli_query($conn,"SELECT * FROM tb_post");
+  $count = mysqli_num_rows($data);
+  $total_page = ceil($count / $limit);
+  $query = "SELECT * FROM tb_post ORDER BY created_at DESC LIMIT $page_start,$limit";
+  $sql = mysqli_query($conn,$query);
+  $i = $page_start+1;
+  
+?>
+<body>
+  <!-- section navbar -->
+  <section class="h-100 w-100" style="box-sizing: border-box;position: relative; background-color: #fafcff;">
+    <div class="header-3-3 container-xxl mx-auto p-0 position-relative" style="font-family: 'Poppins', sans-serif">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <a href="#" class="text-decoration-none fs-5 text-dark">
+          <img style="margin-right: 0.75rem;" src="./public/img/logo.png" alt="logo" width=50 height=50/>AL-GHOIBI
+        </a>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="modal" data-bs-target="#targetModal-item">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Menu ketika di layar HP -->
+        <div class="modal-item modal fade" id="targetModal-item" tabindex="-1" role="dialog" aria-labelledby="targetModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content bg-white border-0">
+              <div class="modal-header border-0" style="padding: 2rem; padding-bottom: 0">
+                <a class="modal-title" id="targetModalLabel">
+                  <img style="margin-top: 0.5rem" src="./public/img/logo.png" alt="logo" width=50 height=50/>
+                </a>
+                <button type="button" class="close btn-close text-white" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div> <!-- ./modal-header -->
+              <div class="modal-body" style="padding: 2rem; padding-top: 0; padding-bottom: 0">
+                <ul class="navbar-nav responsive me-auto mt-2 mt-lg-0">
+                  <li class="nav-item active position-relative">
+                    <a class="nav-link" href="#">Home</a>
+                  </li>
+                  <li class="nav-item position-relative">
+                    <a class="nav-link" href="#">Feature</a>
+                  </li>
+                  <li class="nav-item position-relative">
+                    <a class="nav-link" href="#">Pricing</a>
+                  </li>
+                  <li class="nav-item position-relative">
+                    <a class="nav-link" href="#">Blog</a>
+                  </li>
+                  <li class="nav-item position-relative">
+                    <a class="nav-link" data-bs-toggle="collapse" href="#collapse" role="button" aria-expanded="false" aria-controls="collapse">
+                      <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M5.85 1.69346C3.5304 1.69346 1.65 3.57386 1.65 5.89346C1.65 8.21305 3.5304 10.0935 5.85 10.0935C8.1696 10.0935 10.05 8.21305 10.05 5.89346C10.05 3.57386 8.1696 1.69346 5.85 1.69346ZM0.25 5.89346C0.25 2.80066 2.75721 0.293457 5.85 0.293457C8.94279 0.293457 11.45 2.80066 11.45 5.89346C11.45 8.98625 8.94279 11.4935 5.85 11.4935C2.75721 11.4935 0.25 8.98625 0.25 5.89346Z" fill="#8B9CAF"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M8.85503 8.89848C9.12839 8.62512 9.57161 8.62512 9.84497 8.89848L14.045 13.0985C14.3183 13.3718 14.3183 13.8151 14.045 14.0884C13.7716 14.3618 13.3284 14.3618 13.055 14.0884L8.85503 9.88843C8.58166 9.61506 8.58166 9.17185 8.85503 8.89848Z" fill="#8B9CAF"/>
+                      </svg>
+                    </a>
+                    <form method="POST" class="collapse position-absolute form center-search border-0" id="collapse">
+                      <div class="d-flex">
+                        <input type="text" class="rounded-full border-0 focus:outline-none" placeholder="Search">
+                        <button class="btn" type="button"> 
+                          <svg   style="width: 20px; height: 20px"   data-bs-toggle="collapse"   href="#collapse"   role="button"   aria-expanded="false"   aria-controls="collapse"   fill="none"   stroke="#273B56"   viewBox="0 0 24 24"   xmlns="http://www.w3.org/2000/svg" >
+                            <path stroke-linecap="round"pathinfo stroke-linejoin="round"pathinfo stroke-width="2"pathinfo d="M6 18L18 6M6 6l12 12"></path>
+                          </svg>
+                        </button>
+                      </div><!-- ./d-flex -->
+                    </form><!-- ./form -->
+                  </li><!-- ./nav-item -->
+                </ul><!-- ./navbar-nav -->
+              </div> <!-- ./modal-body -->
+              <div class="modal-footer border-0" style="padding: 2rem; padding-top: 0.75rem">
+                <button class="btn btn-fill text-white">Sign In</button>
+              </div> <!-- ./modal-footter -->
+            </div> <!-- ./modal-content -->
+          </div> <!-- ./modal-dialog -->
+        </div> <!-- ./modal-item -->
+        <!-- List menu ketika di PC -->
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo">
           <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
             <li class="nav-item position-relative">
-                <a class="nav-link" href="#">Home</a>
+              <a class="nav-link" href="#">Home</a>
             </li>
             <li class="nav-item position-relative">
               <a class="nav-link" href="#">Feature</a>
@@ -170,298 +125,271 @@
               <a class="nav-link" href="#">Blog</a>
             </li>
             <li class="nav-item my-auto">
-              <a
-                class="nav-link"
-                data-bs-toggle="collapse"
-                href="#collapse"
-                role="button"
-                aria-expanded="false"
-                aria-controls="collapse"
-              >
-                <svg
-                  width="15"
-                  height="15"
-                  viewBox="0 0 15 15"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M5.85 1.69346C3.5304 1.69346 1.65 3.57386 1.65 5.89346C1.65 8.21305 3.5304 10.0935 5.85 10.0935C8.1696 10.0935 10.05 8.21305 10.05 5.89346C10.05 3.57386 8.1696 1.69346 5.85 1.69346ZM0.25 5.89346C0.25 2.80066 2.75721 0.293457 5.85 0.293457C8.94279 0.293457 11.45 2.80066 11.45 5.89346C11.45 8.98625 8.94279 11.4935 5.85 11.4935C2.75721 11.4935 0.25 8.98625 0.25 5.89346Z"
-                    fill="#8B9CAF"
-                  />
-                  <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M8.85503 8.89848C9.12839 8.62512 9.57161 8.62512 9.84497 8.89848L14.045 13.0985C14.3183 13.3718 14.3183 13.8151 14.045 14.0884C13.7716 14.3618 13.3284 14.3618 13.055 14.0884L8.85503 9.88843C8.58166 9.61506 8.58166 9.17185 8.85503 8.89848Z"
-                    fill="#8B9CAF"
-                  />
+              <a class="nav-link" data-bs-toggle="collapse" href="#collapse" role="button" aria-expanded="false" aria-controls="collapse"> 
+                <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M5.85 1.69346C3.5304 1.69346 1.65 3.57386 1.65 5.89346C1.65 8.21305 3.5304 10.0935 5.85 10.0935C8.1696 10.0935 10.05 8.21305 10.05 5.89346C10.05 3.57386 8.1696 1.69346 5.85 1.69346ZM0.25 5.89346C0.25 2.80066 2.75721 0.293457 5.85 0.293457C8.94279 0.293457 11.45 2.80066 11.45 5.89346C11.45 8.98625 8.94279 11.4935 5.85 11.4935C2.75721 11.4935 0.25 8.98625 0.25 5.89346Z" fill="#8B9CAF"/>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M8.85503 8.89848C9.12839 8.62512 9.57161 8.62512 9.84497 8.89848L14.045 13.0985C14.3183 13.3718 14.3183 13.8151 14.045 14.0884C13.7716 14.3618 13.3284 14.3618 13.055 14.0884L8.85503 9.88843C8.58166 9.61506 8.58166 9.17185 8.85503 8.89848Z" fill="#8B9CAF"/>
                 </svg>
               </a>
-              <form
-                class="collapse position-absolute form center-search border-0"
-                id="collapse"
-              >
+              <form class="collapse position-absolute form center-search border-0 shadow" id="collapse">
                 <div class="d-flex">
-                  <input
-                    type="text"
-                    class="rounded-full border-0 focus:outline-none"
-                    placeholder="Search"
-                  />
+                  <input type="text" class="rounded-full border-0 focus:outline-none" placeholder="Search"/>
                   <button class="btn" type="button">
-                    <svg
-                      style="width: 20px; height: 20px"
-                      data-bs-toggle="collapse"
-                      href="#collapse"
-                      role="button"
-                      aria-expanded="false"
-                      aria-controls="collapse"
-                      fill="none"
-                      stroke="#273B56"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M6 18L18 6M6 6l12 12"
-                      ></path>
+                    <svg style="width: 20px; height: 20px" data-bs-toggle="collapse" href="#collapse" role="button" aria-expanded="false" aria-controls="collapse" fill="none" stroke="#273B56" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                     </svg>
-                  </button>
-                </div>
-              </form>
-            </li>
-          </ul>
-        <a href="./app/login.php" class="btn btn-fill text-white">Tentang kami</a>
-      </div> <!-- ./navbar-collapse -->
-
-    </nav> <!-- ./nav -->
-  </div> <!-- ./header -->
-  <div class="hr">
-    <hr
-      style="
-        border-color: #f4f4f4;
-        background-color: #f4f4f4;
-        opacity: 1;
-        margin: 0 !important;
-        "
-    />
-  </div>
-</section>
-
-<!-- img carousel -->
-<section class="caraousel">
-  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4">
-      </button>
+                  </button><!-- ./button search -->
+                </div><!-- ./d-flex -->
+              </form><!-- ./form -->
+            </li><!-- ./nav-item -->
+          </ul><!-- ./navbar-nav -->
+          <a href="#" class="btn btn-fill text-white">Tentang kami</a>
+        </div> <!-- ./navbar-collapse -->
+      </nav> <!-- ./nav -->
+    </div> <!-- ./header -->
+    <div class="hr">
+      <hr
+        style="
+          border-color: #f4f4f4;
+          background-color: #f4f4f4;
+          opacity: 1;
+          margin: 0 !important;
+          "
+      />
     </div>
-    <div class="carousel-inner position-relative">
-      <div class="carousel-item active"  data-bs-interval="2000">
-        <img src="./public/img/img-1.jpg" class="d-block w-100 h-100" alt="...">
-        <div class="carousel-caption d-block">
-          <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate enim quaerat quisquam ducimus incidunt numquam unde officiis sapiente dolor nisi.</h5>
-          <p>BY : <span>ADMIN</span></p>
-        </div>
-      </div>
-      <div class="carousel-item"  data-bs-interval="5000">
-        <img src="./public/img/img-2.jpg" class="d-block w-100 h-100" alt="...">
-        <div class="carousel-caption d-block">
-          <h5>Second slide label</h5>
-          <p>Some representative placeholder content for the second slide.</p>
-        </div>
-      </div>
-      <div class="carousel-item"  data-bs-interval="5000">
-        <img src="./public/img/img-3.jpg" class="d-block w-100 h-100" alt="...">
-        <div class="carousel-caption d-block">
-          <h5>Third slide label</h5>
-          <p>Some representative placeholder content for the third slide.</p>
-        </div>
-      </div>
-      <div class="carousel-item"  data-bs-interval="5000">
-        <img src="./public/img/img-4.jpg" class="d-block w-100 h-100" alt="...">
-        <div class="carousel-caption d-block">
-          <h5>Fourth slide label</h5>
-          <p>Some representative placeholder content for the third slide.</p>
-        </div>
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
-</section>
-<!-- ./img carousel -->
+  </section>
+  <!-- ./section navbar -->
 
-<!-- news -->
-<section class="news">
-  <div class="content d-block d-md-flex justify-content-space-between justify-content-lg-start">
-    <!-- content left  -->
-    <div class="content-left h-100 me-5">
-      <!-- headlines -->
-      <div class="d-block d-lg-flex justify-content-start align-items-start mb-3">
-        <div class="w-100">
-          <img src="./public/img/img-4.jpg" class="img-fluid shadow-sm"/>
+  <!-- section header -->
+  <section class="caraousel">
+    <div class="row g-3">
+      <!-- carousel -->
+      <div class="col-sm-6">
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5">
+            </button>
+          </div>
+          <div class="carousel-inner position-relative rounded">
+            <?php 
+              $i = 0;
+              while($data = mysqli_fetch_assoc($sql_carousel))
+              {
+                $i++;
+                echo '
+                  <div class="'.($i === 1 ? 'carousel-item active' : 'carousel-item ').'"  data-bs-interval="2000">
+                    <img src="./public/img_cover/'.$data['img_cover'].'" class="img-fluid" style="object-fit: cover;object-position: center;" alt="...">
+                    <div class="carousel-caption d-block">
+                      <a href="#">
+                        <h5>'.$data['title'].'</h5>
+                      </a>
+                      <p>BY : <span>'.$data['author'].'</span></p>
+                    </div>
+                  </div>
+                ';
+              }
+            ?>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
         </div>
-        <div class="w-100 headlines">
-          <h5>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam, nobis.
-          </h5>
-          <p class="upload">
-            <span>BY</span>
-            <span class="author">ADMIN</span>
-            <span>November 25,2021</span>
-          </p>
-          <p class="caption">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste molestiae quaerat ad obcaecati consequatur optio hic, est atque culpa magnam placeat temporibus debitis inventore incidunt?
-          </p>
-          <a href="#" class="btn btn-sm btn-link">Baca Selengkapna</a>
-        </div>
-      </div><!-- ./headlines -->
-
-      <!-- other news -->
-      <div class="other-news mb-2">
-        <div class="d-flex justify-content-start align-items-center mb-3">
-          <h5 class="me-1 category">Berita & Artikel</h5>
-          <hr/>
-        </div>
-
-        <!-- row 1 -->
-        <div class="row gx-3">
-          <!-- col-1 -->
-          <div class="col-12 col-lg-4 mb-2">
-            <a href="#" class="text-decoration-none">
-              <div class="card border-light">
-                <div class="overflow-hidden rounded-top">
-                  <img src="./public/img/img-1.jpg" class="card-img-top" alt="...">
+      </div>
+      <!-- ./carousel -->
+      <!-- news -->
+      <div class="col-sm-6">
+        <div class="row g-3">
+          <?php
+            while($data = mysqli_fetch_assoc($sql_news))
+            {
+              echo '
+                <div class="col-sm-6">
+                  <a href="#">
+                    <div class="card-news-header shadow rounded">
+                      <img src="./public/img_cover/'.$data['img_cover'].'" class="w-100 h-100" style="object-fit: cover;object-position: center;"/>
+                      <div class="px-2 caption">
+                        <span class="title">'.$data['title'].'</span></br>
+                        <span>
+                          <i class="fas fa-calendar-alt"></i>
+                          '.date("d / m / Y", strtotime($data['created_at'])).'
+                        </span>
+                        <span class="ms-2">
+                          <i class="fas fa-user-edit"></i>
+                          '.$data['author'].'
+                        </span>
+                      </div>
+                    </div>
+                  </a>
                 </div>
-                <div class="card-body">
-                  <h5 class="card-title text-dark">
-                    Some quick example text to build
+              ';
+            }
+          ?>
+        </div><!-- ./row -->
+      </div><!-- ./col-sm-6 -->
+      <!-- ./news -->
+    </div><!-- ./row -->
+  </section>
+  <!-- ./section header -->
+
+  <!-- section news -->
+  <section class="news">
+    <div class="content">
+      <div class="row g-0">
+        <div class="col-sm-9 pe-4">
+          <div class="d-flex justify-content-start align-items-center mb-3">
+            <h5 class="me-1 category">Berita</h5>
+            <hr style="border-color: #545961; background-color: #545961; opacity: 0.2; margin: 0 !important;"/>
+          </div>
+          <div class="row g-3">
+            <div class="col-sm-6">
+              <div class="d-block mb-3 shadow-sm">
+                <?php 
+                  $data = mysqli_fetch_assoc($sql_headline);
+                ?>
+                <div class="w-100">
+                  <img src="./public/img_cover/<?php echo $data['img_cover']?>" class="img-fluid shadow-sm mb-2 rounded"/>
+                </div>
+                <div class="w-100" style="padding:10px;">
+                  <h5>
+                    <a href="#">
+                      <?php echo $data['title']?>
+                    </a>
                   </h5>
-                  <p class="upload">
-                    <span>November 25,2021</span>
+                  <p class="datetime">
+                    <span><i class="fas fa-calendar-alt"></i> <?php echo date("d / m / Y", strtotime($data['created_at']))?></span>
+                    <span> <i class="fas fa-user-edit"></i> <?php echo $data['author']?></span>
                   </p>
+                  <?php echo substr(html_entity_decode($data['content']),0,200);?>
+                  <a href="#" class="btn btn-link px-0"><i>Baca Selengkapnya...</i></a>
                 </div>
-              </div><!-- ./card -->
-            </a>
+              </div><!-- ./headlines -->
+            </div><!-- ./col-sm-6 col-1 -->
+            <div class="col-sm-6">
+              <?php while($data = mysqli_fetch_assoc($sql_type_news)){?>
+                <div class="d-flex justify-content-start align-items-start mb-3 shadow-sm rounded" style="height:120px;overflow:hidden">
+                  <img src="./public/img_cover/<?php echo $data['img_cover']?>" class="w-50 me-2">
+                  <div>
+                    <h6><a href="#"><?php echo $data['title'] ?></a></h6>
+                    <p class="upload">
+                      <span><i class="fas fa-calendar-alt"></i> <?php echo date("d / m / Y", strtotime($data['created_at']))?></span>
+                      <span> <i class="fas fa-user-edit"></i> <?php echo $data['author']?></span>
+                    </p>
+                  </div>
+                </div><!-- ./d-block -->
+              <?php } ?>
+            </div><!-- ./col-sm-6 col-2 -->
+          </div><!-- ./row col-1 -->
+           
+          <!-- all post -->
+          <div class="d-flex justify-content-start align-items-center my-3">
+            <h5 class="me-1 category w-25">Semua Postingan</h5>
+            <hr style="border-color: #545961; background-color: #545961; opacity: 0.2; margin: 0 !important;"/>
           </div>
-          <!-- ./col-1 -->
+          <div class="row g-3">
+            <?php while($data = mysqli_fetch_assoc($sql)){ ?>
+              <div class="col-sm-3 mb-3">
+                <div class="card shadow-sm rounded overflow-hidden">
+                  <div class="card-body p-0">
+                    <div class="w-100">
+                      <img src="./public/img_cover/<?php echo $data['img_cover'] ?>" class="w-100" style="height:120px"/>
+                    </div>
+                    <div class="p-2">
+                      <p class="datetime">
+                        <span><i class="fas fa-calendar-alt"></i> <?php echo date("d / m / Y", strtotime($data['created_at']))?></span>
+                        <span> <i class="fas fa-user-edit"></i> <?php echo $data['author']?></span>
+                      </p>
+                      <h6>
+                          <a href="#">
+                            <?php echo $data['title']?>
+                          </a>
+                      </h6>
+                      <small class="text-secondary" style="font-size:0.7rem"><i><?php echo '#'.$data['category'].'  #'.$data['type'];?></i></small>
+                    </div><!-- ./p-2 -->
+                  </div><!-- ./card-body -->
+                </div><!-- ./card -->
+              </div><!-- ./col-sm-3 -->
+            <?php 
+            } 
+            if(mysqli_num_rows($sql) <= 0) echo '<p class="lead">Data Kosong</p>'
+            ?>
+            <?php 
+              echo '
+              <!-- Pagination -->
+              <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                  <li class="page-item">';
+                  // page previous
+                  if($page > 1)  
+                    echo '<a class="page-link" href="?page='.$prev.'"><span aria-hidden="true">&laquo;</span></a>';
+                  else 
+                    echo '<li class="page-item disabled"><span class="page-link">&laquo;</span></li>';
+                  echo '</li>';
+                  // show list page
+                  for ($i=1; $i <= $total_page; $i++) { 
+                    if($page == $i)
+                      echo '<li class="page-item active" aria-current="page"><a class="page-link" href="?page='.$i.'">'.$i.'</a></li>';
+                    else 
+                      echo '<li class="page-item"><a class="page-link" href="?page='.$i.'">'.$i.'</a></li>';
+                  }
+                  // page next
+                  echo '
+                  <li class="page-item">';
+                    if($page < $count) 
+                      echo '<a class="page-link" href="?page='.$next.'"><span aria-hidden="true">&raquo;</span></a>';
+                    else echo '<li class="page-item disabled"><span class="page-link">&raquo;</span></li>';
+                  echo '
+                  </li>
+                </ul><!-- ./pagination -->
+              </nav><!-- ./aria label pagination -->
+              ';
+            ?>
+          </div><!-- ./row -->
+          <!-- ./all post -->
+        </div><!-- ./col-sm-8 -->
+        <div class="col-sm-3">
+           <div class="card my-3">
+            <div class="card-header">
+               <h6 class="me-1 category">Postingan Lainnya</h6>
+            </div>
+            <div class="card-body p-1">
+              <div class="list-group list-group-flush" style="font-family:Poppins,sans-serif;">
+                <?php while($data = mysqli_fetch_assoc($sql_type)){ ?>
+                  <a href="#" class="list-group-item list-group-item-action py-2"><?php echo $data['type'] ?></a>
+                <?php } ?>
+              </div>
+            </div><!-- ./card-body -->
+          </div><!-- ./card -->     
           
-          <!-- col-2 -->
-          <div class="col-12 col-lg-4 mb-2">
-            <a href="#" class="text-decoration-none">
-              <div class="card border-light">
-                <div class="overflow-hidden rounded-top">
-                  <img src="./public/img/img-2.jpg" class="card-img-top" alt="...">
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title text-dark">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  </h5>
-                  <p class="upload">
-                    <span>November 25,2021</span>
-                  </p>
-                </div>
-              </div><!-- ./card -->
-            </a>
-          </div>
-          <!-- ./col-2 -->
-         
-          <!-- col-3 -->
-          <div class="col-12 col-lg-4 mb-2">
-             <a href="#" class="text-decoration-none">
-               <div class="card border-light">
-                <div class="overflow-hidden rounded-top">
-                  <img src="./public/img/img-3.jpg" class="card-img-top" alt="...">
-                </div>
-                 <div class="card-body">
-                   <h5 class="card-title text-dark">
-                     Id, fugit odit! Suscipit molestias voluptatibus dicta beatae dolorum aperiam corrupti cum.
-                   </h5>
-                  <p class="upload">
-                    <span>November 25,2021</span>
-                  </p>
-                 </div>
-               </div><!-- ./card -->
-             </a>
-          </div>
-          <!-- ./col-3 -->
-          
-          <!-- col-4 -->
-          <div class="col-12 col-lg-4 mb-2">
-             <a href="#" class="text-decoration-none">
-               <div class="card border-light">
-                <div class="overflow-hidden rounded-top">
-                  <img src="./public/img/img-4.jpg" class="card-img-top" alt="...">
-                </div>
-                 <div class="card-body">
-                   <h5 class="card-title text-dark">
-                     Id, fugit odit! Suscipit molestias voluptatibus dicta beatae dolorum aperiam corrupti cum.
-                   </h5>
-                  <p class="upload">
-                    <span>November 25,2021</span>
-                  </p>
-                 </div>
-               </div><!-- ./card -->
-             </a>
-          </div>
-          <!-- ./col-4 -->
-
-        </div><!-- ./row-1-->
-      </div><!-- ./other news -->
-    </div><!-- ./content left -->
-
-    <!-- content right  -->
-    <div class="content-right h-100">
-      <!-- list news -->
-      <div class="list-group mb-5">
-        <h5 class="me-1 category">Pengumuman</h5>
-        <a href="#" class="list-group-item list-group-item-action">
-          <div class="d-block d-lg-flex w-100 justify-content-between">
-            <h5 class="mb-1">List group item heading</h5>
-            <small>3 days ago</small>
-          </div>
-          <p class="mb-1">Some placeholder content in a paragraph.</p>
-          <small>And some small print.</small>
-        </a>
-        <div class="mb-2"></div>
-        <a href="#" class="list-group-item list-group-item-action">
-          <div class="d-block d-lg-flex w-100 justify-content-between">
-            <h5 class="mb-1">List group item heading</h5>
-            <small>3 days ago</small>
-          </div>
-          <p class="mb-1">Some placeholder content in a paragraph.</p>
-          <small>And some small print.</small>
-        </a>
-      </div>
-      <!-- ./list news -->
-
-      <!-- youtube -->
-      <iframe 
-        src="https://www.youtube.com/embed/X22kKZ98oCY?rel=0" 
-        frameborder="0" 
-        allowfullscreen>
-      </iframe> 
-      <!-- ./youtube -->
-    </div><!-- ./content right -->
-  </div> <!-- ./content -->
-</section>
-<!-- ./news -->
+          <div class="card my-3">
+            <div class="card-header">
+               <h6 class="me-1 category">Kategori</h6>
+            </div>
+            <div class="card-body p-1">
+              <div class="list-group list-group-flush" style="font-family:Poppins,sans-serif;">
+                <?php while($data = mysqli_fetch_assoc($sql_category)){ ?>
+                  <a href="#" class="list-group-item list-group-item-action py-2"><?php echo $data['category'] ?></a>
+                <?php } ?>
+              </div>
+            </div><!-- ./card-body -->
+          </div><!-- ./card -->          
+        </div><!-- ./col-sm-3 -->
+      </div><!-- ./row -->
+    </div><!-- ./content -->
+  </section>
+<!-- ./section news -->
 
 <!-- footer -->
 <div
-  class="footer-2-2 container-xxl mx-auto position-relative p-0 mt-3"
+  class="footer-2-2 container-xxl mx-auto position-relative p-0 mt-3 bg-light"
   style="font-family: 'Poppins', sans-serif"
 >
   <div class="list-footer">
@@ -470,16 +398,12 @@
         <div class="">
           <div class="list-space">
             <img
-              src="http://api.elements.buildwithangga.com/storage/files/2/assets/Header/Header2/Header-2-5.png"
-              alt=""
+              src="./public/img/logo.png" width="50" height="50"
             />
           </div>
           <nav class="list-unstyled">
             <li class="list-space">
               <a href="" class="list-menu">Home</a>
-            </li>
-            <li class="list-space">
-              <a href="" class="list-menu">About</a>
             </li>
             <li class="list-space">
               <a href="" class="list-menu">Features</a>
@@ -488,10 +412,7 @@
               <a href="" class="list-menu">Pricing</a>
             </li>
             <li class="list-space">
-              <a href="" class="list-menu">Testimonial</a>
-            </li>
-            <li class="list-space">
-              <a href="" class="list-menu">Help</a>
+              <a href="" class="list-menu">Blog</a>
             </li>
           </nav>
         </div>
@@ -549,30 +470,15 @@
       </div>
     </div>
   </div>
-  <div class="border-color info-footer">
+  <div class="border-color info-footer bg-white">
     <div class="">
       <hr class="hr" />
     </div>
-    <div
-      class="
-        mx-auto
-        d-flex
-        flex-column flex-lg-row
-        align-items-center
-        footer-info-space
-        gap-4
-      "
-    >
+    <div class="mx-auto d-flex flex-column flex-lg-row align-items-center footer-info-space gap-4">
       <div class="d-flex title-font font-medium align-items-center gap-4">
+        <!-- Facebook -->
         <a href="">
-          <svg
-            class="social-media-c"
-            width="30"
-            height="30"
-            viewBox="0 0 30 30"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+          <svg class="social-media-c" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="15" cy="15" r="15" fill="#C7C7C7" />
             <g clip-path="url(#clip0)">
               <path
@@ -582,25 +488,15 @@
             </g>
             <defs>
               <clipPath id="clip0">
-                <rect
-                  width="16"
-                  height="16"
-                  fill="white"
-                  transform="translate(7 7)"
-                />
+                <rect width="16" height="16" fill="white" transform="translate(7 7)"/>
               </clipPath>
             </defs>
           </svg>
         </a>
+        
+        <!-- Twitter -->
         <a href="">
-          <svg
-            class="social-media-c"
-            width="30"
-            height="30"
-            viewBox="0 0 30 30"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+          <svg class="social-media-c" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="15" cy="15" r="15" fill="#C7C7C7" />
             <g clip-path="url(#clip0)">
               <path
@@ -610,25 +506,15 @@
             </g>
             <defs>
               <clipPath id="clip0">
-                <rect
-                  width="16"
-                  height="16"
-                  fill="white"
-                  transform="translate(7 7)"
-                />
+                <rect width="16" height="16" fill="white" transform="translate(7 7)"/>
               </clipPath>
             </defs>
           </svg>
         </a>
+
+        <!-- IG -->
         <a href="">
-          <svg
-            class="social-media-p"
-            width="30"
-            height="30"
-            viewBox="0 0 30 30"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+          <svg class="social-media-p" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M17.8711 15C17.8711 16.5857 16.5857 17.8711 15 17.8711C13.4143 17.8711 12.1289 16.5857 12.1289 15C12.1289 13.4143 13.4143 12.1289 15 12.1289C16.5857 12.1289 17.8711 13.4143 17.8711 15Z"
               fill="#C7C7C7"
@@ -643,15 +529,8 @@
             />
           </svg>
         </a>
-        <a href="">
-          <svg
-            class="social-media-c"
-            width="30"
-            height="30"
-            viewBox="0 0 30 30"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+        <!-- <a href="">
+          <svg class="social-media-c" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="15" cy="15" r="15" fill="#C7C7C7" />
             <g clip-path="url(#clip0)">
               <path
@@ -661,59 +540,26 @@
             </g>
             <defs>
               <clipPath id="clip0">
-                <rect
-                  width="16"
-                  height="16"
-                  fill="white"
-                  transform="translate(7 7)"
-                />
+                <rect width="16" height="16" fill="white" transform="translate(7 7)"/>
               </clipPath>
             </defs>
           </svg>
-        </a>
+        </a> -->
       </div>
-      <nav
-        class="
-          mx-auto
-          d-flex
-          flex-wrap
-          align-items-center
-          justify-content-center
-          gap-4
-        "
-      >
-        <a href="" class="footer-link" style="text-decoration: none"
-          >Terms of Service</a
-        >
+      <nav class=" mx-auto d-flex flex-wrap align-items-center justify-content-center gap-4">
+        <a href="" class="footer-link" style="text-decoration: none">Terms of Service</a>
         <span>|</span>
-        <a href="" class="footer-link" style="text-decoration: none"
-          >Privacy Policy</a
-        >
+        <a href="" class="footer-link" style="text-decoration: none">Privacy Policy</a>
         <span>|</span>
-        <a href="" class="footer-link" style="text-decoration: none"
-          >Licenses</a
-        >
+        <a href="" class="footer-link" style="text-decoration: none">Licenses</a>
       </nav>
-      <nav
-        class="
-          d-flex
-          flex-lg-row flex-column
-          align-items-center
-          justify-content-center
-        "
-      >
-        <p style="margin: 0">Copyright © 2021 Analystic Max</p>
+      <nav class=" d-flex flex-lg-row flex-column align-items-center justify-content-center">
+        <p style="margin: 0">Copyright © 2021</p>
       </nav>
     </div>
   </div>
 </div>
 <!-- ./footer -->
-
 </body>
-<!-- <script
-  src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
-  crossorigin="anonymous"
-></script> -->
 <script src="./public/bootstrap-5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 </html>
