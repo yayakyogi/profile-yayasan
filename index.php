@@ -79,7 +79,7 @@
                 $i++;
                 echo '
                   <div class="'.($i === 1 ? 'carousel-item active' : 'carousel-item ').'"  data-bs-interval="2000">
-                    <img src="./public/img_cover/'.$data['img_cover'].'" class="img-fluid" style="object-fit: cover;object-position: center;" alt="...">
+                    <img src="./public/img_cover/'.$data['img_cover'].'" class="w-100 h-100" style="object-fit: cover;object-position: center;" alt="...">
                     <div class="carousel-caption d-block">
                       <a href="detail.php?id='.$data['id'].'">
                         <h5>'.$data['title'].'</h5>
