@@ -53,10 +53,10 @@
   <section class="h-100 w-100" style="box-sizing: border-box;position: relative; background-color: #fafcff;">
     <div class="header-3-3 container-xxl mx-auto p-0 position-relative" style="font-family: 'Poppins', sans-serif">
       <nav class="navbar navbar-expand-lg navbar-light">
-        <a href="#" class="text-decoration-none fs-5 text-dark">
+        <a href="#" class="text-decoration-none fs-5 text-dark" data-aos="fade-down" data-aos-duration="1500">
           <img style="margin-right: 0.75rem;" src="./public/img/logo.png" alt="logo" width=50 height=50/>AL-GHOIBI
         </a>
-        <button class="navbar-toggler border-0" type="button" data-bs-toggle="modal" data-bs-target="#targetModal-item">
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="modal" data-bs-target="#targetModal-item" data-aos="fade-down" data-aos-duration="2000">
           <span class="navbar-toggler-icon"></span>
         </button>
         <!-- Menu ketika di layar HP -->
@@ -109,9 +109,10 @@
             </div> <!-- ./modal-content -->
           </div> <!-- ./modal-dialog -->
         </div> <!-- ./modal-item -->
+        
         <!-- List menu ketika di PC -->
         <div class="collapse navbar-collapse" id="navbarTogglerDemo">
-          <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
+          <ul class="navbar-nav mx-auto mt-2 mt-lg-0" data-aos="fade-down" data-aos-duration="2000">
             <li class="nav-item position-relative">
               <a class="nav-link" href="#">Home</a>
             </li>
@@ -143,7 +144,7 @@
               </form><!-- ./form -->
             </li><!-- ./nav-item -->
           </ul><!-- ./navbar-nav -->
-          <a href="#" class="btn btn-fill text-white">Tentang kami</a>
+          <a href="#" class="btn btn-fill text-white" data-aos="fade-down" data-aos-duration="2500">Tentang kami</a>
         </div> <!-- ./navbar-collapse -->
       </nav> <!-- ./nav -->
     </div> <!-- ./header -->
@@ -165,7 +166,7 @@
     <div class="row g-3">
       <!-- carousel -->
       <div class="col-sm-6">
-        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <div id="carouselExampleCaptions" class="carousel slide" data-aos="fade-right" data-aos-duration="2000" data-bs-ride="carousel">
           <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -184,7 +185,7 @@
                   <div class="'.($i === 1 ? 'carousel-item active' : 'carousel-item ').'"  data-bs-interval="2000">
                     <img src="./public/img_cover/'.$data['img_cover'].'" class="img-fluid" style="object-fit: cover;object-position: center;" alt="...">
                     <div class="carousel-caption d-block">
-                      <a href="#">
+                      <a href="detail.php?id='.$data['id'].'">
                         <h5>'.$data['title'].'</h5>
                       </a>
                       <p>BY : <span>'.$data['author'].'</span></p>
@@ -212,8 +213,8 @@
             while($data = mysqli_fetch_assoc($sql_news))
             {
               echo '
-                <div class="col-sm-6">
-                  <a href="#">
+                <div class="col-sm-6" data-aos="fade-left" data-aos-duration="2000">
+                  <a href="detail.php?id='.$data['id'].'">
                     <div class="card-news-header shadow rounded">
                       <img src="./public/img_cover/'.$data['img_cover'].'" class="w-100 h-100" style="object-fit: cover;object-position: center;"/>
                       <div class="px-2 caption">
@@ -244,13 +245,16 @@
   <section class="news">
     <div class="content">
       <div class="row g-0">
+
         <div class="col-sm-9 pe-4">
-          <div class="d-flex justify-content-start align-items-center mb-3">
+          <div class="d-flex justify-content-start align-items-center mb-3" data-aos="fade-up" data-aos-duration="1000">
             <h5 class="me-1 category">Berita</h5>
             <hr style="border-color: #545961; background-color: #545961; opacity: 0.2; margin: 0 !important;"/>
           </div>
           <div class="row g-3">
-            <div class="col-sm-6">
+            
+            <!-- news main -->
+            <div class="col-sm-6" data-aos="fade-up" data-aos-duration="1200">
               <div class="d-block mb-3 shadow-sm">
                 <?php 
                   $data = mysqli_fetch_assoc($sql_headline);
@@ -260,7 +264,7 @@
                 </div>
                 <div class="w-100" style="padding:10px;">
                   <h5>
-                    <a href="#">
+                    <a href="detail.php?id=<?php echo $data['id'] ?>">
                       <?php echo $data['title']?>
                     </a>
                   </h5>
@@ -269,16 +273,19 @@
                     <span> <i class="fas fa-user-edit"></i> <?php echo $data['author']?></span>
                   </p>
                   <?php echo substr(html_entity_decode($data['content']),0,200);?>
-                  <a href="#" class="btn btn-link px-0"><i>Baca Selengkapnya...</i></a>
+                  <a href="detail.php?id='.$data['id'].'" class="btn btn-link px-0"><i>Baca Selengkapnya...</i></a>
                 </div>
               </div><!-- ./headlines -->
             </div><!-- ./col-sm-6 col-1 -->
+            <!-- ./news main -->
+
+            <!-- type post news -->
             <div class="col-sm-6">
               <?php while($data = mysqli_fetch_assoc($sql_type_news)){?>
-                <div class="d-flex justify-content-start align-items-start mb-3 shadow-sm rounded" style="height:120px;overflow:hidden">
+                <div class="d-flex justify-content-start align-items-start mb-3 shadow-sm rounded" data-aos="fade-up" data-aos-duration="1500" style="height:120px;overflow:hidden">
                   <img src="./public/img_cover/<?php echo $data['img_cover']?>" class="w-50 me-2">
                   <div>
-                    <h6><a href="#"><?php echo $data['title'] ?></a></h6>
+                    <h6><a href="detail.php?id=<?php echo $data['id'] ?>"><?php echo $data['title'] ?></a></h6>
                     <p class="upload">
                       <span><i class="fas fa-calendar-alt"></i> <?php echo date("d / m / Y", strtotime($data['created_at']))?></span>
                       <span> <i class="fas fa-user-edit"></i> <?php echo $data['author']?></span>
@@ -287,17 +294,19 @@
                 </div><!-- ./d-block -->
               <?php } ?>
             </div><!-- ./col-sm-6 col-2 -->
+            <!-- ./type post news -->
+          
           </div><!-- ./row col-1 -->
            
           <!-- all post -->
-          <div class="d-flex justify-content-start align-items-center my-3">
+          <div class="d-flex justify-content-start align-items-center my-3" data-aos="fade-up" data-aos-duration="1500">
             <h5 class="me-1 category w-25">Semua Postingan</h5>
             <hr style="border-color: #545961; background-color: #545961; opacity: 0.2; margin: 0 !important;"/>
           </div>
           <div class="row g-3">
-            <?php while($data = mysqli_fetch_assoc($sql)){ ?>
+            <?php while($data = mysqli_fetch_assoc($sql)){ $i=1; ?>
               <div class="col-sm-3 mb-3">
-                <div class="card shadow-sm rounded overflow-hidden">
+                <div class="card shadow-sm rounded overflow-hidden" data-aos="fade-up" data-aos-duration="1800">
                   <div class="card-body p-0">
                     <div class="w-100">
                       <img src="./public/img_cover/<?php echo $data['img_cover'] ?>" class="w-100" style="height:120px"/>
@@ -308,7 +317,7 @@
                         <span> <i class="fas fa-user-edit"></i> <?php echo $data['author']?></span>
                       </p>
                       <h6>
-                          <a href="#">
+                          <a href="detail.php?id=<?php echo $data['id'] ?>">
                             <?php echo $data['title']?>
                           </a>
                       </h6>
@@ -354,47 +363,52 @@
             ?>
           </div><!-- ./row -->
           <!-- ./all post -->
+
         </div><!-- ./col-sm-8 -->
+
         <div class="col-sm-3">
-           <div class="card my-3">
+          <!-- list type post -->  
+          <div class="card my-3" data-aos="fade-up" data-aos-duration="1500">
             <div class="card-header">
                <h6 class="me-1 category">Postingan Lainnya</h6>
             </div>
             <div class="card-body p-1">
               <div class="list-group list-group-flush" style="font-family:Poppins,sans-serif;">
                 <?php while($data = mysqli_fetch_assoc($sql_type)){ ?>
-                  <a href="#" class="list-group-item list-group-item-action py-2"><?php echo $data['type'] ?></a>
+                  <a href="search.php?type=<?php echo $data['type'] ?>" class="list-group-item list-group-item-action py-2"><?php echo $data['type'] ?></a>
                 <?php } ?>
               </div>
             </div><!-- ./card-body -->
-          </div><!-- ./card -->     
+          </div><!-- ./card -->
+          <!-- ./list type post -->
           
-          <div class="card my-3">
+          <!-- list category post -->
+          <div class="card my-3" data-aos="fade-up" data-aos-duration="1800">
             <div class="card-header">
                <h6 class="me-1 category">Kategori</h6>
             </div>
             <div class="card-body p-1">
               <div class="list-group list-group-flush" style="font-family:Poppins,sans-serif;">
                 <?php while($data = mysqli_fetch_assoc($sql_category)){ ?>
-                  <a href="#" class="list-group-item list-group-item-action py-2"><?php echo $data['category'] ?></a>
+                  <a href="search.php?type=<?php echo $data['category'] ?>" class="list-group-item list-group-item-action py-2"><?php echo $data['category'] ?></a>
                 <?php } ?>
               </div>
             </div><!-- ./card-body -->
-          </div><!-- ./card -->          
+          </div><!-- ./card -->  
+          <!-- ./list category post -->
+
         </div><!-- ./col-sm-3 -->
+
       </div><!-- ./row -->
     </div><!-- ./content -->
   </section>
 <!-- ./section news -->
 
 <!-- footer -->
-<div
-  class="footer-2-2 container-xxl mx-auto position-relative p-0 mt-3 bg-light"
-  style="font-family: 'Poppins', sans-serif"
->
+<div class="footer-2-2 container-xxl mx-auto position-relative p-0 mt-3 bg-light" style="font-family: 'Poppins', sans-serif">
   <div class="list-footer">
     <div class="row gap-md-0 gap-3">
-      <div class="col-lg-3 col-md-6">
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-duration="1500">
         <div class="">
           <div class="list-space">
             <img
@@ -417,7 +431,7 @@
           </nav>
         </div>
       </div>
-      <div class="col-lg-3 col-md-6">
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-duration="1800">
         <h2 class="footer-text-title">Product</h2>
         <nav class="list-unstyled">
           <li class="list-space">
@@ -437,7 +451,7 @@
           </li>
         </nav>
       </div>
-      <div class="col-lg-3 col-md-6">
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-duration="2100">
         <h2 class="footer-text-title">Company</h2>
         <nav class="list-unstyled">
           <li class="list-space">
@@ -454,7 +468,7 @@
           </li>
         </nav>
       </div>
-      <div class="col-lg-3 col-md-6">
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-duration="2400">
         <h2 class="footer-text-title">Support</h2>
         <nav class="list-unstyled">
           <li class="list-space">
@@ -470,6 +484,7 @@
       </div>
     </div>
   </div>
+
   <div class="border-color info-footer bg-white">
     <div class="">
       <hr class="hr" />
@@ -562,4 +577,8 @@
 <!-- ./footer -->
 </body>
 <script src="./public/bootstrap-5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
 </html>
