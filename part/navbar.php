@@ -40,9 +40,9 @@
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M8.85503 8.89848C9.12839 8.62512 9.57161 8.62512 9.84497 8.89848L14.045 13.0985C14.3183 13.3718 14.3183 13.8151 14.045 14.0884C13.7716 14.3618 13.3284 14.3618 13.055 14.0884L8.85503 9.88843C8.58166 9.61506 8.58166 9.17185 8.85503 8.89848Z" fill="#8B9CAF"/>
                       </svg>
                     </a>
-                    <form method="POST" class="collapse position-absolute form center-search border-0" id="collapse">
+                    <form method="POST" action="search.php" class="collapse position-absolute form center-search border-0" id="collapse">
                       <div class="d-flex">
-                        <input type="text" class="rounded-full border-0 focus:outline-none" placeholder="Search">
+                        <input type="text" name="type" class="rounded-full border-0 focus:outline-none" placeholder="Cari...">
                         <button class="btn" type="button"> 
                           <svg   style="width: 20px; height: 20px"   data-bs-toggle="collapse"   href="#collapse"   role="button"   aria-expanded="false"   aria-controls="collapse"   fill="none"   stroke="#273B56"   viewBox="0 0 24 24"   xmlns="http://www.w3.org/2000/svg" >
                             <path stroke-linecap="round"pathinfo stroke-linejoin="round"pathinfo stroke-width="2"pathinfo d="M6 18L18 6M6 6l12 12"></path>
@@ -54,7 +54,7 @@
                 </ul><!-- ./navbar-nav -->
               </div> <!-- ./modal-body -->
               <div class="modal-footer border-0" style="padding: 2rem; padding-top: 0.75rem">
-                <button class="btn btn-fill text-white">Sign In</button>
+                <button class="btn btn-fill text-white">Tentang Kami</button>
               </div> <!-- ./modal-footter -->
             </div> <!-- ./modal-content -->
           </div> <!-- ./modal-dialog -->
@@ -82,9 +82,9 @@
                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.85503 8.89848C9.12839 8.62512 9.57161 8.62512 9.84497 8.89848L14.045 13.0985C14.3183 13.3718 14.3183 13.8151 14.045 14.0884C13.7716 14.3618 13.3284 14.3618 13.055 14.0884L8.85503 9.88843C8.58166 9.61506 8.58166 9.17185 8.85503 8.89848Z" fill="#8B9CAF"/>
                  </svg>
                </a>
-               <form class="collapse position-absolute form center-search border-0 shadow" id="collapse">
+               <form method="POST" action="search.php" class="collapse position-absolute form center-search border-0 shadow" id="collapse">
                  <div class="d-flex">
-                   <input type="text" class="rounded-full border-0 focus:outline-none" placeholder="Search"/>
+                   <input type="text" name="type" class="rounded-full border-0 focus:outline-none" placeholder="Search"/>
                    <button class="btn" type="button">
                      <svg style="width: 20px; height: 20px" data-bs-toggle="collapse" href="#collapse" role="button" aria-expanded="false" aria-controls="collapse" fill="none" stroke="#273B56" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
