@@ -13,7 +13,7 @@
     exit;
   }
 
-  $query = "SELECT * FROM tb_post WHERE type LIKE '%$type%' OR category LIKE '%$type%'";
+  $query = "SELECT * FROM tb_post WHERE type LIKE '%$type%' OR category LIKE '%$type%' OR title LIKE '%$type%'";
   $sql = mysqli_query($conn,$query);
   $count = mysqli_num_rows($sql);
 
@@ -34,7 +34,7 @@
             <h5 class="me-1 category w-25"><?php echo $count ?> Data Ditemukan</h5>
             <hr style="border-color: #545961; background-color: #545961; opacity: 0.2; margin: 0 !important;"/>
           </div>
-          <div class="row g-3 px-2">
+          <div class="row g-3">
             <?php while($data = mysqli_fetch_assoc($sql)){ ?>
               <div class="col-sm-3 mb-3">
                 <div class="card shadow-sm rounded overflow-hidden" data-aos="fade-up" data-aos-duration="1800">
