@@ -50,6 +50,10 @@
           <div data-aos="fade-up" data-aos-duration="1200">
             <?php echo html_entity_decode($data['content'])?>
           </div>
+          <?php if($data['file']){ ?>
+            <h5 data-aos="fade-up" data-aos-duration="1300">Lampiran</h5>
+            <a class="btn btn-link" data-aos="fade-up" data-aos-duration="1400" href="./public/file/<?php echo $data['file'] ?>"><?php echo $data['file'] ?></a>
+          <?php } ?>
           <!-- ./content-detail -->
           
           </br>
