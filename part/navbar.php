@@ -22,16 +22,16 @@
               <div class="modal-body" style="padding: 2rem; padding-top: 0; padding-bottom: 0">
                 <ul class="navbar-nav responsive me-auto mt-2 mt-lg-0">
                   <li class="nav-item active position-relative">
-                    <a class="nav-link" href="#">Home</a>
+                    <a class="nav-link" href="#">Beranda</a>
                   </li>
                   <li class="nav-item position-relative">
-                    <a class="nav-link" href="#">Feature</a>
+                    <a class="nav-link" href="#">Profil Yayasan</a>
                   </li>
                   <li class="nav-item position-relative">
-                    <a class="nav-link" href="#">Pricing</a>
+                    <a class="nav-link" href="#">Visi & Misi</a>
                   </li>
                   <li class="nav-item position-relative">
-                    <a class="nav-link" href="#">Blog</a>
+                    <a class="nav-link" href="#">Berita</a>
                   </li>
                   <li class="nav-item position-relative">
                     <a class="nav-link" data-bs-toggle="collapse" href="#collapse" role="button" aria-expanded="false" aria-controls="collapse">
@@ -64,16 +64,16 @@
         <div class="collapse navbar-collapse" id="navbarTogglerDemo">
           <ul class="navbar-nav mx-auto mt-2 mt-lg-0" data-aos="fade-down" data-aos-duration="2000">
             <li class="nav-item position-relative">
-              <a class="nav-link" href="#">Home</a>
+              <a class="nav-link" href="#">Beranda</a>
             </li>
             <li class="nav-item position-relative">
-              <a class="nav-link" href="#">Feature</a>
+              <a class="nav-link" href="#">Profil Yayasan</a>
             </li>
              <li class="nav-item position-relative">
-               <a class="nav-link" href="#">Pricing</a>
+               <a class="nav-link" href="#">Visi & Misi</a>
              </li>
              <li class="nav-item position-relative">
-               <a class="nav-link" href="#">Blog</a>
+               <a class="nav-link" href="#">Berita</a>
              </li>
              <li class="nav-item my-auto">
                <a class="nav-link" data-bs-toggle="collapse" href="#collapse" role="button" aria-expanded="false" aria-controls="collapse"> 
@@ -82,7 +82,7 @@
                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.85503 8.89848C9.12839 8.62512 9.57161 8.62512 9.84497 8.89848L14.045 13.0985C14.3183 13.3718 14.3183 13.8151 14.045 14.0884C13.7716 14.3618 13.3284 14.3618 13.055 14.0884L8.85503 9.88843C8.58166 9.61506 8.58166 9.17185 8.85503 8.89848Z" fill="#8B9CAF"/>
                  </svg>
                </a>
-               <form method="POST" action="search.php" class="collapse position-absolute form center-search border-0 shadow" id="collapse">
+               <form method="POST" action="search.php" class="collapse position-absolute form center-search border-0 shadow" id="collapse" style="margin-left:-20px;width: 400px;">
                  <div class="d-flex">
                    <input type="text" name="type" class="rounded-full border-0 focus:outline-none" placeholder="Search"/>
                    <button class="btn" type="button">
