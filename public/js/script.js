@@ -16,20 +16,3 @@ window.addEventListener("DOMContentLoaded", (event) => {
     });
   }
 });
-
-function messageError() {
-  console.log("OK");
-  //   Swal.fire({
-  //     icon: "error",
-  //     title: title,
-  //     text: message,
-  //   });
-}
-
-const messageSuccess = ({ $title, $message }) => {
-  Swal.fire({
-    icon: "success",
-    title: $title,
-    text: $message,
-  });
-};
