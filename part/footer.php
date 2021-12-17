@@ -1,93 +1,85 @@
-<?php 
+
+<?php
   function footer()
   {
+    global $conn;
+    $query_category = "SELECT * FROM tb_category";
+    $sql_category = mysqli_query($conn,$query_category); 
+    
     echo '
     <!-- footer -->
       <div class="footer-2-2 container-xxl mx-auto position-relative p-0 mt-3 bg-light" style="font-family: "Poppins", sans-serif">
         <div class="list-footer">
           <div class="row gap-md-0 gap-3">
             <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-duration="1500">
-              <div class="">
-                <div class="list-space">
-                  <img
-                    src="./public/img/logo.png" width="50" height="50"
-                  />
+              <img src="./public/img/logo.png" width="100" height="100"/>
+            </div>
+            <!-- col-profil -->
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-duration="1750">
+              <h2 class="footer-text-title">Profil Yayasan</h2>
+              <nav class="list-unstyled">
+                <li class="list-space">
+                  <p class="list-menu">Nama Yayasan :</br> <span class="fw-bolder text-dark">Yayasanku</span></p>
+                </li>
+                <li class="list-space">
+                  <p class="list-menu">Alamat :</br> <span class="fw-bolder text-dark">Jln Lorem ipsum dolor</span></p>
+                </li>
+                <li class="list-space">
+                  <p class="list-menu">Kontak :</br> <span class="fw-bolder text-dark">0812345678</span></p>
+                </li>
+                <li class="list-space">
+                  <p class="list-menu">Email :</br> <span class="fw-bolder text-dark">yayasanku@gmail.com</span></p>
+                </li>
+              </nav>
+            </div>
+            <!-- ./col-profil -->
+
+            <!-- col-kategori -->
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-duration="2000">
+              <h2 class="footer-text-title">Kategori</h2>
+              <nav class="list-unstyled">';
+
+                while($data = mysqli_fetch_assoc($sql_category)){
+                echo '
+                  <li class="list-space">
+                    <a href="#" class="list-menu">'.$data['category'].'</a>
+                  </li>
+                ';
+                }
+              echo '
+              </nav>
+            </div>
+            <!-- ./col-kategori -->
+
+            <!-- col-form -->
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-duration="2250">
+              <h2 class="footer-text-title">Kritik & Saran</h2>
+              <form method="" action="#">
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">Email</label>
+                  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan email anda">
                 </div>
-                <nav class="list-unstyled">
-                  <li class="list-space">
-                    <a href="" class="list-menu">Home</a>
-                  </li>
-                  <li class="list-space">
-                    <a href="" class="list-menu">Features</a>
-                  </li>
-                  <li class="list-space">
-                    <a href="" class="list-menu">Pricing</a>
-                  </li>
-                  <li class="list-space">
-                    <a href="" class="list-menu">Blog</a>
-                  </li>
-                </nav>
-              </div>
+                <div class="mb-4">
+                  <label for="exampleFormControlTextarea1" class="form-label">Kritik & Saran</label>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="Masukkan kritik & saran anda disini"></textarea>
+                </div>
+                <button type="submit" class="btn btn-success">Kirim</button>
+              </form>
             </div>
-            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-duration="1800">
-              <h2 class="footer-text-title">Product</h2>
-              <nav class="list-unstyled">
-                <li class="list-space">
-                  <a href="" class="list-menu">Real Time Analytic</a>
-                </li>
-                <li class="list-space">
-                  <a href="" class="list-menu">Easy to Operate</a>
-                </li>
-                <li class="list-space">
-                  <a href="" class="list-menu">Full Secured</a>
-                </li>
-                <li class="list-space">
-                  <a href="" class="list-menu">Analytic Tool</a>
-                </li>
-                <li class="list-space">
-                  <a href="" class="list-menu">Story</a>
-                </li>
-              </nav>
-            </div>
-            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-duration="2100">
-              <h2 class="footer-text-title">Company</h2>
-              <nav class="list-unstyled">
-                <li class="list-space">
-                  <a href="" class="list-menu">Contact Us</a>
-                </li>
-                <li class="list-space">
-                  <a href="" class="list-menu">Blog</a>
-                </li>
-                <li class="list-space">
-                  <a href="" class="list-menu">Culture</a>
-                </li>
-                <li class="list-space">
-                  <a href="" class="list-menu">Security</a>
-                </li>
-              </nav>
-            </div>
-            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-duration="2400">
-              <h2 class="footer-text-title">Support</h2>
-              <nav class="list-unstyled">
-                <li class="list-space">
-                  <a href="" class="list-menu">Getting Started</a>
-                </li>
-                <li class="list-space">
-                  <a href="" class="list-menu">Help Center</a>
-                </li>
-                <li class="list-space">
-                  <a href="" class="list-menu">Server Status</a>
-                </li>
-              </nav>
-            </div>
-          </div>
-        </div>
+            <!-- ./col-form -->
+
+          </div><!-- ./row -->
+        </div><!-- ./list-footer -->
 
         <div class="border-color info-footer bg-white">
           <div class="">
             <hr class="hr" />
           </div>
-          <div class="mx-auto d-flex flex-column flex-lg-row align-items-center footer-info-space gap-4">
+          <div class="mx-auto d-flex flex-column align-items-center justify-content-center footer-info-space gap-4">
+            <nav class=" d-flex flex-lg-row flex-column align-items-center justify-content-center">
+              <p style="margin: 0">Copyright © 2021 - Yayasanku</p>
+            </nav>
+          
             <div class="d-flex title-font font-medium align-items-center gap-4">
               <!-- Facebook -->
               <a href="">
@@ -142,35 +134,9 @@
                   />
                 </svg>
               </a>
-              <!-- <a href="">
-                <svg class="social-media-c" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="15" cy="15" r="15" fill="#C7C7C7" />
-                  <g clip-path="url(#clip0)">
-                    <path
-                      d="M17.9027 22.4467C17.916 22.4427 17.9287 22.4373 17.942 22.4327C26.0853 19.1973 23.8327 7 15 7C10.5673 7 7 10.6133 7 15C7 20.5513 12.6227 24.5127 17.9027 22.4467ZM10.5207 20.3727C11.0887 19.418 12.9267 16.7247 16.064 15.7953C16.72 17.468 17.18 19.4193 17.2253 21.632C14.848 22.4313 12.3407 21.8933 10.5207 20.3727V20.3727ZM18.2087 21.2147C18.1213 19.0887 17.6873 17.2033 17.0687 15.57C18.4567 15.3533 20.0633 15.498 21.8853 16.228C21.498 18.402 20.108 20.2293 18.2087 21.2147V21.2147ZM21.99 15.194C19.9833 14.44 18.2147 14.346 16.684 14.638C16.4473 14.1047 16.1987 13.592 15.9353 13.12C18.284 12.182 19.672 11.0387 20.2933 10.4333C21.39 11.7027 22.0413 13.346 21.99 15.194V15.194ZM19.5833 9.72133C19.018 10.2593 17.6867 11.346 15.41 12.2347C14.294 10.4693 13.1007 9.224 12.3447 8.52667C14.7633 7.53067 17.5527 7.956 19.5833 9.72133V9.72133ZM11.3887 9.01533C11.9593 9.51733 13.212 10.7227 14.4207 12.5867C12.7607 13.1213 10.6793 13.514 8.148 13.5693C8.55067 11.64 9.75333 10.0053 11.3887 9.01533V9.01533ZM8.02133 14.5733C10.8547 14.5273 13.148 14.08 14.9607 13.4747C15.2113 13.914 15.4493 14.3927 15.678 14.89C12.5213 15.8953 10.5487 18.4907 9.79333 19.6627C8.57467 18.3027 7.90267 16.528 8.02133 14.5733V14.5733Z"
-                      fill="white"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0">
-                      <rect width="16" height="16" fill="white" transform="translate(7 7)"/>
-                    </clipPath>
-                  </defs>
-                </svg>
-              </a> -->
-            </div>
-            <nav class=" mx-auto d-flex flex-wrap align-items-center justify-content-center gap-4">
-              <a href="" class="footer-link" style="text-decoration: none">Terms of Service</a>
-              <span>|</span>
-              <a href="" class="footer-link" style="text-decoration: none">Privacy Policy</a>
-              <span>|</span>
-              <a href="" class="footer-link" style="text-decoration: none">Licenses</a>
-            </nav>
-            <nav class=" d-flex flex-lg-row flex-column align-items-center justify-content-center">
-              <p style="margin: 0">Copyright © 2021</p>
-            </nav>
-          </div>
-        </div>
+            </div><!-- ./d-flex -->
+          </div><!-- ./d-flex-row -->
+        </div><!-- ./info-footer -->
       </div>
     <!-- ./footer -->
   ';
