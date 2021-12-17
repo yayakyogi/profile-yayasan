@@ -82,13 +82,13 @@
 <body>
   <nav class="sb-topnav position-fixed w-100 navbar navbar-expand navbar-dark bg-dark shadow">
     <a class="navbar-brand ps-3" href="index.html">
-      <img style="margin-right: 0.75rem;" src="../public/img/logo.png" alt="logo" width=40 height=40/>
+      <img style="margin-right: 0.75rem;" src="../public/img/logo.png" alt="logo" width="40" height="40"/>
         DASHBOARD
     </a>
     <button 
-      class="btn btn-link btn-sm order-1 order-lg-0 me-3 me-lg-0 ms-lg-3" 
+      class="btn d-block d-lg-none btn-link btn-sm order-1 order-lg-0 me-3 me-lg-0 ms-lg-3" 
       id="sidebarToggle" 
-      href="#!"
+      href="#"
     >
       <i class="fas fa-bars"></i>
     </button>
