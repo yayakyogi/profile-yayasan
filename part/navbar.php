@@ -54,7 +54,7 @@
                 </ul><!-- ./navbar-nav -->
               </div> <!-- ./modal-body -->
               <div class="modal-footer border-0" style="padding: 2rem; padding-top: 0.75rem">
-                <a href="#" class="btn btn-fill text-white" data-aos="fade-down" data-aos-duration="2500">Login</a>
+                <a href="app/login.php" class="btn btn-fill text-white" data-aos="fade-down" data-aos-duration="2500">Login</a>
               </div> <!-- ./modal-footter -->
             </div> <!-- ./modal-content -->
           </div> <!-- ./modal-dialog -->
@@ -82,7 +82,7 @@
                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.85503 8.89848C9.12839 8.62512 9.57161 8.62512 9.84497 8.89848L14.045 13.0985C14.3183 13.3718 14.3183 13.8151 14.045 14.0884C13.7716 14.3618 13.3284 14.3618 13.055 14.0884L8.85503 9.88843C8.58166 9.61506 8.58166 9.17185 8.85503 8.89848Z" fill="#8B9CAF"/>
                  </svg>
                </a>
-               <form method="POST" action="search.php" class="collapse position-absolute form center-search border-0 shadow" id="collapse" style="margin-left:-20px;width: 400px;">
+               <form method="POST" action="search.php" class="collapse position-absolute form center-search border-0 shadow" id="collapse" style="margin-left:-50px;width: 400px;">
                  <div class="d-flex">
                    <input type="text" name="type" class="rounded-full border-0 focus:outline-none" placeholder="Search"/>
                    <button class="btn" type="button">
@@ -94,7 +94,7 @@
                </form><!-- ./form -->
              </li><!-- ./nav-item -->
             </ul><!-- ./navbar-nav -->
-            <a href="#" class="btn btn-fill text-white" data-aos="fade-down" data-aos-duration="1500">Login</a>
+            <a href="app/login.php" class="btn btn-fill text-white" data-aos="fade-down" data-aos-duration="1500">Login</a>
           </div> <!-- ./navbar-collapse -->
         </nav> <!-- ./nav -->
       </div> <!-- ./header -->
