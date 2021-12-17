@@ -3,10 +3,10 @@
   <section class="h-100 w-100" style="box-sizing: border-box;position: relative; background-color: #fafcff;">
     <div class="header-3-3 container-xxl mx-auto p-0 position-relative" style="font-family: 'Poppins', sans-serif">
       <nav class="navbar navbar-expand-lg navbar-light">
-        <a href="?" class="text-decoration-none fs-5 text-dark" data-aos="fade-down" data-aos-duration="1500">
+        <a href="?" class="text-decoration-none fs-5 text-dark" data-aos="fade-down" data-aos-duration="1000">
           <img style="margin-right: 0.75rem;" src="./public/img/logo.png" alt="logo" width=50 height=50/>AL-GHOIBI
         </a>
-        <button class="navbar-toggler border-0" type="button" data-bs-toggle="modal" data-bs-target="#targetModal-item" data-aos="fade-down" data-aos-duration="2000">
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="modal" data-bs-target="#targetModal-item">
           <span class="navbar-toggler-icon"></span>
         </button>
         <!-- Menu ketika di layar HP -->
@@ -54,15 +54,15 @@
                 </ul><!-- ./navbar-nav -->
               </div> <!-- ./modal-body -->
               <div class="modal-footer border-0" style="padding: 2rem; padding-top: 0.75rem">
-                <button class="btn btn-fill text-white">Tentang Kami</button>
+                <a href="#" class="btn btn-fill text-white" data-aos="fade-down" data-aos-duration="2500">Login</a>
               </div> <!-- ./modal-footter -->
             </div> <!-- ./modal-content -->
           </div> <!-- ./modal-dialog -->
         </div> <!-- ./modal-item -->
             
         <!-- List menu ketika di PC -->
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo">
-          <ul class="navbar-nav mx-auto mt-2 mt-lg-0" data-aos="fade-down" data-aos-duration="2000">
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo" data-aos="fade-down" data-aos-duration="1200">
+          <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
             <li class="nav-item position-relative">
               <a class="nav-link" href="#">Beranda</a>
             </li>
@@ -94,7 +94,7 @@
                </form><!-- ./form -->
              </li><!-- ./nav-item -->
             </ul><!-- ./navbar-nav -->
-            <a href="#" class="btn btn-fill text-white" data-aos="fade-down" data-aos-duration="2500">Tentang kami</a>
+            <a href="#" class="btn btn-fill text-white" data-aos="fade-down" data-aos-duration="1500">Login</a>
           </div> <!-- ./navbar-collapse -->
         </nav> <!-- ./nav -->
       </div> <!-- ./header -->
