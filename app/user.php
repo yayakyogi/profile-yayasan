@@ -362,9 +362,9 @@
                 <input type="hidden" name="id" value="'.$id.'"/>
                 ';
                   formDetail('img','Foto Profil',$data['img']);
-                  formInput('file','Upload Foto Baru','img','','');
+                  formInput('edit-admin','file','Upload Foto Baru','img','','');
               echo'
-                <button type="submit" class="btn btn-success mt-2">Simpan</button>
+                <button type="submit" class="btn btn-success mt-2"><i class="fas fa-save"></i> Simpan</button>
               </form><!-- ./form -->
             </div><!-- ./card-body -->
           </div><!-- ./card -->
