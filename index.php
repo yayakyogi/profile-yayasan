@@ -10,22 +10,9 @@
   $query_carousel = "SELECT * FROM tb_post ORDER BY created_at DESC LIMIT 0,5";
   $sql_carousel = mysqli_query($conn,$query_carousel);
 
-  // get data for news header
-  $query_news = "SELECT * FROM tb_post LIMIT 0, 4";
-  $sql_news = mysqli_query($conn,$query_news);
-
   // get data headline
   $query_headline = "SELECT * FROM tb_post ORDER BY created_at DESC LIMIT 0, 1";
   $sql_headline = mysqli_query($conn,$query_headline);
-
-  // get data post news
-  $query_type_news = "SELECT * FROM tb_post WHERE type='Berita' ORDER BY created_at DESC LIMIT 1, 4";
-  $sql_type_news = mysqli_query($conn,$query_type_news);
-
-  // get data post article
-  $query_type_article = "SELECT * FROM tb_post WHERE type='Artikel'";
-  $sql_type_articel = mysqli_query($conn,$query_type_news);
-
 
   // pagination
   $limit = 7;
