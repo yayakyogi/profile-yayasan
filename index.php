@@ -56,84 +56,49 @@
   <!-- section navbar -->
   <?php navbar() ?>
   <!-- ./section navbar -->
-
+  
   <!-- section header -->
   <section class="caraousel">
-    <div class="row g-3">
-      <!-- carousel -->
-      <div class="col-sm-6">
-        <div id="carouselExampleCaptions" class="carousel slide" data-aos="fade-right" data-aos-duration="2000" data-bs-ride="carousel">
-          <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4">
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5">
-            </button>
-          </div>
-          <div class="carousel-inner position-relative rounded">
-            <?php 
-              $i = 0;
-              while($data = mysqli_fetch_assoc($sql_carousel))
-              {
-                $i++;
-                echo '
-                  <div class="'.($i === 1 ? 'carousel-item active' : 'carousel-item ').'"  data-bs-interval="2000">
-                    <img src="./public/img_cover/'.$data['img_cover'].'" class="w-100 h-100" style="object-fit: cover;object-position: center;" alt="...">
-                    <div class="carousel-caption d-block">
-                      <a href="detail.php?id='.$data['id'].'">
-                        <h5>'.$data['title'].'</h5>
-                      </a>
-                      <p>BY : <span>'.$data['author'].'</span></p>
-                    </div>
-                  </div>
-                ';
-              }
-            ?>
-          </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div>
+    <!-- carousel -->
+    <div id="carouselExampleCaptions" class="carousel slide" data-aos="fade-up" data-aos-duration="1500" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5">
+        </button>
       </div>
-      <!-- ./carousel -->
-      <!-- news -->
-      <div class="col-sm-6">
-        <div class="row g-3">
-          <?php
-            while($data = mysqli_fetch_assoc($sql_news))
-            {
-              echo '
-                <div class="col-sm-6" data-aos="fade-left" data-aos-duration="2000">
+      <div class="carousel-inner position-relative rounded">
+        <?php 
+          $i = 0;
+          while($data = mysqli_fetch_assoc($sql_carousel))
+          {
+            $i++;
+            echo '
+              <div class="'.($i === 1 ? 'carousel-item active' : 'carousel-item ').'"  data-bs-interval="5000">
+                <img src="./public/img_cover/'.$data['img_cover'].'" class="w-100 h-100" style="object-fit: cover;object-position: center;" alt="...">
+                <div class="carousel-caption d-block text-start" data-aos="fade-up" data-aos-duration="1800">
                   <a href="detail.php?id='.$data['id'].'">
-                    <div class="card-news-header shadow rounded">
-                      <img src="./public/img_cover/'.$data['img_cover'].'" class="w-100 h-100" style="object-fit: cover;object-position: center;"/>
-                      <div class="px-2 caption">
-                        <span class="title">'.$data['title'].'</span></br>
-                        <span>
-                          <i class="fas fa-calendar-alt"></i>
-                          '.date("d / m / Y", strtotime($data['created_at'])).'
-                        </span>
-                        <span class="ms-2">
-                          <i class="fas fa-user-edit"></i>
-                          '.$data['author'].'
-                        </span>
-                      </div>
-                    </div>
+                    <h5>'.$data['title'].'</h5>
                   </a>
+                  <p>BY : <span>'.$data['author'].'</span></p>
                 </div>
-              ';
-            }
-          ?>
-        </div><!-- ./row -->
-      </div><!-- ./col-sm-6 -->
-      <!-- ./news -->
-    </div><!-- ./row -->
+              </div>
+            ';
+          }
+        ?>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    <!-- ./carousel -->
   </section>
   <!-- ./section header -->
 
