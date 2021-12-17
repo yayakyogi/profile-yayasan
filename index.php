@@ -58,7 +58,7 @@
   <!-- ./section navbar -->
   
   <!-- section header -->
-  <section class="caraousel">
+  <section class="caraousel mb-3">
     <!-- carousel -->
     <div id="carouselExampleCaptions" class="carousel slide" data-aos="fade-up" data-aos-duration="1500" data-bs-ride="carousel">
       <div class="carousel-indicators">
@@ -102,28 +102,27 @@
   </section>
   <!-- ./section header -->
 
-  <!-- section news -->
+  <!-- section post and foto -->
   <section class="news">
-    <div class="content">
-      <div class="row g-0">
-
-        <div class="col-sm-9 pe-4">
-          <div class="d-flex justify-content-start align-items-center mb-3" data-aos="fade-up" data-aos-duration="1000">
-            <h5 class="me-1 category">Berita</h5>
-            <hr style="border-color: #545961; background-color: #545961; opacity: 0.2; margin: 0 !important;"/>
-          </div>
-          <div class="row g-3">
-  
-            <!-- news main -->
-            <div class="col-sm-6" data-aos="fade-up" data-aos-duration="1200">
-              <div class="d-block mb-3 shadow-sm">
-                <?php 
-                  $data = mysqli_fetch_assoc($sql_headline);
-                ?>
+   <div class="content">
+     <div class="d-flex justify-content-start align-items-center mb-4">
+       <h5 class="me-1 category w-25" data-aos="fade-up" data-aos-duration="1000">Postingan terbaru</h5>
+       <hr style="border-color: #545961; background-color: #545961; opacity: 0.2; margin: 0 !important;" data-aos="fade-up" data-aos-duration="1100"/>
+     </div>
+     <div class="row g-2">
+       <!-- news post -->
+       <div class="col-sm-7" data-aos="fade-up" data-aos-duration="1300">
+          <div class="row g-3"><!-- headline -->
+            <?php 
+              $data = mysqli_fetch_assoc($sql_headline);
+            ?>
+              <div class="col-sm-6">
                 <div class="w-100">
                   <img src="./public/img_cover/<?php echo $data['img_cover']?>" class="img-fluid shadow-sm mb-2 rounded"/>
                 </div>
-                <div class="w-100" style="padding:10px;">
+              </div>
+              <div class="col-sm-6">
+                <div class="w-100" style="padding:0 10px 10px 0">
                   <h5>
                     <a href="detail.php?id=<?php echo $data['id'] ?>">
                       <?php echo $data['title']?>
@@ -136,105 +135,33 @@
                   <?php echo substr(html_entity_decode($data['content']),0,200);?>
                   <a href="detail.php?id=<?php echo $data['id'] ?>" class="btn btn-link px-0"><i>Baca Selengkapnya...</i></a>
                 </div>
-              </div><!-- ./headlines -->
-            </div><!-- ./col-sm-6 col-1 -->
-            <!-- ./news main -->
-
-            <!-- type post news -->
-            <div class="col-sm-6">
-              <?php while($data = mysqli_fetch_assoc($sql_type_news)){?>
-                <div class="d-flex justify-content-start align-items-start mb-3 shadow-sm rounded" data-aos="fade-up" data-aos-duration="1500" style="height:120px;overflow:hidden">
-                  <img src="./public/img_cover/<?php echo $data['img_cover']?>" class="w-50 me-2">
-                  <div>
-                    <h6><a href="detail.php?id=<?php echo $data['id'] ?>"><?php echo $data['title'] ?></a></h6>
-                    <p class="upload">
-                      <span><i class="fas fa-calendar-alt"></i> <?php echo date("d / m / Y", strtotime($data['created_at']))?></span>
-                      <span> <i class="fas fa-user-edit"></i> <?php echo $data['author']?></span>
-                    </p>
-                  </div>
-                </div><!-- ./d-block -->
-              <?php } ?>
-            </div><!-- ./col-sm-6 col-2 -->
-            <!-- ./type post news -->
-          
-          </div><!-- ./row col-1 -->
-           
-          <!-- all post -->
-          <div class="d-flex justify-content-start align-items-center my-3" data-aos="fade-up" data-aos-duration="1500">
-            <h5 class="me-1 category w-25">Semua Postingan</h5>
-            <hr style="border-color: #545961; background-color: #545961; opacity: 0.2; margin: 0 !important;"/>
-          </div>
-          <div class="row g-3">
-            <?php while($data = mysqli_fetch_assoc($sql)){ $i=1; ?>
-              <div class="col-sm-3 mb-3">
-                <div class="card shadow-sm rounded overflow-hidden" data-aos="fade-up" data-aos-duration="1800">
-                  <div class="card-body p-0">
-                    <div class="w-100">
-                      <img src="./public/img_cover/<?php echo $data['img_cover'] ?>" class="w-100" style="height:120px"/>
-                    </div>
-                    <div class="p-2">
-                      <p class="datetime">
-                        <span><i class="fas fa-calendar-alt"></i> <?php echo date("d / m / Y", strtotime($data['created_at']))?></span>
-                        <span> <i class="fas fa-user-edit"></i> <?php echo $data['author']?></span>
-                      </p>
-                      <h6>
-                          <a href="detail.php?id=<?php echo $data['id'] ?>">
-                            <?php echo $data['title']?>
-                          </a>
-                      </h6>
-                      <small class="text-secondary" style="font-size:0.7rem"><i><?php echo '#'.$data['category'].'  #'.$data['type'];?></i></small>
-                    </div><!-- ./p-2 -->
-                  </div><!-- ./card-body -->
-                </div><!-- ./card -->
-              </div><!-- ./col-sm-3 -->
-            <?php 
-            } 
-            if(mysqli_num_rows($sql) <= 0) echo '<p class="lead">Data Kosong</p>'
-            ?>
-            <?php 
-              echo '
-              <!-- Pagination -->
-              <nav aria-label="Page navigation example" data-aos="fade-up" data-aos-duration="1600">
-                <ul class="pagination">
-                  <li class="page-item">';
-                  // page previous
-                  if($page > 1)  
-                    echo '<a class="page-link" href="?page='.$prev.'"><span aria-hidden="true">&laquo;</span></a>';
-                  else 
-                    echo '<li class="page-item disabled"><span class="page-link">&laquo;</span></li>';
-                  echo '</li>';
-                  // show list page
-                  for ($i=1; $i <= $total_page; $i++) { 
-                    if($page == $i)
-                      echo '<li class="page-item active" aria-current="page"><a class="page-link" href="?page='.$i.'">'.$i.'</a></li>';
-                    else 
-                      echo '<li class="page-item"><a class="page-link" href="?page='.$i.'">'.$i.'</a></li>';
-                  }
-                  // page next
-                  echo '
-                  <li class="page-item">';
-                    if($page < $count) 
-                      echo '<a class="page-link" href="?page='.$next.'"><span aria-hidden="true">&raquo;</span></a>';
-                    else echo '<li class="page-item disabled"><span class="page-link">&raquo;</span></li>';
-                  echo '
-                  </li>
-                </ul><!-- ./pagination -->
-              </nav><!-- ./aria label pagination -->
-              ';
-            ?>
+              </div><!-- ./col-sm-6 -->
           </div><!-- ./row -->
-          <!-- ./all post -->
-
-        </div><!-- ./col-sm-8 -->
-
-        <div class="col-sm-3">
-          <?php listMenu() ?>
-        </div><!-- ./col-sm-3 -->
-
-      </div><!-- ./row -->
-    </div><!-- ./content -->
-  </section>
-<!-- ./section news -->
+       </div><!-- ./col-sm-7 col-1 -->
+       <!-- ./news post -->
+       
+       <!-- foto -->
+       <div class="col-sm-5" data-aos="fade-up" data-aos-duration="1600">
+          <div class="row g-1">
+            <?php 
+              for ($i=0; $i < 4; $i++) { 
+                echo '
+                  <div class="col-sm-6">
+                    <div class="w-100">
+                      <img src="./public/img/img-2.jpg" class="img-fluid rounded"/>
+                    </div>
+                  </div>
+                ';
+              }
+            ?>
+          </div>
+       </div><!-- col-sm-5 -->
+       <!-- ./foto -->
+     </div><!-- .row -->
+     <br/>
+   </div><!-- ./content -->
+  </section><!-- ./section -->
+  <!-- ./section post and foto -->
 
 <?php footer() ?>
 
