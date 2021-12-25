@@ -4,6 +4,11 @@
   include "./part/navbar.php";;
   include "./part/footer.php";
 
+  // data information yayasan
+  $query_yayasan = "SELECT * FROM tb_information ORDER BY created_at DESC LIMIT 0, 1";
+  $sql_yayasan = mysqli_query($conn,$query_yayasan);
+  $yayasan = mysqli_fetch_assoc($sql_yayasan);
+
   headerIndex();
 ?>
 
@@ -39,19 +44,19 @@
                 <table class="table table-borderless fst-normal">
                   <tr>
                     <td class="text-start">Nama</td>
-                    <td class="text-start">Al-Ghoibi</td>
+                    <td class="text-start"><?php echo $yayasan['name']?></td>
                   </tr>
                   <tr>
                     <td class="text-start">Alamat</td>
-                    <td class="text-start">Jln Lorem Ipsum no 72</td>
+                    <td class="text-start"><?php echo $yayasan['address']?></td>
                   </tr>
                   <tr>
                     <td class="text-start">No Telepon</td>
-                    <td class="text-start">081234567890</td>
+                    <td class="text-start"><?php echo $yayasan['phone']?></td>
                   </tr>
                   <tr>
                     <td class="text-start">Email</td>
-                    <td class="text-start">yayasanalghoibi@gmail.com</td>
+                    <td class="text-start"><?php echo $yayasan['email']?></td>
                   </tr>
                 </table>
               </div><!-- ./table -->
@@ -85,15 +90,12 @@
                 </svg>
               </a>
               
-              <!-- Twitter -->
+              <!-- Youtube -->
               <a href="">
                 <svg class="social-media-c" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <circle cx="15" cy="15" r="15" fill="#C7C7C7" />
                   <g clip-path="url(#clip0)">
-                    <path
-                      d="M23 10.039C22.405 10.3 21.771 10.473 21.11 10.557C21.79 10.151 22.309 9.513 22.553 8.744C21.919 9.122 21.219 9.389 20.473 9.538C19.871 8.897 19.013 8.5 18.077 8.5C16.261 8.5 14.799 9.974 14.799 11.781C14.799 12.041 14.821 12.291 14.875 12.529C12.148 12.396 9.735 11.089 8.114 9.098C7.831 9.589 7.665 10.151 7.665 10.756C7.665 11.892 8.25 12.899 9.122 13.482C8.595 13.472 8.078 13.319 7.64 13.078C7.64 13.088 7.64 13.101 7.64 13.114C7.64 14.708 8.777 16.032 10.268 16.337C10.001 16.41 9.71 16.445 9.408 16.445C9.198 16.445 8.986 16.433 8.787 16.389C9.212 17.688 10.418 18.643 11.852 18.674C10.736 19.547 9.319 20.073 7.785 20.073C7.516 20.073 7.258 20.061 7 20.028C8.453 20.965 10.175 21.5 12.032 21.5C18.068 21.5 21.368 16.5 21.368 12.166C21.368 12.021 21.363 11.881 21.356 11.742C22.007 11.28 22.554 10.703 23 10.039Z"
-                      fill="white"
-                    />
+                    <path d="M 15 4 C 10.814 4 5.3808594 5.0488281 5.3808594 5.0488281 L 5.3671875 5.0644531 C 3.4606632 5.3693645 2 7.0076245 2 9 L 2 15 L 2 15.001953 L 2 21 L 2 21.001953 A 4 4 0 0 0 5.3769531 24.945312 L 5.3808594 24.951172 C 5.3808594 24.951172 10.814 26.001953 15 26.001953 C 19.186 26.001953 24.619141 24.951172 24.619141 24.951172 L 24.621094 24.949219 A 4 4 0 0 0 28 21.001953 L 28 21 L 28 15.001953 L 28 15 L 28 9 A 4 4 0 0 0 24.623047 5.0546875 L 24.619141 5.0488281 C 24.619141 5.0488281 19.186 4 15 4 z M 12 10.398438 L 20 15 L 12 19.601562 L 12 10.398438 z" fill="white"/>
                   </g>
                   <defs>
                     <clipPath id="clip0">
