@@ -151,10 +151,10 @@
           <div class="row g-3">
             <?php while($data = mysqli_fetch_assoc($sql)){ $i=1; ?>
               <div class="col-sm-4 mb-3">
-                <div class="card shadow-sm rounded overflow-hidden" data-aos="fade-up" data-aos-duration="1200">
+                <div class="card shadow-sm rounded overflow-hidden" style="height: 300px;" data-aos="fade-up" data-aos-duration="1200">
                   <div class="card-body p-0">
                     <div class="w-100">
-                      <img src="./public/img_cover/<?php echo $data['img_cover'] ?>" class="w-100" style="height:120px"/>
+                      <img src="./public/img_cover/<?php echo $data['img_cover'] ?>" class="w-100" style="height:150px"/>
                     </div>
                     <div class="p-2">
                       <p class="datetime">
