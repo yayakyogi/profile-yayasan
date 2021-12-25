@@ -89,8 +89,8 @@
     <div class="p-5 mb-4 bg-white rounded-3 shadow border-top border-primary border-5">
       <div class="container-fluid text-center py-3">
         <h1 class="fs-3 fw-bold">Selamat Datang di</h1>
-        <h1 class="fs-2 fw-bold">Portal Berita Yayasanku</h1>
-        <p class="fs-6">
+        <h1 class="fs-2 fw-bold">Portal Berita Al-Ghoibi</h1>
+        <p class="fs-6 mt-3">
         Using a series of utilities, you can create this jumbotron, just like the one in previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.
         </p>
       </div>
