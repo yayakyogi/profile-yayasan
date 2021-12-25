@@ -40,7 +40,7 @@
         <div class="col-sm-9 pe-2">
 
           <!-- content-detail -->
-          <h4 class="mb-4" data-aos="fade-up">Detail Postingan</h2>
+          <h4 class="mb-4" data-aos="fade-up">Detail Postingan</h4>
           <img src="./public/img_cover/<?php echo $data['img_cover'] ?>" class="img-fluid rounded" data-aos="fade-up" data-aos-duration="1200"/>
           <h1 class="mt-3 fs-2" data-aos="fade-up" data-aos-duration="1300"><?php echo $data['title'] ?></h1>
           <p class="upload px-2" data-aos="fade-up" data-aos-duration="1400">
