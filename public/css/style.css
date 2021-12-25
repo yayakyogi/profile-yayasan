@@ -60,7 +60,6 @@
 .header-3-3 .btn-fill {
   font: 500 0.875rem/1.25rem Poppins, sans-serif;
   border: 1px solid #2ec49c;
-  background-color: #2ec49c;
   border-radius: 999px;
   padding: 0.75rem 1.5rem;
   transition: 0.3s;
@@ -215,7 +214,7 @@
 .news h5 a:hover,
 .news h6 a:hover {
   text-decoration: underline;
-  color: #29daab;
+  color: #0D6EFD;
 }
 
 .news .upload span {
