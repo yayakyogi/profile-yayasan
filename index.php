@@ -14,6 +14,10 @@
   $query_headline = "SELECT * FROM tb_post ORDER BY created_at DESC LIMIT 0, 1";
   $sql_headline = mysqli_query($conn,$query_headline);
 
+  // get 4 post
+  $query_four_post = "SELECT * FROM tb_post ORDER BY created_at DESC LIMIT 1, 4";
+  $sql_four_post = mysqli_query($conn,$query_four_post);
+
   // pagination
   $limit = 7;
   $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
@@ -117,19 +121,23 @@
        <!-- ./news post -->
 
        <!-- foto -->
-       <div class="col-sm-5" data-aos="fade-up" data-aos-duration="1600">
-          <div class="row g-1">
+       <div class="col-sm-5 mt-3" data-aos="fade-up" data-aos-duration="1600">
+          <div class="row g-2">
             <?php 
-              for ($i=0; $i < 4; $i++) { 
-                echo '
-                  <div class="col-sm-6">
-                    <div class="w-100">
-                      <img src="./public/img/img-2.jpg" class="img-fluid rounded"/>
+              while($data = mysqli_fetch_assoc($sql_four_post)){?>
+                <div class="col-sm-6">
+                  <div class="card card-news-header position-relative overflow-hidden" style="height: 170px;">
+                    <img src="public/img_cover/<?php echo $data['img_cover'] ?>" style="height: 170px;"/>
+                    <div class="position-absolute bottom-0" style="z-index: 10; left:10px;">
+                      <a href="detail.php?id=<?php echo $data['id'] ?>" class="text-decoration-none text-white"><?php echo $data['title'] ?></a>
+                      <p class="datetime">
+                        <span class="text-white"><i class="fas fa-calendar-alt"></i> <?php echo date("d / m / Y", strtotime($data['created_at']))?></span>
+                        <span class="text-white"> <i class="fas fa-user-edit"></i> <?php echo $data['author']?></span>
+                      </p>
                     </div>
                   </div>
-                ';
-              }
-            ?>
+                </div>
+            <?php }?>
           </div>
        </div><!-- col-sm-5 -->
        <!-- ./foto -->
