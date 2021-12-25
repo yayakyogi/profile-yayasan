@@ -22,16 +22,16 @@
               <div class="modal-body" style="padding: 2rem; padding-top: 0; padding-bottom: 0">
                 <ul class="navbar-nav responsive me-auto mt-2 mt-lg-0">
                   <li class="nav-item active position-relative">
-                    <a class="nav-link" href="#">Beranda</a>
+                    <a class="nav-link" href="index.php">Beranda</a>
                   </li>
                   <li class="nav-item position-relative">
-                    <a class="nav-link" href="#">Profil Yayasan</a>
+                    <a class="nav-link" href="profil.php">Profil Yayasan</a>
                   </li>
                   <li class="nav-item position-relative">
-                    <a class="nav-link" href="#">Visi & Misi</a>
+                    <a class="nav-link" href="visi-misi.php">Visi & Misi</a>
                   </li>
                   <li class="nav-item position-relative">
-                    <a class="nav-link" href="#">Berita</a>
+                    <a class="nav-link" href="berita.php">Berita</a>
                   </li>
                   <li class="nav-item position-relative">
                     <a class="nav-link" data-bs-toggle="collapse" href="#collapse" role="button" aria-expanded="false" aria-controls="collapse">
@@ -54,7 +54,7 @@
                 </ul><!-- ./navbar-nav -->
               </div> <!-- ./modal-body -->
               <div class="modal-footer border-0" style="padding: 2rem; padding-top: 0.75rem">
-                <a href="app/login.php" class="btn btn-fill text-white" data-aos="fade-down" data-aos-duration="2500">Login</a>
+                <a href="app/login.php" class="btn btn-fill btn-success text-white" data-aos="fade-down" data-aos-duration="2500">Login</a>
               </div> <!-- ./modal-footter -->
             </div> <!-- ./modal-content -->
           </div> <!-- ./modal-dialog -->
@@ -64,16 +64,16 @@
         <div class="collapse navbar-collapse" id="navbarTogglerDemo" data-aos="fade-down" data-aos-duration="1200">
           <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
             <li class="nav-item position-relative">
-              <a class="nav-link" href="#">Beranda</a>
+              <a class="nav-link" href="index.php">Beranda</a>
             </li>
             <li class="nav-item position-relative">
-              <a class="nav-link" href="#">Profil Yayasan</a>
+              <a class="nav-link" href="profil.php">Profil Yayasan</a>
             </li>
              <li class="nav-item position-relative">
-               <a class="nav-link" href="#">Visi & Misi</a>
+               <a class="nav-link" href="visi-misi.php">Visi & Misi</a>
              </li>
              <li class="nav-item position-relative">
-               <a class="nav-link" href="#">Berita</a>
+               <a class="nav-link" href="berita.php">Berita</a>
              </li>
              <li class="nav-item my-auto">
                <a class="nav-link" data-bs-toggle="collapse" href="#collapse" role="button" aria-expanded="false" aria-controls="collapse"> 
@@ -94,7 +94,7 @@
                </form><!-- ./form -->
              </li><!-- ./nav-item -->
             </ul><!-- ./navbar-nav -->
-            <a href="app/login.php" class="btn btn-fill text-white" data-aos="fade-down" data-aos-duration="1500">Login</a>
+            <a href="app/login.php" class="btn btn-fill btn-success text-white" data-aos="fade-down" data-aos-duration="1500">Login</a>
           </div> <!-- ./navbar-collapse -->
         </nav> <!-- ./nav -->
       </div> <!-- ./header -->
