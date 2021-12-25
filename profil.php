@@ -19,7 +19,7 @@
           <h4 class="mb-3" data-aos="fade-up" data-aos-duration="1000">Sejarah</h4>
           <div class="row">
             <div class="col-sm-6">
-              <p class="text-center mt-4" data-aos="fade-up" data-aos-duration="1250">
+              <p class="mt-4" data-aos="fade-up" data-aos-duration="1250" style="text-align: justify;">
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugit voluptatibus excepturi minima mollitia. Officiis cupiditate et ipsum ullam. Fugit nobis voluptatibus natus voluptatum necessitatibus excepturi magni amet, impedit blanditiis tempore. 
               </p>
             </div>
