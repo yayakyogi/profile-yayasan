@@ -5,6 +5,14 @@
     global $conn;
     $query_category = "SELECT * FROM tb_category";
     $sql_category = mysqli_query($conn,$query_category); 
+
+    $exec = htmlspecialchars(GET('exec',''));
+    $saran = htmlspecialchars(GET('saran',''));
+  
+    if($exec && $saran){
+      $query = "INSERT INTO tb_saran VALUES (null,'$saran')";
+      $sql = mysqli_query($conn,$query);
+    }
     
     echo '
     <!-- footer -->
@@ -12,14 +20,14 @@
         <div class="list-footer">
           <div class="row gap-md-0 gap-3">
             <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-duration="1500">
-              <img src="./public/img/logo.png" width="100" height="100"/>
+              <img src="./public/img/logo.png" width="200" height="200"/>
             </div>
             <!-- col-profil -->
             <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-duration="1750">
               <h2 class="footer-text-title">Profil Yayasan</h2>
               <nav class="list-unstyled">
                 <li class="list-space">
-                  <p class="list-menu">Nama Yayasan :</br> <span class="fw-bolder text-dark">Yayasanku</span></p>
+                  <p class="list-menu">Nama Yayasan :</br> <span class="fw-bolder text-dark">Al - Ghoibi</span></p>
                 </li>
                 <li class="list-space">
                   <p class="list-menu">Alamat :</br> <span class="fw-bolder text-dark">Jln Lorem ipsum dolor</span></p>
@@ -28,14 +36,14 @@
                   <p class="list-menu">Kontak :</br> <span class="fw-bolder text-dark">0812345678</span></p>
                 </li>
                 <li class="list-space">
-                  <p class="list-menu">Email :</br> <span class="fw-bolder text-dark">yayasanku@gmail.com</span></p>
+                  <p class="list-menu">Email :</br> <span class="fw-bolder text-dark">yayasanalghoibi@gmail.com</span></p>
                 </li>
               </nav>
             </div>
             <!-- ./col-profil -->
 
             <!-- col-kategori -->
-            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-duration="2000">
+            <div class="col-lg-2 col-md-6" data-aos="fade-up" data-aos-duration="2000">
               <h2 class="footer-text-title">Kategori</h2>
               <nav class="list-unstyled">';
 
@@ -52,18 +60,15 @@
             <!-- ./col-kategori -->
 
             <!-- col-form -->
-            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-duration="2250">
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-duration="2250">
               <h2 class="footer-text-title">Kritik & Saran</h2>
-              <form method="" action="#">
-                <div class="mb-3">
-                  <label for="exampleFormControlInput1" class="form-label">Email</label>
-                  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan email anda">
-                </div>
+              <form method="POST" action="">
+                <input type="hidden" name="exec" value="'.time().'"/>
                 <div class="mb-4">
                   <label for="exampleFormControlTextarea1" class="form-label">Kritik & Saran</label>
-                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="Masukkan kritik & saran anda disini"></textarea>
+                  <textarea class="form-control" name="saran" id="exampleFormControlTextarea1" rows="6" placeholder="Masukkan kritik & saran anda"></textarea>
                 </div>
-                <button type="submit" class="btn btn-success">Kirim</button>
+                <button type="submit" name="kirim" class="btn btn-success">Kirim</button>
               </form>
             </div>
             <!-- ./col-form -->
@@ -71,13 +76,11 @@
           </div><!-- ./row -->
         </div><!-- ./list-footer -->
 
+        
         <div class="border-color info-footer bg-white">
-          <div class="">
-            <hr class="hr" />
-          </div>
           <div class="mx-auto d-flex flex-column align-items-center justify-content-center footer-info-space gap-4">
             <nav class=" d-flex flex-lg-row flex-column align-items-center justify-content-center">
-              <p style="margin: 0">Copyright © 2021 - Yayasanku</p>
+              <p style="margin: 0">Copyright © 2021 - Yayasan Al-Ghoibi</p>
             </nav>
           
             <div class="d-flex title-font font-medium align-items-center gap-4">
