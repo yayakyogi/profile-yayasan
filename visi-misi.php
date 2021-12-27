@@ -22,15 +22,14 @@
             <div class="col-sm-6 mt-4 text-start">
                 <h4 class="mb-3" data-aos="fade-up" data-aos-duration="1000">Visi</h4>
                 <p class="lead" data-aos="fade-up" data-aos-duration="1250">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima, voluptates cumque ea animi rerum delectus amet aspernatur vero? Officia, hic.  
+                  Menjadi lembaga sosial madani yang terpercaya dan berkontribusi meningkatkan kepedulian terhadap yatim dan dhuafa serta menjadi lembaga sosial yang mandiri, kreatif dan inovatif.
                 </p>
                 <h4 class="mb-3" data-aos="fade-up" data-aos-duration="1500">Misi</h4>
                 <ol data-aos="fade-up" data-aos-duration="1750">
-                    <li class="lead">Lorem ipsum dolor sit amet.</li>
-                    <li class="lead">Lorem ipsum dolor sit amet.</li>
-                    <li class="lead">Lorem ipsum dolor sit amet.</li>
-                    <li class="lead">Lorem ipsum dolor sit amet.</li>
-                    <li class="lead">Lorem ipsum dolor sit amet.</li>
+                    <li class="lead">Menyelenggarakan kegiatan sosial kreatif berbasis islami sebagai landasan kegiatan.</li>
+                    <li class="lead">Membangun kerjasama antar lembaga lain yang memiliki tujuan sama.</li>
+                    <li class="lead">Mendidik anak yatim dan dhuafa melalui kegiatan pendidikan dan pelatihan yg berkualitas</li>
+                    <li class="lead">Mewujudkan generasi muda yang bertaqwa, peduli, mandiri, kreatif dan inovatif melalui pemberdayaan masyarakat</li>
                 </ol>
             </div> <!-- ./col-sm-6 -->
           </div><!-- ./row -->
