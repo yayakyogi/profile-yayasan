@@ -24,8 +24,8 @@
           <h4 class="mb-3" data-aos="fade-up" data-aos-duration="1000">Sejarah</h4>
           <div class="row">
             <div class="col-sm-6">
-              <p class="mt-4" data-aos="fade-up" data-aos-duration="1250" style="text-align: justify;">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugit voluptatibus excepturi minima mollitia. Officiis cupiditate et ipsum ullam. Fugit nobis voluptatibus natus voluptatum necessitatibus excepturi magni amet, impedit blanditiis tempore. 
+              <p class="mt-4 lead" data-aos="fade-up" data-aos-duration="1250" style="text-align: justify;">
+              Karena seringnya banyaknya tamu dari mana mana untuk berobat secara spiritual dirumah.dan saya juga sering mengadakan kegiatan sosial di rumah termasuk mengumpulkan fakir miskin dan duaffa juga yatim..sering adanya kegiatan keagamaan termasuk sholawatan juga Jamaah dzikir itulah akhirnya sesuai aturan negara harus di legalkan berbentuk organisasi  . Hari hari sllu banyak anggota di rumah sering ada perkumpulan para jamaah ..disitulah terinspirasi membentuk dan memberi wadah suatu perkumpulan ini menjadi satu organisasi.dan mendirikan Yayasan Amal Sosial dan Kemanusiaan Al ghoibi..dan melegalkan sesuai aturan negara..
               </p>
             </div>
             <div class="col-sm-6">
