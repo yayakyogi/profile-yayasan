@@ -58,6 +58,10 @@
                     <td class="text-start">Email</td>
                     <td class="text-start"><?php echo $yayasan['email']?></td>
                   </tr>
+                  <tr>
+                    <td class="text-start">SK Kemenkumham</td>
+                    <td class="text-start">Tanggal 25 Februari 2008 </br> Nomor : AHU-102.AH.02.01. TAHUN 2008</td>
+                  </tr>
                 </table>
               </div><!-- ./table -->
             </div> <!-- ./col-sm-6 -->
