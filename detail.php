@@ -27,9 +27,24 @@
   $query_category = "SELECT * FROM tb_post WHERE category='$category'";
   $sql_category = mysqli_query($conn,$query_category);
 
-  headerIndex();
 ?>
-
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./public/bootstrap-5.0.2/dist/css/bootstrap.min.css"/>
+    <meta property="og:title" content="<?php echo $data['title']?>" />
+    <meta property="og:description" content="<?php echo date("d / m / Y", strtotime($data['created_at'])); echo ' -'; echo $data['author']?>" />
+    <meta property="og:url" content="https://al-ghoibi.id/detail.php?id=<?php echo $data['id']?>" />
+    <meta property="og:image" content="https://al-ghoibi.id/public/img_cover/<?php echo $data['img_cover']?>" />
+    <link rel="stylesheet" href="./public/css/style.css"/>
+    <link rel="icon" href="./public/img/logo.png" type="image/icon type">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"crossorigin="anonymous"></script>
+    <title>AL GHOIBI</title>
+  </head>
 <body>
   <?php navbar() ?>
   <!-- content -->
@@ -40,7 +55,7 @@
         <div class="col-sm-9 pe-2">
 
           <!-- content-detail -->
-          <h4 class="mb-4" data-aos="fade-up">Detail Postingan</h4>
+          <h4 class="mb-4" data-aos="fade-up">Detail Postingan</h2>
           <img src="./public/img_cover/<?php echo $data['img_cover'] ?>" class="img-fluid rounded" data-aos="fade-up" data-aos-duration="1200"/>
           <h1 class="mt-3 fs-2" data-aos="fade-up" data-aos-duration="1300"><?php echo $data['title'] ?></h1>
           <p class="upload px-2" data-aos="fade-up" data-aos-duration="1400">
@@ -55,8 +70,13 @@
             <a class="btn btn-link" data-aos="fade-up" data-aos-duration="1400" href="./public/file/<?php echo $data['file'] ?>"><?php echo $data['file'] ?></a>
           <?php } ?>
           <!-- ./content-detail -->
+         
+          </br></br>
+          <div data-aos="fade-up" data-aos-duration="1300">
+              <h5 >Bagikan Artikel</h5>
+              <a href="whatsapp://send?text=Baca%20detail%20beritanya%20pada%20link%20dibawah%20ini%0Ahttps://al-ghoibi.id/detail.php?id=<?php echo $data['id']?>"><img src="https://www.freeiconspng.com/uploads/logo-whatsapp-png-image-2.png" width="50" alt="Logo Whatsapp PNG Image" /></a>
+          </div>
           
-          </br>
 
           <!-- post same -->
           <div class="d-flex justify-content-start align-items-center mt-5 mb-3 px-2" data-aos="fade-up" data-aos-duration="1500">
