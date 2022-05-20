@@ -174,10 +174,7 @@
   </div>
   <!-- ./content -->
   <script src="../public/bootstrap-5.0.2/dist/js/bootstrap.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="../public/js/script.js"></script>
-  <script src="../public/js/ckeditor-basic/ckeditor.js"></script>
-  <script>
-    CKEDITOR.config.removePlugins = 'image,forms';
-  </script>
+  <script src="../public/js/ckeditor-full/ckeditor.js"></script>
 </body>

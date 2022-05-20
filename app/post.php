@@ -296,7 +296,7 @@ function post()
               <!-- ./tipe & category -->
               <div class="form-group">
                 <label for="ckeditor" class="mb-2">Keterangan / Isi pengumuman</label> 
-                <textarea class="ckeditor" id="ckeditor" name="content"></textarea>   
+                <textarea class="ckeditor" id="editor1" name="content"></textarea>   
               </div>
               <button type="submit" class="btn btn-success mt-3"><i class="fas fa-save"></i> Simpan</button>
             </form>  

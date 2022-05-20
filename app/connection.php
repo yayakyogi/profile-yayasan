@@ -2,7 +2,7 @@
   // buat koneksi ke database
   $host = 'localhost';
   $username = 'root';
-  $password = 'ginantaka23';
+  $password = '';
   $db = 'profile-yayasan';
 
   $conn = mysqli_connect($host,$username,$password,$db);

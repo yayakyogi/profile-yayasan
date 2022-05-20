@@ -74,7 +74,7 @@
           </br></br>
           <div data-aos="fade-up" data-aos-duration="1300">
               <h5 >Bagikan Artikel</h5>
-              <a href="whatsapp://send?text=Baca%20detail%20beritanya%20pada%20link%20dibawah%20ini%0Ahttps://al-ghoibi.id/detail.php?id=<?php echo $data['id']?>"><img src="https://www.freeiconspng.com/uploads/logo-whatsapp-png-image-2.png" width="50" alt="Logo Whatsapp PNG Image" /></a>
+              <a href="whatsapp://send?text=https://al-ghoibi.id/detail.php?title=<?php echo $title;?>"><img src="https://www.freeiconspng.com/uploads/logo-whatsapp-png-image-2.png" width="50" alt="Logo Whatsapp PNG Image" /></a>
           </div>
           
 
@@ -97,7 +97,7 @@
                         <span> <i class="fas fa-user-edit"></i> <?php echo $data['author']?></span>
                       </p>
                       <h6>
-                          <a href="detail.php?id=<?php echo $data['id'] ?>">
+                          <a href="detail.php?title=<?php echo urlencode($data['id']) ?>">
                             <?php echo $data['title']?>
                           </a>
                       </h6>
@@ -121,7 +121,7 @@
           <?php while($data = mysqli_fetch_assoc($sql_category)){?>
             <div class="d-flex justify-content-start align-items-start mb-3 shadow-sm rounded overflow-hidden" data-aos="fade-up" data-aos-duration="1500">
               <div class="p-3">
-                <h6><a href="detail.php?id=<?php echo $data['id'] ?>"><?php echo $data['title'] ?></a></h6>
+                <h6><a href="detail.php?title='<?php echo urlencode($data['title']); ?>"><?php echo $data['title'] ?></a></h6>
                 <p class="upload">
                   <span><i class="fas fa-calendar-alt"></i> <?php echo date("d / m / Y", strtotime($data['created_at']))?></span>
                   <span> <i class="fas fa-user-edit"></i> <?php echo $data['author']?></span>

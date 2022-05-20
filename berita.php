@@ -39,7 +39,7 @@
                     <span> <i class="fas fa-user-edit"></i> <?php echo $data['author']?></span>
                   </p>
                   <h6>
-                      <a href="detail.php?id=<?php echo $data['id'] ?>">
+                      <a href="detail.php?title=<?php echo urlencode($data['title']) ?>">
                         <?php echo $data['title']?>
                       </a>
                   </h6>
