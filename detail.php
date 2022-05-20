@@ -5,15 +5,15 @@
   include "./part/listmenu.php";
   include "./part/footer.php";
 
-  $id = GET('id','');
+  $title = GET('title','');
 
-  if(!$id) 
+  if(!$title) 
   {
     header("Location:index.php");
     exit;
   }
 
-  $query = "SELECT * FROM tb_post WHERE id='$id'";
+  $query = "SELECT * FROM tb_post WHERE title='$title'";
   $sql = mysqli_query($conn,$query);
   $data = mysqli_fetch_assoc($sql);
   
@@ -35,10 +35,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./public/bootstrap-5.0.2/dist/css/bootstrap.min.css"/>
-    <meta property="og:title" content="<?php echo $data['title']?>" />
-    <meta property="og:description" content="<?php echo date("d / m / Y", strtotime($data['created_at'])); echo ' -'; echo $data['author']?>" />
-    <meta property="og:url" content="https://al-ghoibi.id/detail.php?id=<?php echo $data['id']?>" />
     <meta property="og:image" content="https://al-ghoibi.id/public/img_cover/<?php echo $data['img_cover']?>" />
+    <meta property="og:title" content="<?php echo $data['title']?>" />
+    <meta property="og:description" content="<?php echo $data['content']?>" />
+    <meta property="og:url" content="https://al-ghoibi.id/detail.php?title=<?php echo $data['title']?>" />
     <link rel="stylesheet" href="./public/css/style.css"/>
     <link rel="icon" href="./public/img/logo.png" type="image/icon type">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
